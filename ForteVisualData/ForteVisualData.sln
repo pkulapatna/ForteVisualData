@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModCombine", "..\Modules\Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppServices", "..\Services\AppServices\AppServices.csproj", "{EE4505EA-D7D6-4FEB-A617-83E8F2E092AC}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "WpfArchive.Windows.Theme", "..\..\WpfArchive.Windows.Theme\WpfArchive.Windows.Theme.vbproj", "{F2DA54DD-2286-4B7C-837C-9B2B9D015289}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UserControls", "UserControls", "{2AFD556D-1A1A-4D7A-81BC-D8432E6F060C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphMenuBar", "..\UserControls\GraphMenuBar\GraphMenuBar.csproj", "{3AE3690C-1CB6-48EB-A9DB-7069842FEE10}"
@@ -41,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModDropProfileChart", "..\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModDropLineChart", "..\Modules\ModDropLineChart\ModDropLineChart.csproj", "{34339EBE-0542-4723-AB34-287F7F7B45C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModWetLayerTrend", "..\Modules\ModWetLayerTrend\ModWetLayerTrend.csproj", "{98BA4065-DC67-448D-A208-2B96F29184B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModWetLayerTrend", "..\Modules\ModWetLayerTrend\ModWetLayerTrend.csproj", "{98BA4065-DC67-448D-A208-2B96F29184B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,13 +97,6 @@ Global
 		{EE4505EA-D7D6-4FEB-A617-83E8F2E092AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EE4505EA-D7D6-4FEB-A617-83E8F2E092AC}.Release|x86.ActiveCfg = Release|Any CPU
 		{EE4505EA-D7D6-4FEB-A617-83E8F2E092AC}.Release|x86.Build.0 = Release|Any CPU
-		{F2DA54DD-2286-4B7C-837C-9B2B9D015289}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F2DA54DD-2286-4B7C-837C-9B2B9D015289}.Debug|x86.ActiveCfg = Debug|x86
-		{F2DA54DD-2286-4B7C-837C-9B2B9D015289}.Debug|x86.Build.0 = Debug|x86
-		{F2DA54DD-2286-4B7C-837C-9B2B9D015289}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F2DA54DD-2286-4B7C-837C-9B2B9D015289}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F2DA54DD-2286-4B7C-837C-9B2B9D015289}.Release|x86.ActiveCfg = Release|x86
-		{F2DA54DD-2286-4B7C-837C-9B2B9D015289}.Release|x86.Build.0 = Release|x86
 		{3AE3690C-1CB6-48EB-A9DB-7069842FEE10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3AE3690C-1CB6-48EB-A9DB-7069842FEE10}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AE3690C-1CB6-48EB-A9DB-7069842FEE10}.Debug|x86.ActiveCfg = Debug|Any CPU

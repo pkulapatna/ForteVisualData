@@ -64,7 +64,6 @@
     <PackageReference Include="System.Windows.Forms.DataVisualization" Version="1.0.0-prerelease.20110.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\_My Progress\WpfArchive.Windows.Theme\WpfArchive.Windows.Theme.vbproj" />
     <ProjectReference Include="..\Modules\ModArchives\ModArchives.csproj" />
     <ProjectReference Include="..\Modules\ModCombine\ModCombine.csproj" />
     <ProjectReference Include="..\Modules\ModDropLineChart\ModDropLineChart.csproj" />
@@ -76,6 +75,14 @@
     <ProjectReference Include="..\Modules\ModWetLayerTrend\ModWetLayerTrend.csproj" />
     <ProjectReference Include="..\Modules\ModWetLayer\ModWetLayer.csproj" />
     <ProjectReference Include="..\Services\AppServices\AppServices.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>CustomReference\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfArchive.Windows.Theme">
+      <HintPath>..\..\WpfArchive.Windows.Theme\bin\Debug\WpfArchive.Windows.Theme.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Apply.PNG" />
@@ -140,5 +147,8 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomReference\" />
   </ItemGroup>
 </Project>

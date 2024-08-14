@@ -7,7 +7,6 @@
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\WpfArchive.Windows.Theme\WpfArchive.Windows.Theme.vbproj" />
     <ProjectReference Include="..\..\Services\AppServices\AppServices.csproj" />
   </ItemGroup>
   <ItemGroup>
