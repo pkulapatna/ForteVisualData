@@ -1,0 +1,214 @@
+﻿<Window x:Class="ForteVisualData.HelpInfo.CombineWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForteVisualData.HelpInfo"
+        mc:Ignorable="d"
+        Title="Combine Window Setup" Height="700" Width="670" ResizeMode="NoResize">
+    <Grid Background="Black"  Margin="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="8*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="1" Margin="5,0,0,0" Grid.Row="1"  Text="1. Select Type of Data for Graph."
+                 VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14" Foreground="LightGreen"/>
+            <Image Grid.Column="2" Height="50" Width="200" Source="/Images/GraphType.PNG" />
+        </Grid>
+
+        <Rectangle Grid.Row="2" Grid.ColumnSpan="3" Fill="Gray" />
+
+        <Grid Grid.Row="3" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+
+
+            <TextBlock Grid.Column="1"  Text="2. Select Line:"
+                    VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14" Foreground="LightGreen"/>
+
+            <Grid Grid.Column="2">
+                <Image Width="150" Height="100" Source="/Images/SelLine.PNG" VerticalAlignment="Top"/>
+            </Grid>
+
+            <TextBlock Margin="10,0,0,0" Grid.Column="3"  Text="3. Select Source:"
+             VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14" Foreground="LightGreen"/>
+
+            <Grid Grid.Column="4">
+                <Image Width="150" Height="100" Source="/Images/SelSource.PNG" VerticalAlignment="Top" />
+            </Grid>
+        </Grid>
+
+        <Rectangle Grid.Row="4" Grid.ColumnSpan="3" Fill="Gray" />
+
+
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="14*"/>
+                <ColumnDefinition Width="12*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="2"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="2"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Column="1" Margin="0,0,0,5" Grid.Row="1"  Text="4. Set Target Limit Line Graphs"
+              VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+            <TextBlock Grid.Column="1" Margin="15,5,0,0" Grid.Row="3"  Text="for Minimum and Maximum."
+                VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+            <Grid  Grid.Column="2" Grid.Row="1" Grid.RowSpan="3">
+                <Image Height="90" Width="200" Source="/Images/MinMax.PNG" />
+            </Grid>
+
+            <TextBlock Grid.Column="3" Margin="0,0,5,10" Grid.Row="1"  Text="Show Low and High."
+                    VerticalAlignment="Bottom" HorizontalAlignment="Right" FontSize="12" Foreground="White"/>
+
+            <TextBlock Grid.Column="3" Margin="0,5,5,0" Grid.Row="3"  Text="values of current Graph."
+                    VerticalAlignment="Stretch" HorizontalAlignment="Right" FontSize="12" Foreground="White"/>
+
+            <Grid Grid.Column="4" Grid.Row="1" Grid.RowSpan="3">
+                <Image Grid.Column="2" Height="80" Width="120" Source="/Images/ShowMinMax.PNG" />
+            </Grid>
+        </Grid>
+        
+        <Rectangle Grid.Row="6" Grid.ColumnSpan="3" Fill="Gray" />
+
+        <Grid Grid.Column="1" Grid.Row="7">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="0"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock  Grid.Row="2" Grid.Column="1" Text="5. Select field to display on" 
+                 VerticalAlignment="Bottom" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+            <TextBlock  Grid.Row="3" Grid.Column="1" Text="Big Box from Drop Down " Margin="0,0,10,0"
+                    VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="14" Foreground="LightGreen"/>
+            <TextBlock  Grid.Row="4" Grid.Column="1" Text="Combo List.:" Margin="0,0,10,0"
+                    VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="14" Foreground="LightGreen"/>
+
+            <Grid Grid.Column="2" Grid.Row="1" Grid.RowSpan="5">
+                <Image Width="120" Height="170" Source="/Images/BoxSelect.PNG" />
+            </Grid>
+
+            <TextBlock Grid.Column="3"  Grid.Row="2" Text="6. Select Line:"
+                        VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="LightGreen"/>
+
+            <Grid Grid.Column="3" Grid.Row="3" Grid.RowSpan="3" >
+                <Image Width="150" Height="100" Source="/Images/SelSource.PNG" VerticalAlignment="Top" />
+            </Grid>
+
+            <TextBlock Grid.Column="4" Grid.Row="2" Text="7. Select Source:"
+                 VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="LightGreen"/>
+
+            <Grid Grid.Column="4" Grid.Row="3" Grid.RowSpan="3">
+                <Image Width="150" Height="100" Source="/Images/SelSource.PNG" VerticalAlignment="Top" />
+            </Grid>
+        </Grid>
+
+        <Rectangle Grid.Row="8" Grid.ColumnSpan="3" Fill="Gray" />
+
+        <Grid Grid.Row="9" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="25*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="1" Grid.Row="1"  Text="8. Select Fields to Display on Data Table."
+                             VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+                <TextBlock Margin="20,0,0,0" Grid.Column="1" Grid.Row="2"  Text="Custom:   Display selectable Fields => Click Firlds button."
+                            VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Foreground="White"/>
+
+                <TextBlock Margin="20,0,0,0" Grid.Column="1" Grid.Row="3"  Text="Default:    Display all fields from SQL table."
+              VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Foreground="White"/>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Image Width="250" Source="/Images/FieldSel.PNG" />
+            </Grid>
+        </Grid>
+        <Rectangle Grid.Row="10" Grid.ColumnSpan="3" Fill="Gray" />
+
+        <Grid Grid.Row="11" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="1"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="2" Margin="50,0,0,0"
+                   Width="120" Height="60" Source="/Images/StartStop.PNG" HorizontalAlignment="Left" />
+
+            <TextBlock Grid.Column="1" Margin="5,0,0,0" Grid.Row="1"  Text="9. To Run and to Stop the Program."
+             VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+        </Grid>
+
+
+    </Grid>
+</Window>

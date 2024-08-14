@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+	<TargetFramework>net8.0-windows7.0</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MaterialDesignColors" Version="3.1.0" />
+    <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+    <PackageReference Include="ScottPlot.WPF" Version="5.0.37" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\WpfArchive.Windows.Theme\WpfArchive.Windows.Theme.vbproj" />
+    <ProjectReference Include="..\..\Services\AppServices\AppServices.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,75 @@
+﻿<Window x:Class="ForteVisualData.HelpInfo.WLTrendWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForteVisualData.HelpInfo"
+        mc:Ignorable="d"
+        Title="Wet Layer TrendWindow" Height="700" Width="670" ResizeMode="NoResize">
+    <Grid Background="white"  Margin="2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="14*"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="27*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="210*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="0"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" >
+
+            <StackPanel Orientation="Vertical">
+
+                <Label Content="Purpose of this application is to use to average the layer data by layer position." 
+                       FontSize="16" FontWeight="Medium" Foreground="Blue" Margin="0,0,0,0"/>
+
+                <Label Content="To determine if a bias exists.The bias can be removed using the Wet Layer offset ." 
+                       FontSize="16" FontWeight="Medium" Foreground="Blue" Margin="0,-10,0,5"/>
+
+                <Label Content="A minimum of bales at lease 100-200 are required to get good analysis. (Select Layers offset option,)" Margin="20,0,0,0"/>
+
+                <Label Content="Use Avg-Moisture% data Row of each layer to determine for the offset adjustment in the WetLayer Application." Margin="20,0,0,0"/>
+
+                <Label Content="In the offset window in the main Forte Wetlayer Application enter the negative of the bias." Margin="20,0,0,0"/>
+
+                <Label Content="Usually, the two start and end layers need to be chopped from the data" Margin="20,0,0,0"/>
+
+                <Label Content="The readings include the empty air in the area before the first layers and after the last layers." Margin="20,0,0,0"/>
+
+                <Label Content="If a bale is moving slowly at the start or end, a 3rd layer may need to be chopped at the slow moving end" Margin="20,0,0,0"/>
+
+                <Grid Margin="0,5,0,0">
+                    <Image HorizontalAlignment="Center" Source="/Images/Layeroffset.PNG"  Height="240" />
+                </Grid>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="1" Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/OffsetAdj.PNG"  Height="auto" />
+        </Grid>
+
+        <Grid Grid.Row="3" Grid.Column="3">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <Label Content="1. Query between 10-1000 bale samples.(100-200 minimum)"/>
+                <Label Content="2. In the Wet Layer Forte program click on WL Offset  "/>
+                <Label Content="3. The Wet Layer offset window displays the current offsets that are in use. "/>
+                <Label Content="4. The difference (bias) for each layer position, with a sign change. "/>
+                <Label Content="5. Needs to be entered into the offset program for the layer of concern."/>
+                <Label Content="   For example; if this program shows a (-0.5) bias at position 1,"/>
+                <Label Content="   the user enters +0.5 at position 1 to compensate"/>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Window>

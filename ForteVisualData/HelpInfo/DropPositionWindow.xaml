@@ -1,0 +1,64 @@
+﻿<Window x:Class="ForteVisualData.HelpInfo.DropPositionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForteVisualData.HelpInfo"
+        mc:Ignorable="d"
+        Title="DropPosition-Info" Height="700" Width="670" ResizeMode="NoResize">
+    <Grid  Background="Black"  Margin="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <Label  Grid.Row="1" Grid.Column="1" Content="Profile of Bale Data by Position for numbers of Drops" Foreground="white"
+                VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            
+            <Image Margin="10,0,0,0" Height="250" Source="/Images/DropPosition.PNG" />
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label   Content="1. Select Numbers of Drops from 2 to 6 Drops" Foreground="LightGreen"
+                  VerticalAlignment="Center" HorizontalAlignment="Center"></Label>
+
+            <Image Margin="10,0,0,0" Height="50" Source="/Images/SelectNumberDrop.PNG" />
+        </StackPanel>
+
+
+        <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Label   Content="2. Select Processing Line. Only one at a time" Foreground="LightGreen"
+                  VerticalAlignment="Center" HorizontalAlignment="Center" ></Label>
+
+            <Image Margin="10,0,0,0" Height="50" Source="/Images/ProcessingLine.PNG" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="9" Grid.Column="1" Orientation="Horizontal"  HorizontalAlignment="Center">
+           
+            <TextBlock Grid.Column="1" Margin="5,0,0,0" Grid.Row="1"  Text="3. To Run and to Stop the Program."
+                    VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+            <Image Grid.Column="2" Width="120" Height="60" Margin="10,0,0,0" Source="/Images/StartStop.PNG" />
+        </StackPanel>
+
+    </Grid>
+</Window>

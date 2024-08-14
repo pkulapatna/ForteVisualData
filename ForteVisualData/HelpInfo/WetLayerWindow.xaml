@@ -1,0 +1,127 @@
+﻿<Window x:Class="ForteVisualData.HelpInfo.WetLayerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ForteVisualData.HelpInfo"
+        mc:Ignorable="d"
+        Title="WetLayerWindow" Height="700" Width="670" ResizeMode="NoResize">
+    <Grid Background="Black"  Margin="3">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0"/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="25*"/>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="20*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="35*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="2"/>
+        <RowDefinition Height="35*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="55*"/>
+        <RowDefinition Height="5"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="10"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="2"/>
+        <RowDefinition Height="30*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="20*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="20*"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="2"/>
+        <RowDefinition Height="2"/>
+        <RowDefinition Height="2"/>
+        <RowDefinition Height="1"/>
+        <RowDefinition Height="2"/>
+        <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock  Grid.Row="1" Grid.Column="2" Text="Select Realtime or Archive Wet Layer Data:" Grid.ColumnSpan="2"
+            VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+        <Grid  Grid.Row="2" Grid.Column="3" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/WLRtorArch.PNG"  Height="80" />
+        </Grid>
+
+        <TextBlock  Grid.Row="1" Grid.Column="5" Text="Select Baler Number, uncheck for all:" Grid.ColumnSpan="2"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+        <Grid  Grid.Row="2" Grid.Column="5" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/BalerNumber.PNG"  Height="50" />
+        </Grid>
+
+
+        <TextBlock  Grid.Row="7" Grid.Column="2" Text="Select Wet Layer Archive by Month or by Days Period:" Grid.ColumnSpan="2"
+            VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+
+        <Grid  Grid.Row="9" Grid.Column="3" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/WLMonthDay.PNG"  Height="80" />
+        </Grid>
+
+        <TextBlock  Grid.Row="7" Grid.Column="5" Text="Select Events for Month or Days Period:" Grid.ColumnSpan="2"
+                    VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+        <Grid  Grid.Row="9" Grid.Column="5" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/WLOldNew.PNG"  Height="80" />
+        </Grid>
+
+        <Rectangle Grid.Row="12" Grid.ColumnSpan="7" Fill="Gray" />
+
+        <TextBlock  Grid.Row="13" Grid.Column="2" Text="On Graph Settings Tab Set Limit Layer Colors" Grid.ColumnSpan="2"
+                 VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+        <Grid  Grid.Row="14" Grid.Column="3" Grid.RowSpan="4" Grid.ColumnSpan="2" Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/WLGColors.PNG"  Height="80" />
+        </Grid>
+
+        <TextBlock  Grid.Row="13" Grid.Column="5" Text="Select Layer Limits" Grid.ColumnSpan="2"
+          VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+       
+        <Grid  Grid.Row="15" Grid.Column="5" Grid.RowSpan="4"  Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/WLLimit.PNG"  Height="80" />
+        </Grid>
+
+        <TextBlock  Grid.Row="19" Grid.Column="2" Text="Set Graph Y-Axis for Auto or Manual" Grid.ColumnSpan="3"
+          VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+        <Grid  Grid.Row="20" Grid.Column="3" Grid.RowSpan="4"  Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/ScaleLimits.PNG"  Height="80" />
+        </Grid>
+
+        <TextBlock  Grid.Row="19" Grid.Column="5" Text="Color indicator For Bale in/out Limit" Grid.ColumnSpan="3"
+             VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="14" Foreground="LightGreen"/>
+
+        <Grid  Grid.Row="20" Grid.Column="5" Grid.RowSpan="4"  Margin="0,0,0,0">
+            <Image HorizontalAlignment="Center" Source="/Images/WLAlarmColors.PNG"  Height="80" />
+        </Grid>
+
+        <TextBlock  Grid.Row="25" Grid.Column="3" Text="To Modify Save and Cancel" Grid.ColumnSpan="5"
+            VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" Foreground="LightGreen"/>
+
+        <Grid  Grid.Row="27" Grid.Column="3" Grid.RowSpan="4"  Margin="0,0,0,0" Grid.ColumnSpan="5">
+            <Image HorizontalAlignment="Center" Source="/Images/WLModSave.PNG"  Height="30" />
+        </Grid>
+
+    </Grid>
+</Window>

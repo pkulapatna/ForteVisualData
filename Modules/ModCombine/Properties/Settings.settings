@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ModCombine.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UseDefaultFields" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="iRTBox3" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="GraphOneLimitHi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">37</Value>
+    </Setting>
+    <Setting Name="GraphOneLimitLo" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">33</Value>
+    </Setting>
+    <Setting Name="GraphTwoLimitHi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="GraphTwoLimitLo" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="SelectedLineVal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ALL</Value>
+    </Setting>
+    <Setting Name="SelectedSourceVal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ALL</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

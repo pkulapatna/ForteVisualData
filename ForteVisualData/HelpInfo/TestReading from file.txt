@@ -1,0 +1,37 @@
+﻿     <!--
+            
+        <Grid Grid.Column="1" Grid.Row="1">
+        
+        <FlowDocumentPageViewer>
+            <FlowDocument>
+                <Paragraph TextAlignment="Center" FontWeight="Medium" FontSize="18">
+                        1. ForteVisualData SQL Connection
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentPageViewer>
+
+        </Grid>
+
+        -->
+
+        <Grid Grid.Column="1" Grid.Row="2" Margin="10" Background="#FFF8FAFF">
+            <FlowDocumentReader Name="FlowDocReader" Background="White" FontSize="12" 
+                                Canvas.Top="50" Canvas.Left="5">
+            </FlowDocumentReader>
+        </Grid>
+
+         string filepath = @"C:\Forté Technology, Inc\HelpDoc\PageOne.txt";
+            if (File.Exists(filepath))
+            {
+
+                Paragraph paragraph = new Paragraph();
+                
+                paragraph.Inlines.Add(System.IO.File.ReadAllText(filepath, Encoding.Default));
+                FlowDocument document = new FlowDocument(paragraph);
+                
+                FlowDocReader.Document = document;
+
+              //  PageOneText.Text = File.ReadAllText(filepath);
+
+                //PageOneText2.Text = File.ReadAllText(filepath);
+            }
