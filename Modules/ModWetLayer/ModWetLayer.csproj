@@ -15,10 +15,10 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
-      <HintPath>..\..\ForteVisualData\bin\Debug\net8.0-windows7.0\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+	  <HintPath>..\..\..\..\..\LibraryResource\WpfArchive.Windows.Theme\bin\Release\WpfArchive.Windows.Theme.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Interactivity">
-      <HintPath>..\..\ForteVisualData\bin\Debug\net8.0-windows7.0\System.Windows.Interactivity.dll</HintPath>
+	  <HintPath>CustomReference\System.Windows.Interactivity.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
