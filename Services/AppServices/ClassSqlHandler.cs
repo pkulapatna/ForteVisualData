@@ -1039,7 +1039,7 @@ namespace AppServices
             DataTable LotTable = new DataTable();
             string ArchiveMonth = "BaleArchive" + strMonth;
             string MyQueryString = "SELECT " + strItems + " FROM [ForteData].[dbo].[" + ArchiveMonth + "] with (NOLOCK) WHERE LotNumber = "
-                   + selectedLot + " AND TimeStart BETWEEN '" + datestart + "' AND '" + dateEnd + "' ORDER BY [TimeStart] ASC; ";
+                   + selectedLot + " AND TimeStart BETWEEN '" + datestart.AddSeconds(-10) + "' AND '" + dateEnd.AddSeconds(10) + "' ORDER BY [TimeStart] ASC; ";
 
             try
             {
