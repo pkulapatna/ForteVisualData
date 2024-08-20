@@ -232,6 +232,24 @@ namespace UcGraph.ViewModels
 
             TableName = $"BaleArchive{selectedMonth}";
 
+
+            if (ArchiveTable.Columns.Contains("Moisture"))
+            {
+                for (int i = 0; i < ArchiveTable.Rows.Count; i++)
+                {
+                    ArchiveTable.Rows[i]["Moisture"] = ClassCommon.ConvertMoisture(ArchiveTable.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
+                }
+            }
+            if (ArchiveTable.Columns.Contains("Weight"))
+            {
+                for (int i = 0; i < ArchiveTable.Rows.Count; i++)
+                {
+                    ArchiveTable.Rows[i]["Weight"] = ClassCommon.ConvertWeight(ArchiveTable.Rows[i].Field<float>("Weight"), ClassCommon.WeightUnit);
+                }
+            }
+            ArchiveTable.AcceptChanges();
+
+
             if (ArchiveTable.Rows.Count > 0)
             {
                 timeX = new double[ArchiveTable.Rows.Count];
@@ -242,7 +260,7 @@ namespace UcGraph.ViewModels
                 for (int i = 0; i < ArchiveTable.Rows.Count; i++)
                 {
                     timeX[i] = i + 1;
-                    MvalueY[i] = ClassCommon.ConvertMoisture(ArchiveTable.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
+                    MvalueY[i] = ArchiveTable.Rows[i].Field<float>("Moisture");// ClassCommon.ConvertMoisture(ArchiveTable.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
                     WvalueY[i] = ArchiveTable.Rows[i].Field<float>("Weight");
                     FvalueY[i] = Convert.ToDouble(ArchiveTable.Rows[i].Field<Int32>("Forte"));
                 }
@@ -251,6 +269,8 @@ namespace UcGraph.ViewModels
 
             MenuOneChecked = true;
         }
+
+
 
     }
 }

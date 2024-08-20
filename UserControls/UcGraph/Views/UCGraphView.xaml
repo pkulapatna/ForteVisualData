@@ -72,7 +72,7 @@
                             Content="CSV" VerticalAlignment="Center" Cursor="Hand" IsEnabled="false"  Opacity="0.1" />
 
                     <DataGrid x:Name="RealTimeGridView2" Grid.Row="0" Height="280" Width="auto" AutoGenerateColumns="True" 
-                        AutoGeneratingColumn="OnAutoGeneratingColumn" FontSize="18"
+                        AutoGeneratingColumn="OnAutoGeneratingColumn" FontSize="18" 
             			AlternatingRowBackground="#FFE5ECE2" HorizontalGridLinesBrush="Gray" VerticalGridLinesBrush="Black" Margin="0,0,0,0"
             			ItemsSource="{Binding}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 

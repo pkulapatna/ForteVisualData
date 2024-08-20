@@ -87,7 +87,7 @@ namespace UcGraph.Views
 
             if (e.PropertyName.StartsWith("Moisture"))
             {
-                switch (ClassCommon.MoistureUnit)
+                switch (ClassCommon.MoistureType)
                 {
                     case 0: // %MC
                         e.Column.Header = "MC %";
