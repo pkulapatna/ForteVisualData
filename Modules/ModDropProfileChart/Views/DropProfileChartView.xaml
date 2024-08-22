@@ -600,8 +600,8 @@
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
                         <Label Content="Bales in each Drop ="  VerticalAlignment="Center"
                              Foreground="White"></Label>
-                                        <TextBox Style="{x:Null}" Width="50" Foreground="White"
-                             BorderThickness="0" FontSize="16" VerticalAlignment="Center"
+                        <TextBox Style="{x:Null}" Width="50" Foreground="Yellow" IsReadOnly="True"
+                             BorderThickness="0" FontSize="18" VerticalAlignment="Center"
                              Background="Transparent" Text="{Binding BalesInDrop}" Margin="5,0,0,0"></TextBox>
                     </StackPanel>
 
@@ -610,7 +610,7 @@
                         <Label Content="Show Drops in Graph ="  VerticalAlignment="Center"
                                  Foreground="White"></Label>
                         <TextBox Style="{x:Null}" Width="50" Foreground="White"
-                                 BorderThickness="0" FontSize="16" VerticalAlignment="Center"
+                                 BorderThickness="0" FontSize="18" VerticalAlignment="Center"
                                  Background="Transparent" Text="{Binding TotalDropInGraph}" Margin="5,0,0,0"></TextBox>
                     </StackPanel>
 

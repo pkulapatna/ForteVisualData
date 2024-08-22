@@ -388,7 +388,7 @@
                             Width="70" Height="25"  FontSize="16" FontWeight="Medium"
                             Margin="10,0,0,0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"
                             ItemsSource="{Binding LineList}"
-                            SelectedIndex="{Binding SelectedLineindex}"
+                            
                             SelectedValue="{Binding SelectedLineVal}"
                             Style="{StaticResource MyCombobox}"
                             IsEnabled="{Binding RTIdle}"/>
@@ -398,7 +398,7 @@
                             Width="70" Height="25"  FontSize="16" FontWeight="Medium"
                             Margin="5,0,0,0" HorizontalContentAlignment="Center"  VerticalContentAlignment="Center"
                             ItemsSource="{Binding SourceList}"
-                            SelectedIndex="{Binding SelectedSourceindex}"
+                            
                             SelectedValue="{Binding SelectedSourceVal}"
                             Style="{StaticResource MyCombobox}"
                             IsEnabled="{Binding RTIdle}"/>

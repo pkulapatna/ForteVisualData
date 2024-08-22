@@ -47,7 +47,7 @@ namespace ModDualGraph.Views
             List<double> MData = new List<double>();
             List<double> WData = new List<double>();
 
-
+         
             WpfPlot1.Plot.Clear();
 
             WpfPlot1.Plot.Axes.Bottom.Label.Text = $"Consecutive Number of Bales";
@@ -58,6 +58,7 @@ namespace ModDualGraph.Views
             WpfPlot1.Plot.Axes.AutoScale();
             WpfPlot1.Plot.Axes.SetLimitsX(1, ClassCommon.ComBineSample);
 
+           
             ScottPlot.Palettes.Category10 palette = new();
 
             try
