@@ -21,6 +21,8 @@ namespace ModDropProfileChart.Views
         private double IScreenWidth { get; set; }
         private double wdCoef = 0.0;
 
+        private int xAxisTag = ClassCommon.BaleInDrop;
+
         public DropProfileChartView()
         {
             InitializeComponent();
@@ -112,6 +114,8 @@ namespace ModDropProfileChart.Views
 
             int GraphWidth = (ClassCommon.BaleInDrop * ClassCommon.DropInChart) + 6;// ClassCommon.BaleInDrop * Number of Drop + 1;
 
+            double[] yValue = new double[ClassCommon.BaleInDrop];
+
             WpfPlot1.Plot.Clear();
             WpfPlot1.Refresh();
             WpfPlot1.Plot.Axes.AutoScale();
@@ -119,8 +123,6 @@ namespace ModDropProfileChart.Views
             WpfPlot1.Plot.Title(chartTitle);
 
             WpfPlot1.Plot.Axes.SetLimitsX(0, GraphWidth);
-
-         
 
             try
             {
@@ -148,10 +150,6 @@ namespace ModDropProfileChart.Views
                 WpfPlot1.Plot.ShowGrid();
                 var DropNumList = baleTable.AsEnumerable().Select(x => x.Field<int>("DropNumber")).Distinct().ToList();
 
-
-                double[] yValue = new double[ClassCommon.BaleInDrop];
-
-                double[] xValue = new double[ClassCommon.BaleInDrop];
 
                 //Drop 1
                 int LastI = 0;
@@ -272,26 +270,10 @@ namespace ModDropProfileChart.Views
                 System.Windows.MessageBox.Show($"Error in PlotChart  {ex.Message}");
                 ClsSerilog.LogMessage(ClsSerilog.ERROR, $"ERROR in PlotChart  < {ex.Message}"); 
             }
-           
+          
         }
 
-        int xAxisTag = ClassCommon.BaleInDrop;
-
-   
-        private double[] SetXValue()
-        {
-            double[] Value = new double[ClassCommon.BaleInDrop];
-
-            for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-            {
-                Value[i] = i + 1;
-            }
-            xAxisTag = (int)Value[ClassCommon.BaleInDrop - 1] + 2;
-
-            return Value;
-        }
-
-
+      
         private double[] SetXAxisTag(int drop)
         {
             double[] Value = new double[ClassCommon.BaleInDrop];
