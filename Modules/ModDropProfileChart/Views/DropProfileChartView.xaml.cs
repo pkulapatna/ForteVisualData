@@ -120,149 +120,200 @@ namespace ModDropProfileChart.Views
 
             WpfPlot1.Plot.Axes.SetLimitsX(0, GraphWidth);
 
-            if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-            {
-                WpfPlot1.Plot.Axes.SetLimitsY(MinLowM, graphHeightM + (graphHeightM/2));
-            }
-            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-            {
-                WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW/4));
-            }
-
-            if (ClassCommon.GraphDarkMode)
-            {
-                // change figure colors
-                WpfPlot1.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
-                WpfPlot1.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
-
-                // change axis and grid colors
-                WpfPlot1.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
-                WpfPlot1.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
-            }
-
-
-            WpfPlot1.Plot.ShowGrid();
-            var DropNumList = baleTable.AsEnumerable().Select(x => x.Field<int>("DropNumber")).Distinct().ToList();
-
-            
-            //Drop 1
-            double[] y1Value = new double[ClassCommon.BaleInDrop];
-            int LastI = 0;
-            for (int i = 0; i < ClassCommon.BaleInDrop; i++) 
-            {
-                if (baleTable.Rows[i].Field<int>("DropNumber") == DropNumList[0])
-                {
-                    if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                    {
-                        y1Value[i] = baleTable.Rows[i].Field<float>("Moisture");
-                    }
-                    else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                    {
-                        y1Value[i] = baleTable.Rows[i].Field<float>("Weight");
-                    }
-                }
-
-                LastI = i + 1;
-            }
-            double[] xs1 = { 1, 2, 3, 4, 5, 6 };
-            var bars1 = WpfPlot1.Plot.Add.Bars(xs1, y1Value);
-            bars1.LegendText = "Drop 1";
-
-          
-            //Drop 2
-            double[] y2Value = new double[ClassCommon.BaleInDrop];
-            int LastII = LastI;
-            for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-            {
-                if (baleTable.Rows[LastI + i].Field<int>("DropNumber") == DropNumList[1])
-                {
-                    if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                    {
-                        y2Value[i] = baleTable.Rows[LastI + i].Field<float>("Moisture");
-                    }
-                    else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                    {
-                        y2Value[i] = baleTable.Rows[LastI + i].Field<float>("Weight");
-                    }
-                }
-                LastII = LastI + i + 1;
-            }
-            double[] xs2 = { 8, 9, 10, 11, 12, 13 };
          
-            var bars2 = WpfPlot1.Plot.Add.Bars(xs2, y2Value);
-            bars2.LegendText = "Drop 2";
 
-            //Drop 3
-            double[] y3Value = new double[ClassCommon.BaleInDrop];
-            int LastIII = LastII;
-            for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+            try
             {
-                if (baleTable.Rows[LastII + i].Field<int>("DropNumber") == DropNumList[2])
+                if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
                 {
-                    if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                    {
-                        y3Value[i] = baleTable.Rows[LastII + i].Field<float>("Moisture");
-                    }
-                    else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                    {
-                        y3Value[i] = baleTable.Rows[LastII + i].Field<float>("Weight");
-                    }
+                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowM, graphHeightM + (graphHeightM / 2));
                 }
-                LastIII = LastII + i + 1;
-            }
-            double[] xs3 = { 15, 16, 17, 18, 19, 20 };
-            var bars3 = WpfPlot1.Plot.Add.Bars(xs3, y3Value);
-            bars3.LegendText = "Drop 3";
+                else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                {
+                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW / 4));
+                }
 
-            //Drop 4
-            double[] y4Value = new double[ClassCommon.BaleInDrop];
-            int LastIV = LastIII;
-            for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+                if (ClassCommon.GraphDarkMode)
+                {
+                    // change figure colors
+                    WpfPlot1.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
+                    WpfPlot1.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
+
+                    // change axis and grid colors
+                    WpfPlot1.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
+                    WpfPlot1.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
+                }
+
+
+                WpfPlot1.Plot.ShowGrid();
+                var DropNumList = baleTable.AsEnumerable().Select(x => x.Field<int>("DropNumber")).Distinct().ToList();
+
+
+                double[] yValue = new double[ClassCommon.BaleInDrop];
+
+                double[] xValue = new double[ClassCommon.BaleInDrop];
+
+                //Drop 1
+                int LastI = 0;
+                for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+                {
+                    if (baleTable.Rows[i].Field<int>("DropNumber") == DropNumList[0])
+                    {
+                        if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                        {
+                            yValue[i] = baleTable.Rows[i].Field<float>("Moisture");
+                        }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                        {
+                            yValue[i] = baleTable.Rows[i].Field<float>("Weight");
+                        }
+                    }
+                    LastI = i + 1;
+                }
+                var bars1 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(1), yValue);
+                bars1.LegendText = "Drop 1";
+
+
+                //Drop 2
+                int LastII = LastI;
+                for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+                {
+                    if (baleTable.Rows[LastI + i].Field<int>("DropNumber") == DropNumList[1])
+                    {
+                        if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                        {
+                            yValue[i] = baleTable.Rows[LastI + i].Field<float>("Moisture");
+                        }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                        {
+                            yValue[i] = baleTable.Rows[LastI + i].Field<float>("Weight");
+                        }
+                    }
+                    LastII = LastI + i + 1;
+                }
+                var bars2 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(2), yValue);
+                bars2.LegendText = "Drop 2";
+
+                //Drop 3
+                int LastIII = LastII;
+                for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+                {
+                    if (baleTable.Rows[LastII + i].Field<int>("DropNumber") == DropNumList[2])
+                    {
+                        if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                        {
+                            yValue[i] = baleTable.Rows[LastII + i].Field<float>("Moisture");
+                        }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                        {
+                            yValue[i] = baleTable.Rows[LastII + i].Field<float>("Weight");
+                        }
+                    }
+                    LastIII = LastII + i + 1;
+                }
+                var bars3 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(3), yValue);
+                bars3.LegendText = "Drop 3";
+
+
+                //Drop 4
+                int LastIV = 0;
+                if(ClassCommon.DropInChart >= 4)
+                {
+                    LastIV = LastIII;
+                    for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+                    {
+                        if (baleTable.Rows[LastIII + i].Field<int>("DropNumber") == DropNumList[3])
+                        {
+                            if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                            {
+                                yValue[i] = baleTable.Rows[LastIII + i].Field<float>("Moisture");
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                            {
+                                yValue[i] = baleTable.Rows[LastIII + i].Field<float>("Weight");
+                            }
+                        }
+                        LastIV = LastIII + i + 1;
+                    }
+                    var bars4 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(4), yValue);
+                    bars4.LegendText = "Drop 4";
+                }
+
+                //Drop 5
+                int LastV = 0;
+                if (ClassCommon.DropInChart == 5)
+                {
+                    LastV = LastIV;
+                    for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+                    {
+
+                        if (baleTable.Rows[LastIV + i].Field<int>("DropNumber") == DropNumList[4])
+                        {
+                            if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                            {
+                                yValue[i] = baleTable.Rows[LastIV + i].Field<float>("Moisture");
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                            {
+                                yValue[i] = baleTable.Rows[LastIV + i].Field<float>("Weight");
+                            }
+                        }
+                        LastV = LastIV + i + 1;
+                    }
+                    var bars5 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(5), yValue);
+                    bars5.LegendText = "Drop 5";
+                }
+
+                WpfPlot1.Refresh();
+
+            }
+            catch (Exception ex )
             {
-                if (baleTable.Rows[LastIII + i].Field<int>("DropNumber") == DropNumList[3])
-                {
-                    if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                    {
-                        y4Value[i] = baleTable.Rows[LastIII + i].Field<float>("Moisture");
-                    }
-                    else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                    {
-                        y4Value[i] = baleTable.Rows[LastIII + i].Field<float>("Weight");
-                    }
-                }
-                LastIV = LastIII + i + 1;
+                System.Windows.MessageBox.Show($"Error in PlotChart  {ex.Message}");
+                ClsSerilog.LogMessage(ClsSerilog.ERROR, $"ERROR in PlotChart  < {ex.Message}"); 
             }
-            double[] xs4 = { 22, 23, 24, 25, 26, 27 };
-            var bars4 = WpfPlot1.Plot.Add.Bars(xs4, y4Value);
-            bars4.LegendText = "Drop 4";
-
-
-
-            //Drop 5
-            double[] y5Value = new double[ClassCommon.BaleInDrop];
-            int LastV = LastIV;
-            for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-            {
-
-                if (baleTable.Rows[LastIV + i].Field<int>("DropNumber") == DropNumList[4])
-                {
-                    if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                    {
-                        y5Value[i] = baleTable.Rows[LastIV + i].Field<float>("Moisture");
-                    }
-                    else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                    {
-                        y5Value[i] = baleTable.Rows[LastIV + i].Field<float>("Weight");
-                    }
-                }
-                LastV = LastIV + i + 1;
-            }
-            double[] xs5 = { 29, 30, 31, 32, 33, 34 };
-            var bars5 = WpfPlot1.Plot.Add.Bars(xs5, y5Value);
-            bars5.LegendText = "Drop 5";
-
-            WpfPlot1.Refresh();
+           
         }
+
+        int xAxisTag = ClassCommon.BaleInDrop;
+
+   
+        private double[] SetXValue()
+        {
+            double[] Value = new double[ClassCommon.BaleInDrop];
+
+            for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+            {
+                Value[i] = i + 1;
+            }
+            xAxisTag = (int)Value[ClassCommon.BaleInDrop - 1] + 2;
+
+            return Value;
+        }
+
+
+        private double[] SetXAxisTag(int drop)
+        {
+            double[] Value = new double[ClassCommon.BaleInDrop];
+
+            for (int i = 0; i < ClassCommon.BaleInDrop; i++)
+            {
+                if(drop == 1)
+                {
+                    Value[i] = i + 1;
+                }
+                else
+                {
+                    Value[i] = xAxisTag + i;
+                }
+            }
+            xAxisTag = (int)Value[ClassCommon.BaleInDrop - 1] + 2;
+
+            return Value;
+        }
+
+
+
 
         internal void SetUpChart(string chartTitle, int graphHeightM, int graphHeightW)
         {

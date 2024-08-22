@@ -295,6 +295,37 @@ namespace ModDropProfileChart.ViewModels
             set { SetProperty(ref _AvailableHdrList, value); }
         }
 
+
+        //Number of Drops in chart 3 to 5 only.
+        private List<int> _dropList = new List<int>() { 3, 4, 5 };
+        public List<int> DropList
+        {
+            get => _dropList;
+            set => SetProperty(ref _dropList, value);
+        }
+        private int _selectedDropsindex;
+        public int SelectedDropsindex
+        {
+            get => _selectedDropsindex;
+            set => SetProperty(ref _selectedDropsindex, value);
+        }
+
+
+        private int _selectedDropCt = ClassCommon.DropInChart;
+        public int SelectedDropCt
+        {
+            get { return _selectedDropCt; }
+            set
+            {
+                SetProperty(ref _selectedDropCt, value);
+                if (value > 0)
+                {
+                    ClassCommon.DropInChart = value;
+                }
+            }
+        }
+
+
         public DropProfileChartViewModel(IEventAggregator eventAggregator)
         {
             this._eventAggregator = eventAggregator;

@@ -600,7 +600,7 @@
                     <StackPanel Grid.Column="1" Orientation="Horizontal">
                         <Label Content="Bales in each Drop ="  VerticalAlignment="Center"
                              Foreground="White"></Label>
-                        <TextBox Style="{x:Null}" Width="50" Foreground="Yellow" IsReadOnly="True"
+                        <TextBox Style="{x:Null}" Foreground="Yellow" IsReadOnly="True"
                              BorderThickness="0" FontSize="18" VerticalAlignment="Center"
                              Background="Transparent" Text="{Binding BalesInDrop}" Margin="5,0,0,0"></TextBox>
                     </StackPanel>
@@ -609,9 +609,25 @@
                     <StackPanel Grid.Column="2" Orientation="Horizontal">
                         <Label Content="Show Drops in Graph ="  VerticalAlignment="Center"
                                  Foreground="White"></Label>
-                        <TextBox Style="{x:Null}" Width="50" Foreground="White"
-                                 BorderThickness="0" FontSize="18" VerticalAlignment="Center"
-                                 Background="Transparent" Text="{Binding TotalDropInGraph}" Margin="5,0,0,0"></TextBox>
+                        <ComboBox  Grid.Column="2" Grid.Row="1" 
+                                  IsEnabled="{Binding RTIdle}"
+                                  VerticalContentAlignment="Center" 
+                                  HorizontalContentAlignment="Center"
+                                  ItemsSource="{Binding DropList}" 
+                                  SelectedIndex="{Binding SelectedDropsindex,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedValue="{Binding SelectedDropCt}"
+                                  Height="28" Width="60" 
+                                  HorizontalAlignment="Center" 
+                                  Style="{StaticResource MyCombobox}"
+                                  VerticalAlignment="Center" Margin="0,0,0,3">
+                            <ComboBox.Background>
+                                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
+                                    <GradientStop Color="#FFC1B9B9" Offset="1"/>
+                                </LinearGradientBrush>
+                            </ComboBox.Background>
+                        </ComboBox>
+
                     </StackPanel>
 
                     <StackPanel Grid.Column="3" Orientation="Horizontal">
