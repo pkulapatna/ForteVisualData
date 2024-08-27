@@ -31,10 +31,10 @@
 
             <StackPanel Orientation="Vertical">
 
-                <Label Content="Purpose of this application is to use to average the layer data by layer position." 
+                <Label Content="Purpose of this application is to observe the average of layer data by layer position." 
                        FontSize="16" FontWeight="Medium" Foreground="Blue" Margin="0,0,0,0"/>
 
-                <Label Content="To determine if a bias exists.The bias can be removed using the Wet Layer offset ." 
+                <Label Content="And determine if a bias exists.The bias can be removed using the Wet Layer offset ." 
                        FontSize="16" FontWeight="Medium" Foreground="Blue" Margin="0,-10,0,5"/>
 
                 <Label Content="A minimum of bales at lease 100-200 are required to get good analysis. (Select Layers offset option,)" Margin="20,0,0,0"/>
