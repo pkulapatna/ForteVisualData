@@ -167,10 +167,10 @@ namespace AppServices
             }
         }
 
-
-
         public string CurrentBaleTable { get; set; }
         public string PreviousBaleTable { get; set; }
+
+
 
         /// <summary>
         /// First call from SetUpViewModel

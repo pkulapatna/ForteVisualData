@@ -47,6 +47,8 @@ namespace ForteVisualData.ViewModels
         private WetLayerTrendViewModel _wetLayerTrendViewModel;
 
 
+        private ClassSqlHandler _sqlhandler;// = ClassSqlHandler.Instance;
+
         public static bool WLCSVrunning { get; set; }
 
         private const int NormalTabHeight = 60;
@@ -685,7 +687,9 @@ namespace ForteVisualData.ViewModels
             _regionManager = regionManager;
             this._eventAggregator = eventAggregator;
 
-           
+              if (_sqlhandler == null) 
+                _sqlhandler = ClassSqlHandler.Instance;
+
             Setuptabs();
 
             _eventAggregator.GetEvent<UpdateAppRunEvents>().Subscribe(UpdateAppRunEvent);

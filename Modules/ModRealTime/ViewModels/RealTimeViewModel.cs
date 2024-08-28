@@ -25,7 +25,7 @@ namespace ModRealTime.ViewModels
     {
 
         public static string ModuleName = "Realtime Data";
-        private readonly ClassSqlHandler _sqlhandler;
+        private  ClassSqlHandler _sqlhandler;
         protected readonly IEventAggregator _eventAggregator;
 
         private Task _timerTask;
@@ -334,32 +334,36 @@ namespace ModRealTime.ViewModels
         {
             this._eventAggregator = eventAggregator;
 
-            if(_sqlhandler == null)
-                _sqlhandler = ClassSqlHandler.Instance;
-            
             _timer = new PeriodicTimer(TimeSpan.FromSeconds(ClassCommon.ScanSec));
+
+            SetUpSqlServer();
+       
+            _eventAggregator.GetEvent<SettingsChangedEvents>().Subscribe(UpdateSettings);
+        }
+
+        private void SetUpSqlServer()
+        {
+            if (_sqlhandler == null)
+                _sqlhandler = ClassSqlHandler.Instance;
 
             Setup_DropDownLists();
 
-            _eventAggregator.GetEvent<SettingsChangedEvents>().Subscribe(UpdateSettings);
+            if (Settings.Default.UseDefaultFields == true) AllFieldCheck = true;
+            else CustFieldCheck = true;
+
 
             List<string> LL = _sqlhandler.GetLineList();
-            if(LL.Count > 0) { LL.Add("ALL"); }
+            if (LL.Count > 0) { LL.Add("ALL"); }
             LineList = LL;
 
             List<string> SL = _sqlhandler.GetSourceList();
             if (SL.Count > 0) { SL.Add("ALL"); }
             SourceList = SL;
-
-            if (Settings.Default.UseDefaultFields == true) AllFieldCheck = true;
-            else CustFieldCheck = true;
-
-           
         }
 
         private void UpdateSettings(bool obj)
         {
-            Setup_DropDownLists();
+            SetUpSqlServer();
         }
 
         private void Setup_DropDownLists()

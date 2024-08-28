@@ -62,8 +62,10 @@
                     <RowDefinition Height="5"/>
                     <RowDefinition Height="40*"/>
                     <RowDefinition Height="5"/>
-                    <RowDefinition Height="40*"/>
-                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="2"/>
+                    <RowDefinition Height="7*"/>
+
                 </Grid.RowDefinitions>
                 <Grid  Grid.Row="1" Grid.Column="1" >
                     <Grid.RowDefinitions>
@@ -198,7 +200,7 @@
                         <RowDefinition Height="1"/>
                         <RowDefinition Height="12*"/>
                         <RowDefinition Height="1"/>
-                        <RowDefinition Height="10*"/>
+                        <RowDefinition Height="12*"/>
                     </Grid.RowDefinitions>
 
                     <TextBlock x:Name="tbTestStatus" Text="{Binding SQLStatusMsg}"  
@@ -239,10 +241,9 @@
                                 Grid.Row="7" Grid.ColumnSpan="3" >
 
                         <Button x:Name="btnTest" Height="40"  Width="120"  Opacity="{Binding ShowOPC}" 
-                                 Content="Test Connection" Foreground="White"
+                                 Content="Test Connection" Foreground="White" Margin="0,10,0,0"
                                  Command="{Binding TestCommand}" Cursor="Hand" 
                                  ToolTip="Test the server connections on the network"
-                                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                                  FontFamily="Arial" FontSize="14" Style="{StaticResource MyButton}"
                                  Background="#002060">
                             <Button.Effect>
@@ -251,8 +252,30 @@
                         </Button>
                     </StackPanel>
                 </Grid>
+                <Rectangle Grid.Row="6" Grid.ColumnSpan="3" Height="1" Fill="black" Margin="8,0,8,0" />
+
+                <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                    <Label  Content="Application Run" Foreground="Wheat" FontSize="14">
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+
+                    <RadioButton GroupName="Local"  IsEnabled="false" FontSize="12"
+                      IsChecked="{Binding Path=LocalChecked}" VerticalContentAlignment="Center" Style="{StaticResource RadioButtonRed}"
+                      Content="Local" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" 
+                      Foreground="White"/>
+                    <RadioButton  Grid.Column="2" GroupName="Local" IsEnabled="False"  FontSize="12"
+                      IsChecked="{Binding Path=RemoteChecked}" VerticalContentAlignment="Center" Style="{StaticResource RadioButtonRed}"
+                      Content="Remote" HorizontalAlignment="Left" Margin="25,0,0,0" VerticalAlignment="Center" Foreground="White"/>
+
+                </StackPanel>
             </Grid>
         </GroupBox>
+
+        
+        
 
         <!-- Box 2 -->
         <GroupBox Grid.Column="3" Grid.Row="1" 

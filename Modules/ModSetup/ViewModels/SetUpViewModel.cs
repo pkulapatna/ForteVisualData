@@ -35,6 +35,22 @@ namespace ModSetup.ViewModels
         public static string ModuleName = "Setup SQL Server and Application Parameters";
 
 
+
+        private bool _localChecked;
+        public bool LocalChecked
+        {
+            get => _localChecked; 
+            set { SetProperty(ref _localChecked, value); }
+        }
+
+        private bool _remoteChecked;
+        public bool RemoteChecked
+        {
+            get => _remoteChecked;
+            set { SetProperty(ref _remoteChecked, value); }
+        }
+
+
         // 600000 mSec = 600 Sec. = 10 minutes. Max.
         // Default 5 sec., MIn 1 Sec.
         private int _scanrate = ClassCommon.ScanSec;
@@ -452,6 +468,9 @@ namespace ModSetup.ViewModels
 
             ArchiveCheck = ClassCommon.ArchiveCheck;
 
+            if (LocalHost == Host) LocalChecked = true;
+            else RemoteChecked = true;
+
 
             if (ClassCommon.WLOptions)
             {
@@ -573,6 +592,8 @@ namespace ModSetup.ViewModels
                 _sqlhandler = ClassSqlHandler.Instance;
             
             SQLStatusMsg = "from SetUpViewModel Module";
+
+         
             LoadPage();
         }
 
@@ -606,7 +627,6 @@ namespace ModSetup.ViewModels
         private void CancelExecute()
         {
             BModify = false;
-            // LoadPage();
             LoadPage();
         }
 
@@ -629,7 +649,9 @@ namespace ModSetup.ViewModels
 
             _eventAggregator.GetEvent<RestartAppEvents>().Publish(true);
 
-           
+            if (LocalHost == Host) LocalChecked = true;
+            else RemoteChecked = true;
+
 
         }
 
