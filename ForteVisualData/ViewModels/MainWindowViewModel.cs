@@ -689,7 +689,7 @@ namespace ForteVisualData.ViewModels
 
               if (_sqlhandler == null) 
                 _sqlhandler = ClassSqlHandler.Instance;
-
+           
             Setuptabs();
 
             _eventAggregator.GetEvent<UpdateAppRunEvents>().Subscribe(UpdateAppRunEvent);

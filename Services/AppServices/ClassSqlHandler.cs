@@ -1,16 +1,11 @@
 ﻿using AppServices.Properties;
 using Microsoft.Data.Sql;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Header;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Menu;
 
 namespace AppServices
 {
@@ -176,6 +171,11 @@ namespace AppServices
         /// First call from SetUpViewModel
         /// </summary>
         public ClassSqlHandler()
+        {
+            SetUpSql();
+        }
+
+        public void  SetUpSql()
         {
 
             SetSqlParams();
