@@ -346,6 +346,8 @@ namespace ModRealTime.ViewModels
             if (_sqlhandler == null)
                 _sqlhandler = ClassSqlHandler.Instance;
 
+            _sqlhandler.SetUpSql();
+
             Setup_DropDownLists();
 
             if (Settings.Default.UseDefaultFields == true) AllFieldCheck = true;
