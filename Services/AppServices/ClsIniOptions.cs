@@ -53,7 +53,7 @@ namespace AppServices
 
         //[Movement]
         public int iSensorDistanceMM;
-        public int iCycleMSec;
+        public double iCycleMSec;
         public int iBaleSpeedMaxMMPerSec;
         public int iBaleSpeedMinMMPerSec;
         public int iMaxSpeedVar;
@@ -193,14 +193,20 @@ namespace AppServices
         /// <returns></returns>
         public bool readinifile()
         {
+            String FileLocation = Path.Combine(strFilePath, strFileName);
+
             try
             {
-                if (File.Exists(strFilePath + strFileName))
+                if (File.Exists(FileLocation))
                 {
-                    using (StreamReader sr = new StreamReader(strFilePath + strFileName))
+                    using (StreamReader sr = new StreamReader(FileLocation))
                     {
                         GetLinesItems(sr.ReadToEnd());
                     }
+                }
+                else 
+                {
+                    System.Windows.Forms.MessageBox.Show("File does not excist");
                 }
                 return true;
             }
@@ -285,31 +291,31 @@ namespace AppServices
                         DataGroupList.Add(strIniLineDat.Trim());
 
                     if (strIniLineDat.Contains("MaxSamples"))
-                        iMaxSamples = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iMaxSamples = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("BalesInGrid"))
-                        iBalesInGrid = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iBalesInGrid = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("LogMessages"))
-                        iLogMessages = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iLogMessages = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("LogFileSize"))
-                        iLogFileSize = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iLogFileSize = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("HeadSamples"))
-                        iHeadLen = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iHeadLen = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("TailSamples"))
-                        iTailLen = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iTailLen = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("UseASCIISampleFile"))
-                        sUseASCIISampleFile = StrIniItem(strIniLineDat);
+                        sUseASCIISampleFile = StrIniItem(strIniLineDat).ToString();
 
                     if (strIniLineDat.Contains("RecordsInASCIIFile"))
-                        iRecordsInASCIIFile = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iRecordsInASCIIFile = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("ASCIIRecordCount"))
-                        iASCIIRecordCount = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iASCIIRecordCount = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     break;
 
@@ -318,40 +324,40 @@ namespace AppServices
                         MovementGroupList.Add(strIniLineDat.Trim());
 
                     if (strIniLineDat.Contains("SensorDistanceMM"))
-                        iSensorDistanceMM = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iSensorDistanceMM = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("CycleMSec"))
-                        iCycleMSec = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iCycleMSec = Convert.ToDouble(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("BaleSpeedMaxMMPerSec"))
-                        iBaleSpeedMaxMMPerSec = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iBaleSpeedMaxMMPerSec = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("BaleSpeedMinMMPerSec"))
-                        iBaleSpeedMinMMPerSec = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iBaleSpeedMinMMPerSec = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("MaxSpeedVar"))
-                        iMaxSpeedVar = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iMaxSpeedVar = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("BaleLengthMaxMM"))
-                        iBaleLengthMaxMM = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iBaleLengthMaxMM = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("BaleLengthMinMM"))
-                        iBaleLengthMinMM = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iBaleLengthMinMM = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("ZeroConst"))
-                        iZeroConst = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iZeroConst = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("ScaleConst"))
-                        iScaleConst = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iScaleConst = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("WLProcessTO"))
-                        iWLProcessTO = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iWLProcessTO = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("SensorTConstMSec"))
-                        iSensorTConstMSec = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iSensorTConstMSec = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("RTRequestTO"))
-                        iRTRequestTO = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iRTRequestTO = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     break;
 
@@ -360,16 +366,16 @@ namespace AppServices
                         PortGroupList.Add(strIniLineDat.Trim());
 
                     if (strIniLineDat.Contains("ComPort"))
-                        iComPort = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iComPort = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("Baud"))
                         sBaud = StrIniItem(strIniLineDat);
 
                     if (strIniLineDat.Contains("Bits"))
-                        iBits = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iBits = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("StopBit"))
-                        iStopBit = Convert.ToInt16(StrIniItem(strIniLineDat));
+                        iStopBit = Convert.ToInt32(StrIniItem(strIniLineDat));
 
                     if (strIniLineDat.Contains("Parity"))
                         sParity = StrIniItem(strIniLineDat);

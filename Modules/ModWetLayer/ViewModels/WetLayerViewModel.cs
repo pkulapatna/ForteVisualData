@@ -682,8 +682,8 @@ namespace ModWetLayer.ViewModels
             set { SetProperty(ref _charEndCut, value); }
         }
 
-        private int _cycleTime;
-        public int CycleTime
+        private double _cycleTime;
+        public double CycleTime
         {
             get { return _cycleTime; }
             set { SetProperty(ref _cycleTime, value); }
@@ -771,6 +771,31 @@ namespace ModWetLayer.ViewModels
 
         private void getLocalWetLayerSetUp()
         {
+
+            ClsIniOptions WetLayerini = new();
+
+
+            WetLayerini.readinifile();
+
+            MaxSampleBale = WetLayerini.iMaxSamples;
+
+
+            string numLayers = WetLayerini.RestoringList[17];
+            string[] valx = numLayers.Split(new char[] { '=' });
+            NumberLayers = Convert.ToInt32(valx[1]);
+
+            string ChopStsrt = WetLayerini.RestoringList[27];
+            string[] val2 = ChopStsrt.Split(new char[] { '=' });
+            CharStartCut = Convert.ToInt32(val2[1]);
+
+            string ChopEnd = WetLayerini.RestoringList[28];
+            string[] val1 = ChopEnd.Split(new char[] { '=' });
+            CharEndCut = Convert.ToInt32(val1[1]);
+
+            SampleEntrance = WetLayerini.iHeadLen;
+            SampleExit = WetLayerini.iTailLen;
+
+            CycleTime = WetLayerini.iCycleMSec;  
             
         }
 

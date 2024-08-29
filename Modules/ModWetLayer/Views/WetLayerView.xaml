@@ -601,7 +601,8 @@
                         </TabItem.Header>
                         <Grid Background="#FF506D88">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="10*"/>
@@ -615,110 +616,146 @@
                                 <RowDefinition Height="20*"/>
                                 <RowDefinition Height="5"/>
                             </Grid.RowDefinitions>
-                            <Label Grid.Row="1" Grid.Column="3" Content="Maximum Number samples for a Bale"
-                                   Foreground="White" VerticalAlignment="Center">
-                            </Label>
-                            <TextBox Grid.Column="4" Grid.Row="1" Width="80" HorizontalAlignment="Left" FontSize="16" 
-                                     Foreground="AntiqueWhite" VerticalContentAlignment="Center" Margin="5"
-                                     Background="#FF152D42" Style="{x:Null}" HorizontalContentAlignment="Center"
-                                     IsReadOnly="True" Text="{Binding MaxSampleBale}" BorderThickness="0">
-                                <TextBox.Effect>
+                          
+
+                            <Grid Grid.Row="1" Grid.Column="1"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
                                     <DropShadowEffect/>
-                                </TextBox.Effect>
-                            </TextBox>
-
-                            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"
-                                         Background="#FF152D42" Margin="3">
-                                <Label  Content="Number of Layers"
-                                    Foreground="White" VerticalAlignment="Center">
-                                </Label>
-                                <TextBox  Width="80" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
-                                           IsReadOnly="True" Style="{x:Null}" Margin="10,0,0,0" BorderThickness="0"
-                                           VerticalContentAlignment="Center" 
-                                           HorizontalContentAlignment="Center" Text="{Binding NumberLayers}">
-                                </TextBox>
-                                <StackPanel.Effect>
-                                    <DropShadowEffect/>
-                                </StackPanel.Effect>
-                            </StackPanel>
-
-
-                            <StackPanel Grid.Row="2" Grid.Column="2" Orientation="Horizontal"
-                                        Background="#FF152D42" Margin="3">
-                                <Label  Content="Start Layers removed"
-                                        Foreground="White" VerticalAlignment="Center"/>
-                                <TextBox Width="80" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Start Layers removed"
+                                            Foreground="White" VerticalAlignment="Center"/>
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
                                          VerticalContentAlignment="Center"
-                                         IsReadOnly="True" Style="{x:Null}"  Margin="10,0,0,0" BorderThickness="0"
+                                         IsReadOnly="True" Style="{x:Null}"  Margin="0" BorderThickness="0"
                                          HorizontalContentAlignment="Center" Text="{Binding CharStartCut}"/>
-                                <StackPanel.Effect>
+                            </Grid>
+
+
+                            <Grid Grid.Row="2" Grid.Column="1"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
                                     <DropShadowEffect/>
-                                </StackPanel.Effect>
-                            </StackPanel>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Number of Layers"
+                                        Foreground="White" VerticalAlignment="Center"/>
+                                <TextBox  Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                        IsReadOnly="True" Style="{x:Null}" BorderThickness="0"
+                                        VerticalContentAlignment="Center" 
+                                        HorizontalContentAlignment="Center" Text="{Binding NumberLayers}"/>
+                            </Grid>
 
+                            <Grid Grid.Row="3" Grid.Column="1"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
 
-
-                            <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Horizontal"
-                                         Background="#FF152D42" Margin="3">
-                                <Label  Content="End Layers removed"
-                                        Foreground="White" VerticalAlignment="Center">
-                                </Label>
-                                <TextBox Width="80" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                <Label Grid.Column="1" Content="End Layers removed"
+                                        Foreground="White" VerticalAlignment="Center"/>
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
                                           VerticalContentAlignment="Center"
-                                          IsReadOnly="True" Style="{x:Null}"  Margin="10,0,0,0" BorderThickness="0"
-                                         HorizontalContentAlignment="Center" Text="{Binding CharEndCut}">
-                                    
-                                </TextBox>
-                                <StackPanel.Effect>
-                                    <DropShadowEffect/>
-                                </StackPanel.Effect>
-                            </StackPanel>
+                                          IsReadOnly="True" Style="{x:Null}"  BorderThickness="0"
+                                         HorizontalContentAlignment="Center" Text="{Binding CharEndCut}"/>
+                            </Grid>
 
-                            <StackPanel Grid.Row="2" Grid.Column="4" Orientation="Horizontal" 
-                                        Background="#FF152D42" Margin="3">
-                                <Label  Content="Cycle time"
-                                        Foreground="White" VerticalAlignment="Center">
-                                </Label>
-                                <TextBox Width="80" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                            <Grid Grid.Row="1" Grid.Column="3"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Cycle time"
+                                            Foreground="White" VerticalAlignment="Center"/>
+
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
                                           VerticalContentAlignment="Center"
-                                          IsReadOnly="True" Style="{x:Null}"  Margin="10,0,0,0" BorderThickness="0"
-                                         HorizontalContentAlignment="Center" Text="{Binding CycleTime}">
-                                   
-                                </TextBox>
-                                <StackPanel.Effect>
-                                    <DropShadowEffect/>
-                                </StackPanel.Effect>
-                            </StackPanel>
+                                          IsReadOnly="True" Style="{x:Null}"  BorderThickness="0"
+                                         HorizontalContentAlignment="Center" Text="{Binding CycleTime}"/>
+                            </Grid>
 
-                            <StackPanel Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="3"
-                                        Orientation="Horizontal"  Background="#FF152D42">
-                                <Label  Content="Samples before Entrance Break :  "
+                            <Grid Grid.Row="1" Grid.Column="2"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Head Samples"
+                                            Foreground="White" VerticalAlignment="Center"/>
+
+                                <TextBox Grid.Column="2" FontSize="16" Foreground="AntiqueWhite"
+                                           VerticalContentAlignment="Center" Background="Transparent"
+                                           IsReadOnly="True" Style="{x:Null}"   BorderThickness="0"
+                                           ToolTip="Pre Entrance readings"
+                                           HorizontalContentAlignment="Center" Text="{Binding SampleEntrance}"/>
+                            </Grid>
+
+
+                            <Grid Grid.Row="3" Grid.Column="2"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Tail Samples"
                                         Foreground="White" VerticalAlignment="Center">
                                 </Label>
-                                <TextBox Width="80" FontSize="16" Foreground="AntiqueWhite"
-                                          VerticalContentAlignment="Center" Background="Transparent"
-                                          IsReadOnly="True" Style="{x:Null}"  Margin="10,0,0,0" BorderThickness="0"
-                                          HorizontalContentAlignment="Center" Text="{Binding SampleEntrance}">
-                                </TextBox>
-                                <StackPanel.Effect>
-                                    <DropShadowEffect/>
-                                </StackPanel.Effect>
-                            </StackPanel>
-
-                            <StackPanel Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Margin="3" Background="#FF152D42"
-                                        Orientation="Horizontal">
-                                <Label  Content="Samples before Exit Break :  "
-                                        Foreground="White" VerticalAlignment="Center">
-                                </Label>
-                                <TextBox Width="80" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
-                                          VerticalContentAlignment="Center"
-                                          IsReadOnly="True" Style="{x:Null}"  Margin="20,5,0,5" BorderThickness="0"
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                          VerticalContentAlignment="Center" ToolTip="Post Exit readings"
+                                          IsReadOnly="True" Style="{x:Null}"   BorderThickness="0"
                                          HorizontalContentAlignment="Center" Text="{Binding SampleExit}">
                                 </TextBox>
-                                <StackPanel.Effect>
+                            </Grid>
+
+
+
+
+                            <Grid Grid.Row="2" Grid.Column="2"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
                                     <DropShadowEffect/>
-                                </StackPanel.Effect>
-                            </StackPanel>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="1" Content="Max. Samples"
+                                        Foreground="White" VerticalAlignment="Center">
+                                </Label>
+
+                                <TextBox Grid.Column="2" HorizontalAlignment="Center" FontSize="16" 
+                                        Foreground="AntiqueWhite" VerticalContentAlignment="Center"
+                                        Background="#FF152D42" Style="{x:Null}" HorizontalContentAlignment="Center"
+                                        IsReadOnly="True" Text="{Binding MaxSampleBale}" BorderThickness="0"/>
+                            </Grid>
 
 
 
