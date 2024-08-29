@@ -468,8 +468,17 @@ namespace ModSetup.ViewModels
 
             ArchiveCheck = ClassCommon.ArchiveCheck;
 
-            if (LocalHost == Host) LocalChecked = true;
-            else RemoteChecked = true;
+            if (LocalHost == Host)
+            {
+                LocalChecked = true;
+                ClassCommon.LocalChecked = true;
+            }
+            else 
+            {
+                RemoteChecked = true;
+                ClassCommon.LocalChecked = false;
+            }
+            
 
 
             if (ClassCommon.WLOptions)

@@ -176,6 +176,20 @@ namespace AppServices
 
 
 
+       
+
+        public static bool LocalChecked
+        {
+            get => Settings.Default.bLocal;
+            set
+            {
+                Settings.Default.bLocal = value;
+                Settings.Default.Save();
+            }
+        }
+
+
+
         public static bool WLOptions
         {
             get => Settings.Default.bWLOption;

@@ -651,8 +651,74 @@ namespace ModWetLayer.ViewModels
             set { SetProperty(ref _wetlayerDataTable, value); }
         }
 
-      
 
+        #region  Local Wetlaye values from ini file
+
+        private int _maxSampleBale;
+        public int MaxSampleBale
+        {
+            get { return _maxSampleBale; }
+            set { SetProperty(ref _maxSampleBale, value); }
+        }
+
+        private int _numberLayers;
+        public int NumberLayers
+        {
+            get { return _numberLayers; }
+            set { SetProperty(ref _numberLayers, value); }
+        }
+
+        private int _charStartCut;
+        public int CharStartCut
+        {
+            get { return _charStartCut; }
+            set { SetProperty(ref _charStartCut, value); }
+        }
+
+        private int _charEndCut;
+        public int CharEndCut
+        {
+            get { return _charEndCut; }
+            set { SetProperty(ref _charEndCut, value); }
+        }
+
+        private int _cycleTime;
+        public int CycleTime
+        {
+            get { return _cycleTime; }
+            set { SetProperty(ref _cycleTime, value); }
+        }
+
+        private int _sampleEntrance;
+        public int SampleEntrance
+        {
+            get { return _sampleEntrance; }
+            set { SetProperty(ref _sampleEntrance, value); }
+        }
+
+        private int _sampleExit;
+        public int SampleExit
+        {
+            get { return _sampleExit; }
+            set { SetProperty(ref _sampleExit, value); }
+        }
+
+        private Visibility _showWLSetup;
+        public Visibility ShowWLSetup
+        {
+            get { return _showWLSetup; }
+            set { SetProperty(ref _showWLSetup, value); }
+        }
+
+
+        #endregion  Local Wetlaye values from ini file
+
+
+
+        /// <summary>
+        ///  
+        /// </summary>
+        /// <param name="eventAggregator"></param>
         public WetLayerViewModel(IEventAggregator eventAggregator)
         {
             this._eventAggregator = eventAggregator;
@@ -660,6 +726,9 @@ namespace ModWetLayer.ViewModels
             MonthChecked = true;
             BModify = false;
 
+            ShowWLSetup = ClassCommon.LocalChecked ? Visibility.Visible: Visibility.Hidden;
+
+            if (ClassCommon.LocalChecked) getLocalWetLayerSetUp();
 
             if (_sqlhandler == null)
             {
@@ -698,6 +767,11 @@ namespace ModWetLayer.ViewModels
                 //SetupAppTitle("Forté Wetlayer From  -> " + _sqlhandler.Host + @"\" + _sqlhandler.SqlInstance);
 
             }
+        }
+
+        private void getLocalWetLayerSetUp()
+        {
+            
         }
 
         private void SetupAppTitle(string strTitle)
