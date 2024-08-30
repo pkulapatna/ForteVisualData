@@ -703,12 +703,62 @@ namespace ModWetLayer.ViewModels
             set { SetProperty(ref _sampleExit, value); }
         }
 
+        //Movement
+        private int _sensorDistanceMM;
+        public int SensorDistanceMM
+        {
+            get { return _sensorDistanceMM; }
+            set { SetProperty(ref _sensorDistanceMM, value); }
+        }
+        private int _wLProcessTO;
+        public int WLProcessTO
+        {
+            get { return _wLProcessTO; }
+            set { SetProperty(ref _wLProcessTO, value); }
+        }
+        private int _rTRequestTO;
+        public int RTRequestTO
+        {
+            get { return _rTRequestTO; }
+            set { SetProperty(ref _rTRequestTO, value); }
+        }
+        private int _bbaleSpeedMaxMMPerSec;
+        public int BaleSpeedMaxMMPerSec
+        {
+            get { return _bbaleSpeedMaxMMPerSec; }
+            set { SetProperty(ref _bbaleSpeedMaxMMPerSec, value); }
+        }
+        private int _baleSpeedMinMMPerSec;
+        public int BaleSpeedMinMMPerSec
+        {
+            get { return _baleSpeedMinMMPerSec; }
+            set { SetProperty(ref _baleSpeedMinMMPerSec, value); }
+        }
+        private int _baleLengthMaxMM;
+        public int BaleLengthMaxMM
+        {
+            get { return _baleLengthMaxMM; }
+            set { SetProperty(ref _baleLengthMaxMM, value); }
+        }
+
+        private int _baleLengthMinMM;
+        public int BaleLengthMinMM
+        {
+            get { return _baleLengthMinMM; }
+            set { SetProperty(ref _baleLengthMinMM, value); }
+        }
+
+
+
         private Visibility _showWLSetup;
         public Visibility ShowWLSetup
         {
             get { return _showWLSetup; }
             set { SetProperty(ref _showWLSetup, value); }
         }
+
+
+
 
 
         #endregion  Local Wetlaye values from ini file
@@ -779,24 +829,25 @@ namespace ModWetLayer.ViewModels
 
             MaxSampleBale = WetLayerini.iMaxSamples;
 
-
-            string numLayers = WetLayerini.RestoringList[17];
-            string[] valx = numLayers.Split(new char[] { '=' });
-            NumberLayers = Convert.ToInt32(valx[1]);
-
-            string ChopStsrt = WetLayerini.RestoringList[27];
-            string[] val2 = ChopStsrt.Split(new char[] { '=' });
-            CharStartCut = Convert.ToInt32(val2[1]);
-
-            string ChopEnd = WetLayerini.RestoringList[28];
-            string[] val1 = ChopEnd.Split(new char[] { '=' });
-            CharEndCut = Convert.ToInt32(val1[1]);
-
             SampleEntrance = WetLayerini.iHeadLen;
             SampleExit = WetLayerini.iTailLen;
 
-            CycleTime = WetLayerini.iCycleMSec;  
+            //Restoring group
+            NumberLayers = WetLayerini.iRestoreLayers;
+            CharStartCut = WetLayerini.iLayersToChopStart;
+            CharEndCut = WetLayerini.iLayersToChopEnd;
             
+            //Movement
+            CycleTime = WetLayerini.iCycleMSec;
+            SensorDistanceMM = WetLayerini.iSensorDistanceMM;
+            WLProcessTO = WetLayerini.iWLProcessTO;
+            RTRequestTO = WetLayerini.iRTRequestTO;
+
+            BaleSpeedMaxMMPerSec = WetLayerini.iBaleSpeedMaxMMPerSec;
+            BaleSpeedMinMMPerSec = WetLayerini.iBaleSpeedMinMMPerSec;
+            BaleLengthMaxMM = WetLayerini.iBaleLengthMaxMM;
+            BaleLengthMinMM = WetLayerini.iBaleLengthMinMM;
+
         }
 
         private void SetupAppTitle(string strTitle)

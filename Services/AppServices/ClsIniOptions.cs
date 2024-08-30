@@ -389,7 +389,18 @@ namespace AppServices
 
                     if ((!strIniLineDat.Contains("[Restoring]")) & (strIniLineDat != string.Empty))
                         RestoringList.Add(strIniLineDat.Trim());
+                   
+                    if (strIniLineDat.Contains("RestoreLayers"))
+                        iRestoreLayers = Convert.ToInt32(StrIniItem(strIniLineDat));
+
+                    if (strIniLineDat.Contains("LayersToChopStart"))
+                        iLayersToChopStart = Convert.ToInt32(StrIniItem(strIniLineDat));
+
+                    if (strIniLineDat.Contains("LayersToChopEnd"))
+                        iLayersToChopEnd = Convert.ToInt32(StrIniItem(strIniLineDat));
+
                     break;
+
 
                 case IniGroup.Simulation:
                     if ((!strIniLineDat.Contains("[Simulation]")) & (strIniLineDat != string.Empty))

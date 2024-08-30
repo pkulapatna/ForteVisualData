@@ -596,16 +596,17 @@
                         <TabItem.Header>
                             <StackPanel Orientation="Horizontal">
                                 <Image Height="auto"/>
-                                <TextBlock Text="Local Wet Layer Settings" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                <TextBlock Text="Local Wet Layer ini Settings" Margin="10,0,0,0" VerticalAlignment="Center" />
                             </StackPanel>
                         </TabItem.Header>
                         <Grid Background="#FF506D88">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="5"/>
+                                <ColumnDefinition Width="12*"/>
+                                <ColumnDefinition Width="12*"/>
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="10*"/>
-                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="12*"/>
                                 <ColumnDefinition Width="10*"/>
                                 <ColumnDefinition Width="5"/>
                             </Grid.ColumnDefinitions>
@@ -628,11 +629,11 @@
                                     <ColumnDefinition Width="5*"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Grid.Column="1" Content="Start Layers removed"
+                                <Label  Grid.Column="1" Content="LayersToChopStart"
                                             Foreground="White" VerticalAlignment="Center"/>
                                 <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
                                          VerticalContentAlignment="Center"
-                                         IsReadOnly="True" Style="{x:Null}"  Margin="0" BorderThickness="0"
+                                         IsReadOnly="True" Style="{x:Null}"  Margin="0" BorderThickness="1"
                                          HorizontalContentAlignment="Center" Text="{Binding CharStartCut}"/>
                             </Grid>
 
@@ -647,10 +648,10 @@
                                     <ColumnDefinition Width="5*"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Grid.Column="1" Content="Number of Layers"
+                                <Label  Grid.Column="1" Content="RestoreLayers"
                                         Foreground="White" VerticalAlignment="Center"/>
                                 <TextBox  Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
-                                        IsReadOnly="True" Style="{x:Null}" BorderThickness="0"
+                                        IsReadOnly="True" Style="{x:Null}" BorderThickness="1"
                                         VerticalContentAlignment="Center" 
                                         HorizontalContentAlignment="Center" Text="{Binding NumberLayers}"/>
                             </Grid>
@@ -666,30 +667,30 @@
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Column="1" Content="End Layers removed"
+                                <Label Grid.Column="1" Content="LayersToChopEnd"
                                         Foreground="White" VerticalAlignment="Center"/>
                                 <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
                                           VerticalContentAlignment="Center"
-                                          IsReadOnly="True" Style="{x:Null}"  BorderThickness="0"
+                                          IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
                                          HorizontalContentAlignment="Center" Text="{Binding CharEndCut}"/>
                             </Grid>
 
-                            <Grid Grid.Row="1" Grid.Column="3"  Background="#FF152D42" Margin="3">
+                            <Grid Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="2"  Background="#FF152D42" Margin="3">
                                 <Grid.Effect>
                                     <DropShadowEffect/>
                                 </Grid.Effect>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="5"/>
                                     <ColumnDefinition Width="15*"/>
-                                    <ColumnDefinition Width="10*"/>
+                                    <ColumnDefinition Width="4*"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Grid.Column="1" Content="Cycle time"
+                                <Label  Grid.Column="1" Content="Movement settings and Cycle time"
                                             Foreground="White" VerticalAlignment="Center"/>
 
                                 <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
                                           VerticalContentAlignment="Center"
-                                          IsReadOnly="True" Style="{x:Null}"  BorderThickness="0"
+                                          IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
                                          HorizontalContentAlignment="Center" Text="{Binding CycleTime}"/>
                             </Grid>
 
@@ -703,12 +704,12 @@
                                     <ColumnDefinition Width="10*"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Grid.Column="1" Content="Head Samples"
+                                <Label  Grid.Column="1" Content="Head Length"
                                             Foreground="White" VerticalAlignment="Center"/>
 
                                 <TextBox Grid.Column="2" FontSize="16" Foreground="AntiqueWhite"
                                            VerticalContentAlignment="Center" Background="Transparent"
-                                           IsReadOnly="True" Style="{x:Null}"   BorderThickness="0"
+                                           IsReadOnly="True" Style="{x:Null}"   BorderThickness="1"
                                            ToolTip="Pre Entrance readings"
                                            HorizontalContentAlignment="Center" Text="{Binding SampleEntrance}"/>
                             </Grid>
@@ -724,14 +725,14 @@
                                     <ColumnDefinition Width="10*"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Label  Grid.Column="1" Content="Tail Samples"
+                                <Label  Grid.Column="1" Content="Tail Length"
                                         Foreground="White" VerticalAlignment="Center">
                                 </Label>
                                 <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
                                           VerticalContentAlignment="Center" ToolTip="Post Exit readings"
-                                          IsReadOnly="True" Style="{x:Null}"   BorderThickness="0"
-                                         HorizontalContentAlignment="Center" Text="{Binding SampleExit}">
-                                </TextBox>
+                                          IsReadOnly="True" Style="{x:Null}"   BorderThickness="1"
+                                         HorizontalContentAlignment="Center" Text="{Binding SampleExit}"/>
+
                             </Grid>
 
 
@@ -747,16 +748,126 @@
                                     <ColumnDefinition Width="10*"/>
                                     <ColumnDefinition Width="5"/>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="1" Content="Max. Samples"
+                                <Label Grid.Column="1" Content="Max.Samples"
                                         Foreground="White" VerticalAlignment="Center">
                                 </Label>
 
-                                <TextBox Grid.Column="2" HorizontalAlignment="Center" FontSize="16" 
-                                        Foreground="AntiqueWhite" VerticalContentAlignment="Center"
-                                        Background="#FF152D42" Style="{x:Null}" HorizontalContentAlignment="Center"
-                                        IsReadOnly="True" Text="{Binding MaxSampleBale}" BorderThickness="0"/>
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                          VerticalContentAlignment="Center" ToolTip="Post Exit readings"
+                                          IsReadOnly="True" Style="{x:Null}"   BorderThickness="1"
+                                         HorizontalContentAlignment="Center" Text="{Binding MaxSampleBale}"/>
                             </Grid>
 
+                            
+                            <Grid Grid.Row="1" Grid.Column="5"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Speed Diff."
+                                        Foreground="White" VerticalAlignment="Center"/>
+
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                       VerticalContentAlignment="Center"
+                                       IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                                      HorizontalContentAlignment="Center" Text="{Binding SensorDistanceMM}"/>
+                            </Grid>
+
+                            <Grid Grid.Row="2" Grid.Column="5"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Process T-Out"
+                                            Foreground="White" VerticalAlignment="Center"/>
+
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                           VerticalContentAlignment="Center"
+                                           IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                                          HorizontalContentAlignment="Center" Text="{Binding WLProcessTO}"/>
+                            </Grid>
+
+
+
+                            <Grid Grid.Row="3" Grid.Column="5"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="8*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Request T-Out"
+                                            Foreground="White" VerticalAlignment="Center"/>
+
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                           VerticalContentAlignment="Center"
+                                           IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                                          HorizontalContentAlignment="Center" Text="{Binding RTRequestTO}"/>
+                            </Grid>
+
+
+                            <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Bale Speed Max/Min (mm)"
+                                        Foreground="White" VerticalAlignment="Center"/>
+
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                         VerticalContentAlignment="Center"
+                                         IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                                         HorizontalContentAlignment="Center" Text="{Binding BaleSpeedMaxMMPerSec}"/>
+
+                                <TextBox Grid.Column="3" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                         VerticalContentAlignment="Center"
+                                         IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                                         HorizontalContentAlignment="Center" Text="{Binding BaleSpeedMinMMPerSec}"/>
+                            </Grid>
+
+
+                            <Grid Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"  Background="#FF152D42" Margin="3">
+                                <Grid.Effect>
+                                    <DropShadowEffect/>
+                                </Grid.Effect>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="5"/>
+                                    <ColumnDefinition Width="15*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5*"/>
+                                    <ColumnDefinition Width="5"/>
+                                </Grid.ColumnDefinitions>
+                                <Label  Grid.Column="1" Content="Bale Length Max/Min (mm)"
+                                        Foreground="White" VerticalAlignment="Center"/>
+
+                                <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                        VerticalContentAlignment="Center"
+                                        IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                                        HorizontalContentAlignment="Center" Text="{Binding BaleLengthMaxMM}"/>
+                                <TextBox Grid.Column="3" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                                         VerticalContentAlignment="Center"
+                                         IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                                         HorizontalContentAlignment="Center" Text="{Binding BaleLengthMinMM}"/>
+                            </Grid>
 
 
 
