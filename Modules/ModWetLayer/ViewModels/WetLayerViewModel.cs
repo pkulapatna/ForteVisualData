@@ -1125,7 +1125,7 @@ namespace ModWetLayer.ViewModels
 
             int iStart = 9999;
             int iEnd = WlSetupTable.Rows.Count;
-            string timeNow = DateTime.Now.ToString("mm.dd.yy.H.m");
+            string timeNow = DateTime.Now.ToString("MM.dd.yy.H.m");
             string FileName = $"WetLayerIniSetup{timeNow}";
 
             try
