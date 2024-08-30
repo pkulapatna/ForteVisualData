@@ -828,7 +828,6 @@ namespace ModWetLayer.ViewModels
             WetLayerini.readinifile();
 
             MaxSampleBale = WetLayerini.iMaxSamples;
-
             SampleEntrance = WetLayerini.iHeadLen;
             SampleExit = WetLayerini.iTailLen;
 
@@ -1012,6 +1011,144 @@ namespace ModWetLayer.ViewModels
         private void BrowseExecute()
         {
            
+        }
+
+
+        private DelegateCommand _DXCommand;
+        public DelegateCommand DXCommand =>
+            _DXCommand ?? (_DXCommand = new DelegateCommand(DXCommandExecute).ObservesCanExecute(() => RTIdle));
+
+        private void DXCommandExecute()
+        {
+            GetWetLayerIniInfo();
+        }
+
+
+        /// <summary>
+        /// Get WetLayer Setup data from ini file and save to csv file
+        /// </summary>
+        private void GetWetLayerIniInfo()
+        {
+            DataTable WlSetupTable = new DataTable();
+
+            WlSetupTable.Clear();
+
+            WlSetupTable.Columns.Add("Name");
+            WlSetupTable.Columns.Add("Value");
+            WlSetupTable.Columns.Add("Max");
+            WlSetupTable.Columns.Add("Min");
+
+            DataRow _rowOne = WlSetupTable.NewRow();
+            _rowOne["Name"] = "MaxSampleBale";
+            _rowOne["Value"] = MaxSampleBale;
+            _rowOne["Max"] = "";
+            _rowOne["Min"] = "";
+            WlSetupTable.Rows.Add(_rowOne);
+
+            DataRow _row2 = WlSetupTable.NewRow();
+            _row2["Name"] = "SampleEntrance";
+            _row2["Value"] = SampleEntrance;
+            _row2["Max"] = "";
+            _row2["Min"] = "";
+            WlSetupTable.Rows.Add(_row2);
+
+            DataRow _row3 = WlSetupTable.NewRow();
+            _row3["Name"] = "SampleExit";
+            _row3["Value"] = SampleExit;
+            _row3["Max"] = "";
+            _row3["Min"] = "";
+            WlSetupTable.Rows.Add(_row3);
+
+            DataRow _row4 = WlSetupTable.NewRow();
+            _row4["Name"] = "NumberLayers";
+            _row4["Value"] = NumberLayers;
+            _row4["Max"] = "";
+            _row4["Min"] = "";
+            WlSetupTable.Rows.Add(_row4);
+
+            DataRow _row5 = WlSetupTable.NewRow();
+            _row5["Name"] = "CharStartCut";
+            _row5["Value"] = CharStartCut;
+            _row5["Max"] = "";
+            _row5["Min"] = "";
+            WlSetupTable.Rows.Add(_row5);
+
+            DataRow _row6 = WlSetupTable.NewRow();
+            _row6["Name"] = "CharEndCut";
+            _row6["Value"] = CharEndCut;
+            _row6["Max"] = "";
+            _row6["Min"] = "";
+            WlSetupTable.Rows.Add(_row6);
+
+            DataRow _row7 = WlSetupTable.NewRow();
+            _row7["Name"] = "CycleTime";
+            _row7["Value"] = CycleTime;
+            _row7["Max"] = "";
+            _row7["Min"] = "";
+            WlSetupTable.Rows.Add(_row7);
+
+            DataRow _row8 = WlSetupTable.NewRow();
+            _row8["Name"] = "SensorDistanceMM";
+            _row8["Value"] = SensorDistanceMM;
+            _row8["Max"] = "";
+            _row8["Min"] = "";
+            WlSetupTable.Rows.Add(_row8);
+
+
+            DataRow _row9 = WlSetupTable.NewRow();
+            _row9["Name"] = "WLProcessTO";
+            _row9["Value"] = WLProcessTO;
+            _row9["Max"] = "";
+            _row9["Min"] = "";
+            WlSetupTable.Rows.Add(_row9);
+
+            DataRow _row10 = WlSetupTable.NewRow();
+            _row10["Name"] = "RTRequestTO";
+            _row10["Value"] = RTRequestTO;
+            _row10["Max"] = "";
+            _row10["Min"] = "";
+            WlSetupTable.Rows.Add(_row10);
+
+            DataRow _row11 = WlSetupTable.NewRow();
+            _row11["Name"] = "BaleSpeedMMPerSec";
+            _row11["Value"] = "";
+            _row11["Max"] = BaleSpeedMaxMMPerSec;
+            _row11["Min"] = BaleSpeedMinMMPerSec;
+            WlSetupTable.Rows.Add(_row11);
+
+            DataRow _row12 = WlSetupTable.NewRow();
+            _row12["Name"] = "BaleLengthMM";
+            _row12["Value"] = "";
+            _row12["Max"] = BaleLengthMaxMM;
+            _row12["Min"] = BaleLengthMinMM;
+            WlSetupTable.Rows.Add(_row12);
+
+            int iStart = 9999;
+            int iEnd = WlSetupTable.Rows.Count;
+            string timeNow = DateTime.Now.ToString("mm.dd.yy.H.m");
+            string FileName = $"WetLayerIniSetup{timeNow}";
+
+            try
+            {
+                if (iEnd > 0)
+                {
+                    using (CSVReport csvDlg = new CSVReport(_eventAggregator))
+                    {
+                        csvDlg.InitCsv(WlSetupTable, FileName, iStart, iEnd);
+                        csvDlg.ShowDialog();
+                    }
+                }
+                else 
+                {
+                    ClsSerilog.LogMessage(ClsSerilog.INFO, $"Can not Get WetLayer Ini data");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ERROR in GetWetLayerIniInfo {ex.Message}");
+                ClsSerilog.LogMessage(ClsSerilog.ERROR, $"ERROR in GetWetLayerIniInfo < {ex.Message}");
+            }
+            finally { WlSetupTable = null;}
         }
 
 

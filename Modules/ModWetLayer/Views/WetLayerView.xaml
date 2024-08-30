@@ -869,7 +869,11 @@
                                          HorizontalContentAlignment="Center" Text="{Binding BaleLengthMinMM}"/>
                             </Grid>
 
-
+                            <Button  Content="CSV"  Grid.Column="6" Grid.Row="1" Grid.RowSpan="3"  
+                                     Panel.ZIndex="99" IsEnabled="True"
+                                    FontStretch="UltraExpanded" Style="{StaticResource ButtonStart}"  
+                                    Command="{Binding DXCommand}">
+                            </Button>
 
                         </Grid>
 
