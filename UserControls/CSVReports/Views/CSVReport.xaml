@@ -36,7 +36,7 @@
                 Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Center" Width="100" Height="27" Cursor="Hand"/>
 
         <Button Content="Write CSV" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center" Foreground="White"
-                Command="{Binding WriteCommand}" Style="{StaticResource RoundButtonTemplate}"  ToolTip="Write CSV file"
+                Command="{Binding WriteCommand}"  ToolTip="Write CSV file"
                 Margin="10,0,0,0" Grid.Row="3" VerticalAlignment="Center"  Width="100" Height="30" Cursor="Hand">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
