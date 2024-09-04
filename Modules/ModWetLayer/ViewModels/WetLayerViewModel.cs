@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -39,6 +40,8 @@ namespace ModWetLayer.ViewModels
 
         private double[] DataX;
         private double[] DataY;
+
+        private string[] IniDatLines;
 
         private DateTime PreBaleReadtime = DateTime.Now;
         private DateTime CurBaleReadtime = DateTime.Now;
@@ -824,8 +827,13 @@ namespace ModWetLayer.ViewModels
 
             ClsIniOptions WetLayerini = new();
 
-
+          
             WetLayerini.readinifile();
+
+         
+            IniDatLines = WetLayerini.IniDatLines;
+
+           
 
             MaxSampleBale = WetLayerini.iMaxSamples;
             SampleEntrance = WetLayerini.iHeadLen;
@@ -848,6 +856,19 @@ namespace ModWetLayer.ViewModels
             BaleLengthMinMM = WetLayerini.iBaleLengthMinMM;
 
         }
+
+        public static void SaveArrayAsCSV<T>(T[] arrayToSave, string fileName)
+        {
+            using (StreamWriter file = new StreamWriter(fileName))
+            {
+                foreach (T item in arrayToSave)
+                {
+                    file.WriteLine(item + ",");
+                }
+            }
+        }
+
+
 
         private void SetupAppTitle(string strTitle)
         {
@@ -897,10 +918,13 @@ namespace ModWetLayer.ViewModels
 
             try
             {
-                if(WetLayerDataTable.Rows.Count > 0)
+                
+             
+                if (WetLayerDataTable.Rows.Count > 0)
                 {
                     using (CSVReport csvDlg = new CSVReport(_eventAggregator))
                     {
+                       
                         csvDlg.InitCsv(WetLayerDataTable, SelectTableValue, iStart, iEnd);
                         csvDlg.ShowDialog();
                     }
@@ -1020,7 +1044,19 @@ namespace ModWetLayer.ViewModels
 
         private void DXCommandExecute()
         {
-            GetWetLayerIniInfo();
+            //GetWetLayerIniInfo();
+
+            WriteWLiniFile();
+        }
+
+        private void WriteWLiniFile()
+        {
+            string timeNow = DateTime.Now.ToString("MM.dd.yy.H.m");
+            string iniFileName = $"WetLayerIni {timeNow}.csv";
+            SaveArrayAsCSV(IniDatLines, $"C:\\temp\\{iniFileName}");
+
+
+            MessageBox.Show($"Writed CSV file to C:\\temp\\{iniFileName} DONE!");
         }
 
 
@@ -1128,8 +1164,12 @@ namespace ModWetLayer.ViewModels
             string timeNow = DateTime.Now.ToString("MM.dd.yy.H.m");
             string FileName = $"WetLayerIniSetup{timeNow}";
 
+            string iniFileName = $"WetLayerIni {timeNow}.csv";
+
             try
             {
+                SaveArrayAsCSV(IniDatLines, $"C:\\temp\\{iniFileName}");
+
                 if (iEnd > 0)
                 {
                     using (CSVReport csvDlg = new CSVReport(_eventAggregator))

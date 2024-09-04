@@ -91,14 +91,15 @@ namespace CSVReports.ViewModels
         {
             try
             {
-                System.Windows.Forms.FolderBrowserDialog dlg = new System.Windows.Forms.FolderBrowserDialog();
-
-                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                using (System.Windows.Forms.FolderBrowserDialog dlg = new System.Windows.Forms.FolderBrowserDialog())
                 {
-                    StrFileLocation = dlg.SelectedPath;
+
+                    if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        StrFileLocation = dlg.SelectedPath;
+                    }
+                    FindCreateDir(StrFileLocation);
                 }
-                dlg = null;
-                FindCreateDir(StrFileLocation);
 
             }
             catch (Exception ex)

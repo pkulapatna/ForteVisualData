@@ -13,6 +13,8 @@ namespace AppServices
         private string strFileName = "WetLayer.ini";
         private string strFilePath = @"C:\Fortesystem\Realtime";
 
+        public string[] IniDatLines;
+
         private enum IniGroup
         {
             Data,
@@ -227,6 +229,8 @@ namespace AppServices
         {
             string[] stringSeparators = { "\r\n" };
             string[] IniLines = strLine.Split(stringSeparators, StringSplitOptions.RemoveEmptyEntries);
+
+            IniDatLines = IniLines;
 
             try
             {
