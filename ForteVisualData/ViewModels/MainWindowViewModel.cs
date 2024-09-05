@@ -254,6 +254,14 @@ namespace ForteVisualData.ViewModels
 
         #endregion LoadModules
 
+        private Visibility _showDiagn = Visibility.Hidden;
+        public Visibility ShowDiagn
+        {
+            get => _showDiagn;
+            set => SetProperty(ref _showDiagn, value);
+        }
+
+
         #region Tab 1
 
         // Tab 1
@@ -277,6 +285,7 @@ namespace ForteVisualData.ViewModels
                     AppStatus = SetUpViewModel.ModuleName;
                     LoadModule("ModSetupModule");
                     RtUpDate = string.Empty;
+                    ShowDiagn = ClassCommon.LocalChecked ? Visibility.Visible : Visibility.Hidden;
                 }
                 else
                 {
@@ -290,7 +299,6 @@ namespace ForteVisualData.ViewModels
             get => _tabOneVisible;
             set =>  SetProperty(ref _tabOneVisible, value); 
         }
-
         private int _tabOneHeight = NormalTabHeight;
         public int TabOneHeight
         {
@@ -321,7 +329,7 @@ namespace ForteVisualData.ViewModels
                 {
                     ClassCommon.TabSelected = ClassCommon.ArchiveTab;
                     LoadArchive(value);
-                    
+                    ShowDiagn = Visibility.Hidden;
                 }
             }
         }
@@ -364,6 +372,7 @@ namespace ForteVisualData.ViewModels
                 {
                     ClassCommon.TabSelected = ClassCommon.RealtimeTab;
                     LoadRealTimeSummary(value);
+                    ShowDiagn = Visibility.Hidden;
                 }  
             }
         }
@@ -405,7 +414,7 @@ namespace ForteVisualData.ViewModels
                 {
                     ClassCommon.TabSelected = ClassCommon.GraphTab;
                     LoadGraphic(value);
-                    
+                    ShowDiagn = Visibility.Hidden;
                 }
             }
         }
@@ -449,7 +458,8 @@ namespace ForteVisualData.ViewModels
                 if(value)
                 {
                     ClassCommon.TabSelected = ClassCommon.CombineTab;
-                    LoadCombine(value); 
+                    LoadCombine(value);
+                    ShowDiagn = Visibility.Hidden;
                 }
             }
         }
@@ -491,6 +501,7 @@ namespace ForteVisualData.ViewModels
                 {
                     ClassCommon.TabSelected = ClassCommon.DualGraphTab;
                     LoadDualGraph(value);
+                    ShowDiagn = Visibility.Hidden;
                 }
             }
         }
@@ -533,6 +544,7 @@ namespace ForteVisualData.ViewModels
                 {
                     ClassCommon.TabSelected = ClassCommon.WetLayerTab;
                     LoadWetLayer(value);
+                    ShowDiagn = Visibility.Hidden;
                 }
             }
         }
@@ -608,6 +620,7 @@ namespace ForteVisualData.ViewModels
                 {
                    ClassCommon.TabSelected = ClassCommon.DropPositionTab;
                    LaodDropPosition(value);
+                    ShowDiagn = Visibility.Hidden;
                 }
             }
         }
@@ -648,6 +661,7 @@ namespace ForteVisualData.ViewModels
                 {
                     ClassCommon.TabSelected = ClassCommon.WetLayerTreadTab;
                     LoadWetLayerTrend(value);
+                    ShowDiagn = Visibility.Hidden;
                 }
             }
         }

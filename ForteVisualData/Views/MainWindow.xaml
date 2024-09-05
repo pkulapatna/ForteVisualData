@@ -39,7 +39,7 @@
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="10*"/>
                             <ColumnDefinition Width="10*"/>
-                            <ColumnDefinition Width="10*"/>
+                            <ColumnDefinition Width="15*"/>
                             <ColumnDefinition Width="0"/>
                         </Grid.ColumnDefinitions>
                         <Label x:Name="MyTitle" Grid.Column="1" Content="{Binding AppStatus}" 
@@ -68,15 +68,15 @@
                             </Label.Effect>
                         </Label>
 
-                        <Label Content="Print" Foreground="AntiqueWhite" FontSize="16" >
+                        <Label Content="Diagnostic " Foreground="AntiqueWhite" FontSize="16" Visibility="{Binding ShowDiagn}" >
                                 <Label.Effect>
                                     <DropShadowEffect/>
                                 </Label.Effect>
                             </Label>
                             <Button x:Name="btnPrint"  Width="40" Height="30" VerticalAlignment="Top" Cursor="Hand"  
-                                    Click="Print_Click" BorderBrush="{x:Null}" 
-                                    Background="{x:Null}" Foreground="#FFF1E243" ToolTip="Hide App in Task bar">
-                                <MaterialDesign:PackIcon Kind="Printer" Width="25" Height="25" HorizontalAlignment="Center" Margin="0,0,10,0" >
+                                    BorderBrush="{x:Null}" Visibility="{Binding ShowDiagn}"
+                                    Background="{x:Null}" Foreground="#FFF1E243" ToolTip="Test button">
+                                <MaterialDesign:PackIcon Kind="File" Width="25" Height="25" HorizontalAlignment="Center" Margin="0,0,10,0" >
                                     <MaterialDesign:PackIcon.Effect>
                                         <DropShadowEffect/>
                                     </MaterialDesign:PackIcon.Effect>
