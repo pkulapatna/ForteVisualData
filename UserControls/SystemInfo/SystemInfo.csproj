@@ -1,9 +1,21 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <UseWPF>true</UseWPF>
+	<UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Prism.Wpf" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Services\AppServices\AppServices.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms.Analyzers">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.5\analyzers\dotnet\System.Windows.Forms.Analyzers.dll</HintPath>
+    </Reference>
+    <Reference Include="WpfArchive.Windows.Theme">
+      <HintPath>..\..\..\ForteArchiveApplication\CustomReference\WpfArchive.Windows.Theme.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

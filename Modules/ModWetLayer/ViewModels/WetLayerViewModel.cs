@@ -779,9 +779,9 @@ namespace ModWetLayer.ViewModels
             MonthChecked = true;
             BModify = false;
 
-            ShowWLSetup = ClassCommon.LocalChecked ? Visibility.Visible: Visibility.Hidden;
+          //  ShowWLSetup = ClassCommon.LocalChecked ? Visibility.Visible: Visibility.Hidden;
 
-            if (ClassCommon.LocalChecked) getLocalWetLayerSetUp();
+          //  if (ClassCommon.LocalChecked) getLocalWetLayerSetUp();
 
             if (_sqlhandler == null)
             {

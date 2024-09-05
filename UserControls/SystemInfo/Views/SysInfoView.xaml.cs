@@ -30,6 +30,7 @@ namespace SystemInfo.Views
             InitializeComponent();
             _eventAggregator = eventAggregator;
             _sysInfoViewModel = new SysInfoViewModel(_eventAggregator);
+            DataContext = _sysInfoViewModel;
 
 
         }

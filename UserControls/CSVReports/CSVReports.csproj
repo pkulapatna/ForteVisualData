@@ -10,6 +10,9 @@
     <ProjectReference Include="..\..\Services\AppServices\AppServices.csproj" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System.Windows.Forms.Analyzers">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.WindowsDesktop.App.Ref\8.0.5\analyzers\dotnet\System.Windows.Forms.Analyzers.dll</HintPath>
+    </Reference>
     <Reference Include="WpfArchive.Windows.Theme">
       <HintPath>..\..\..\ForteArchiveApplication\CustomReference\WpfArchive.Windows.Theme.dll</HintPath>
     </Reference>

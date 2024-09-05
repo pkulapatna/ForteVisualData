@@ -5,8 +5,350 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SystemInfo.Views"
         mc:Ignorable="d"
-        Title="SysInfoView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Local Forte's System Settings" Height="450" Width="800"  ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary Source="/WpfArchive.Windows.Theme;component/Theme.xaml"/>
+    </Window.Resources>
+    <Border BorderThickness="4" OpacityMask="#FF555252" CornerRadius="10">
+        <Border.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF353535" Offset="0"/>
+                <GradientStop Color="#FF656060" Offset="1"/>
+            </LinearGradientBrush>
+        </Border.BorderBrush>
+        <Grid>
+            <Grid.Effect>
+                <DropShadowEffect Color="Black" BlurRadius="15"
+                      Direction="721" ShadowDepth="1" RenderingBias="Quality" />
+            </Grid.Effect>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF3A3A3A" Offset="0"/>
+                    <GradientStop Offset="1" Color="#FF292D37"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="5"/>
+            </Grid.ColumnDefinitions>
+
+
+            <Grid Grid.Row="2" Grid.Column="1" Margin="5" Background="#FF506D88" Visibility="{Binding ShowWLSetup}">
+                <Grid.Effect>
+                    <DropShadowEffect/>
+                </Grid.Effect>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="0"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="28"/>
+                    <RowDefinition Height="16*"/>
+                    <RowDefinition Height="16*"/>
+                    <RowDefinition Height="16*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Foreground="Yellow" FontSize="14"
+                       Content="Wet Layer Settings from WetLayer.ini file" >
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+
+                <Grid Grid.Row="2" Grid.Column="1"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="LayersToChopStart"
+                             Foreground="White" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                             VerticalContentAlignment="Center"
+                             IsReadOnly="True" Style="{x:Null}"  Margin="0" BorderThickness="1"
+                             HorizontalContentAlignment="Center" Text="{Binding CharStartCut}"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="1"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="RestoreLayers"
+                            Foreground="White" VerticalAlignment="Center"/>
+                    <TextBox  Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                             IsReadOnly="True" Style="{x:Null}" BorderThickness="1"
+                             VerticalContentAlignment="Center" 
+                             HorizontalContentAlignment="Center" Text="{Binding NumberLayers}"/>
+                </Grid>
+
+                <Grid Grid.Row="4" Grid.Column="1"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="1" Content="LayersToChopEnd"
+                         Foreground="White" VerticalAlignment="Center"/>
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                           VerticalContentAlignment="Center"
+                           IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                          HorizontalContentAlignment="Center" Text="{Binding CharEndCut}"/>
+                </Grid>
+
+
+                <Grid Grid.Row="2" Grid.Column="2"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Head Length"
+                        Foreground="White" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="2" FontSize="16" Foreground="AntiqueWhite"
+                           VerticalContentAlignment="Center" Background="Transparent"
+                           IsReadOnly="True" Style="{x:Null}"   BorderThickness="1"
+                           ToolTip="Pre Entrance readings"
+                           HorizontalContentAlignment="Center" Text="{Binding SampleEntrance}"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="2"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="1" Content="Max.Samples"
+                        Foreground="White" VerticalAlignment="Center">
+                    </Label>
+
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                          VerticalContentAlignment="Center" ToolTip="Post Exit readings"
+                          IsReadOnly="True" Style="{x:Null}"   BorderThickness="1"
+                         HorizontalContentAlignment="Center" Text="{Binding MaxSampleBale}"/>
+                </Grid>
+
+
+                <Grid Grid.Row="4" Grid.Column="2"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Tail Length"
+                            Foreground="White" VerticalAlignment="Center">
+                    </Label>
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                          VerticalContentAlignment="Center" ToolTip="Post Exit readings"
+                          IsReadOnly="True" Style="{x:Null}"   BorderThickness="1"
+                            HorizontalContentAlignment="Center" Text="{Binding SampleExit}"/>
+
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Movement settings and Cycle time"
+                            Foreground="White" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                            VerticalContentAlignment="Center"
+                            IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                            HorizontalContentAlignment="Center" Text="{Binding CycleTime}"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Bale Speed Max/Min (mm/Sec)"
+                            Foreground="White" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                            VerticalContentAlignment="Center"
+                            IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                            HorizontalContentAlignment="Center" Text="{Binding BaleSpeedMaxMMPerSec}"/>
+
+                    <TextBox Grid.Column="3" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                            VerticalContentAlignment="Center"
+                            IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                            HorizontalContentAlignment="Center" Text="{Binding BaleSpeedMinMMPerSec}"/>
+                </Grid>
+
+
+                <Grid Grid.Row="4" Grid.Column="3" Grid.ColumnSpan="2"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Bale Length Max/Min (mm)"
+                        Foreground="White" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                          VerticalContentAlignment="Center"
+                          IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                          HorizontalContentAlignment="Center" Text="{Binding BaleLengthMaxMM}"/>
+                    <TextBox Grid.Column="3" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                           VerticalContentAlignment="Center"
+                           IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                           HorizontalContentAlignment="Center" Text="{Binding BaleLengthMinMM}"/>
+                </Grid>
+
+
+                <Grid Grid.Row="2" Grid.Column="5"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Speed Diff."
+                        Foreground="White" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                            VerticalContentAlignment="Center"
+                            IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                           HorizontalContentAlignment="Center" Text="{Binding SensorDistanceMM}"/>
+                </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="5"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Process T-Out"
+                            Foreground="White" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                            VerticalContentAlignment="Center"
+                            IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                           HorizontalContentAlignment="Center" Text="{Binding WLProcessTO}"/>
+                </Grid>
+
+
+                <Grid Grid.Row="4" Grid.Column="5"  Background="#FF152D42" Margin="3">
+                    <Grid.Effect>
+                        <DropShadowEffect/>
+                    </Grid.Effect>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="5"/>
+                    </Grid.ColumnDefinitions>
+                    <Label  Grid.Column="1" Content="Request T-Out"
+                             Foreground="White" VerticalAlignment="Center"/>
+
+                    <TextBox Grid.Column="2" Background="Transparent" FontSize="16" Foreground="AntiqueWhite"
+                            VerticalContentAlignment="Center"
+                            IsReadOnly="True" Style="{x:Null}"  BorderThickness="1"
+                           HorizontalContentAlignment="Center" Text="{Binding RTRequestTO}"/>
+                </Grid>
+
+                <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="5" HorizontalAlignment="Center" Margin="0,10,0,0">
+
+                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Foreground="Yellow" FontSize="14"
+                            Content="Write WetLayer.ini => WetLayer.csv" VerticalAlignment="Center" >
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+
+                    <Button x:Name="btnBrowse" Grid.Column="2"  Content="Browse"  HorizontalAlignment="Center" Command="{Binding BrowseCommand}"
+                         ToolTip="Select File location" Style="{StaticResource MyButton}" 
+                         Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="100" Height="30" Cursor="Hand"/>
+
+                <TextBox x:Name="txtFileLocation"  Grid.Column="3" HorizontalAlignment="Left" Background="White"
+                          FontSize="12"  Height="27" Margin="20,0,0,0" Grid.Row="5" Grid.ColumnSpan="2" 
+                          Text="{Binding StrFileLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"  Width="200"/>
+
+
+                <Button Content="Write CSV" Grid.Column="5"  HorizontalAlignment="Center" Foreground="White"
+                     Command="{Binding WriteCommand}"  ToolTip="Write CSV file"  Style="{StaticResource MyButton}" 
+                     Margin="20,0,0,0" Grid.Row="5" VerticalAlignment="Center"  Width="100" Height="30" Cursor="Hand">
+                    <Button.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="#FF2A5D48" Offset="0"/>
+                            <GradientStop Color="#FF559347" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+
+                </StackPanel>
+            </Grid>
+            
+
+
+        </Grid>
+    </Border>
 </Window>
