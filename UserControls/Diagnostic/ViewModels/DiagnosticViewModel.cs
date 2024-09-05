@@ -10,6 +10,8 @@ namespace Diagnostic.ViewModels
     {
         protected readonly IEventAggregator _eventAggregator;
 
+        public Action CloseAction { get; set; }
+
         public DiagnosticViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
