@@ -75,6 +75,7 @@
     <ProjectReference Include="..\Modules\ModWetLayerTrend\ModWetLayerTrend.csproj" />
     <ProjectReference Include="..\Modules\ModWetLayer\ModWetLayer.csproj" />
     <ProjectReference Include="..\Services\AppServices\AppServices.csproj" />
+    <ProjectReference Include="..\UserControls\SystemInfo\SystemInfo.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Windows.Interactivity">

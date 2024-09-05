@@ -74,7 +74,7 @@
                                 </Label.Effect>
                             </Label>
                             <Button x:Name="btnPrint"  Width="40" Height="30" VerticalAlignment="Top" Cursor="Hand"  
-                                    BorderBrush="{x:Null}" Visibility="{Binding ShowDiagn}"
+                                    BorderBrush="{x:Null}" Visibility="{Binding ShowDiagn}" Command="{Binding SetupCommand}"
                                     Background="{x:Null}" Foreground="#FFF1E243" ToolTip="Test button">
                                 <MaterialDesign:PackIcon Kind="File" Width="25" Height="25" HorizontalAlignment="Center" Margin="0,0,10,0" >
                                     <MaterialDesign:PackIcon.Effect>

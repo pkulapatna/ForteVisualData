@@ -23,6 +23,7 @@ using static AppServices.ClassApplicationService;
 using ModDropLineChart;
 using ModDropLineChart.ViewModels;
 using ModWetLayerTrend.ViewModels;
+using SystemInfo.Views;
 
 namespace ForteVisualData.ViewModels
 {
@@ -767,7 +768,8 @@ namespace ForteVisualData.ViewModels
             _setupCommand ?? (_setupCommand = new DelegateCommand(SetupExecute));
         private void SetupExecute()
         {
-            
+            SysInfoView _sysInfoView = new(_eventAggregator);
+            _sysInfoView.ShowDialog();
         }
 
         private DelegateCommand _infoCommand;
