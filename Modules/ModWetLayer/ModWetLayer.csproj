@@ -17,9 +17,6 @@
     <Reference Include="System.Windows.Controls.DataVisualization.Toolkit">
 	  <HintPath>..\..\..\..\..\LibraryResource\WpfArchive.Windows.Theme\bin\Release\WpfArchive.Windows.Theme.dll</HintPath>
     </Reference>
-    <Reference Include="System.Windows.Interactivity">
-	  <HintPath>CustomReference\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">

@@ -8,6 +8,7 @@ using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -1274,7 +1275,9 @@ namespace ModWetLayer.ViewModels
 
             try
             {
-                if(mytable.Rows.Count > 0)
+                Debug.WriteLine(" mytable Row Count =" + mytable.Rows.Count);
+
+                if (mytable.Rows.Count > 0)
                 {
 
                     MyCVListX = new List<Tuple<long, string, double>>();
@@ -1334,10 +1337,15 @@ namespace ModWetLayer.ViewModels
                             for (int i = 1; i < iLayerCount + 1; i++)
                             {
                                 strLayer = "Layer" + i.ToString();
+                                
                                 dtRow[strLayer] = StructLast.dLayers[i - 1].ToString("#0.00");
+
+                                Debug.WriteLine(strLayer + " i val= " + i);
                             }
                             //Graph Title
                             dtRow["Title"] = dtRow["ReadTime"] + " - Baler " + dtRow["BalerID"] + ", Number - " + dtRow["ID"];
+
+                            //Debug.WriteLine(dtRow["Title"]);
                         }
                     }
 
