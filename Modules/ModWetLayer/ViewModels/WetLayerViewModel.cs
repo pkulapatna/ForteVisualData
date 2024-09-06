@@ -1275,7 +1275,7 @@ namespace ModWetLayer.ViewModels
 
             try
             {
-                Debug.WriteLine(" mytable Row Count =" + mytable.Rows.Count);
+                //Debug.WriteLine(" mytable Row Count =" + mytable.Rows.Count);
 
                 if (mytable.Rows.Count > 0)
                 {
@@ -1340,7 +1340,7 @@ namespace ModWetLayer.ViewModels
                                 
                                 dtRow[strLayer] = StructLast.dLayers[i - 1].ToString("#0.00");
 
-                                Debug.WriteLine(strLayer + " i val= " + i);
+                              //  Debug.WriteLine(strLayer + " i val= " + i);
                             }
                             //Graph Title
                             dtRow["Title"] = dtRow["ReadTime"] + " - Baler " + dtRow["BalerID"] + ", Number - " + dtRow["ID"];
