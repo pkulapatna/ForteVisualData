@@ -700,14 +700,14 @@ namespace AppServices
                     "SpareSngFld2",
                     //RemoveFieldsList.Add("SpareSngFld3");
                     "LastInGroup",
-                    "MoistMes",
+                    //"MoistMes",
                     "ProdDayStart",
                     "ProdDayEnd",
                     "SourceID",
                     //RemoveFieldsList.Add("LineID");
                     "StockID",
                     "GradeID",
-                    "WtMes",
+                    //"WtMes",
                     "AsciiFld3",
                     "AsciiFld4",
                     "SR",
