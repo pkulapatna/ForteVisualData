@@ -725,6 +725,7 @@ namespace ModSetup.ViewModels
             ClassCommon.GraphCheck = GraphCheck;
             ClassCommon.CombineCheck = CombineCheck;
             ClassCommon.ArchiveCheck = ArchiveCheck;
+            ClassCommon.DualGraphCheck = DualGraphCheck;
 
             if (ClassCommon.WLOptions)
             {

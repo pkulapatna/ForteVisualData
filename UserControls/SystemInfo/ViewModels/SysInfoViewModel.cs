@@ -4,6 +4,7 @@ using Prism.Events;
 using Prism.Mvvm;
 using System;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
 using System.Windows;
 using WinForms = System.Windows.Forms;
@@ -219,6 +220,52 @@ namespace SystemInfo.ViewModels
             WetLayerini.readinifile();
 
             IniDatLines = WetLayerini.IniDatLines;
+
+        }
+
+
+
+
+        private DelegateCommand _writeZipCommand;
+        public DelegateCommand WriteZipCommand =>
+        _writeZipCommand ?? (_writeZipCommand = new DelegateCommand(WriteZipExecute).ObservesCanExecute(() => BCSVCanwrite));
+        private void WriteZipExecute()
+        {
+            string path = @"c:\ForteDebug";
+
+            CreateFolder(path);
+
+        }
+
+
+       
+       
+
+        private void CreateFolder(string path)
+        {
+            try
+            {
+                // Determine whether the directory exists.
+                if (Directory.Exists(path))
+                {
+                    Debug.WriteLine("That path exists already.");
+                    return;
+                }
+                // Try to create the directory.
+                DirectoryInfo di = Directory.CreateDirectory(path);
+                Debug.WriteLine("The directory was created successfully at {0}.", Directory.GetCreationTime(path));
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in CreateFolder " + ex);
+            }
+        }
+
+
+        private void RemoveFolder()
+        {
+            string path = @"c:\ForteDebug";
 
         }
 

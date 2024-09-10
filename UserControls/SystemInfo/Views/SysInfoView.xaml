@@ -40,6 +40,86 @@
             </Grid.ColumnDefinitions>
 
 
+            <Grid Grid.Row="1" Grid.Column="1" Background="#FF506D88" Margin="5">
+                <Grid.Effect>
+                    <DropShadowEffect/>
+                </Grid.Effect>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="0"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="15*"/>
+                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="5"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Foreground="Yellow" FontSize="14"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,0"  Content="- Generate information to assist trouble shooting Realtime System. -" >
+                    <Label.Effect>
+                        <DropShadowEffect/>
+                    </Label.Effect>
+                </Label>
+
+                <Label Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Foreground="White" FontSize="14"
+                        Content="1. ReportJ4.mdb BaleArchive Table"/>
+
+                <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Foreground="White" FontSize="14"
+                        Content="2. Realtime Current System log"/>
+
+                <Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Foreground="White" FontSize="14"
+                        Content="3. Realtime Backup Database "/>
+
+                
+                <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="5" HorizontalAlignment="Center" Margin="0,10,0,0">
+
+                    <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Foreground="Yellow" FontSize="14"
+                            Content=" Target For Zip File Location" VerticalAlignment="Center" >
+                        <Label.Effect>
+                            <DropShadowEffect/>
+                        </Label.Effect>
+                    </Label>
+
+                    <Button x:Name="btnBrowse2" Grid.Column="2"  Content="Browse"  HorizontalAlignment="Center" Command="{Binding BrowseCommand}"
+                             ToolTip="Select File location" Style="{StaticResource MyButton}" 
+                             Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="100" Height="30" Cursor="Hand"/>
+
+                    <TextBox x:Name="txtFileLocation2"  Grid.Column="3" HorizontalAlignment="Left" Background="White"
+                              FontSize="12"  Height="27" Margin="20,0,0,0" Grid.Row="5" Grid.ColumnSpan="2" 
+                              Text="{Binding StrFileLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"  Width="200"/>
+
+
+                    <Button Content="Write File" Grid.Column="5"  HorizontalAlignment="Center" Foreground="White"
+                             Command="{Binding WriteZipCommand}"  ToolTip="Write file"  Style="{StaticResource MyButton}" 
+                             Margin="20,0,0,0" Grid.Row="5" VerticalAlignment="Center"  Width="120" Height="30" Cursor="Hand">
+                        <Button.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF2A5D48" Offset="0"/>
+                                <GradientStop Color="#FF559347" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+
+
+                </StackPanel>
+
+
+
+
+
+
+
+            </Grid>
+            
             <Grid Grid.Row="2" Grid.Column="1" Margin="5" Background="#FF506D88" Visibility="{Binding ShowWLSetup}">
                 <Grid.Effect>
                     <DropShadowEffect/>
