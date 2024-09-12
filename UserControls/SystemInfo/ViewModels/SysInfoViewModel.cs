@@ -1,12 +1,17 @@
 ﻿using AppServices;
+using Microsoft.VisualBasic.Logging;
 using Prism.Commands;
 using Prism.Events;
 using Prism.Mvvm;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
+using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using WinForms = System.Windows.Forms;
 
 namespace SystemInfo.ViewModels
@@ -17,6 +22,8 @@ namespace SystemInfo.ViewModels
         protected readonly IEventAggregator _eventAggregator;
         private IEventAggregator eventAggregator;
 
+        private string Debugpath = @"c:\ForteDebug\";
+
 
         private bool _wetLayerExist =  ClassCommon.WetLayerCheck;
         public bool WetLayerExist
@@ -26,12 +33,22 @@ namespace SystemInfo.ViewModels
         }
 
 
-        private string _strFileLocation = "C:\\temp";
+        private string _strFileLocation = @"c:\ForteDebug\";
         public string StrFileLocation
         {
             get { return _strFileLocation; }
             set { SetProperty(ref _strFileLocation, value); }
         }
+
+
+
+        private string _zipFileLocation = @"c:\temp";
+        public string ZipFileLocation
+        {
+            get { return _zipFileLocation; }
+            set { SetProperty(ref _zipFileLocation, value); }
+        }
+
 
         private string _StrFileName;
         public string StrFileName
@@ -176,8 +193,9 @@ namespace SystemInfo.ViewModels
 
         private void getLocalWetLayerSetUp()
         {
-            StrFileLocation = @"C:\temp";
-            StrFileName = $"WetLayerIni";
+            StrFileLocation = @"c:\ForteDebug\";
+            StrFileName = $"WetLayerIni.csv";
+            ZipFileLocation = @"C:\temp";
 
             ClsIniOptions WetLayerini = new();
 
@@ -211,35 +229,167 @@ namespace SystemInfo.ViewModels
 
         private void SetUpWetLayer()
         {
-
             ClsIniOptions WetLayerini = new();
-
-            StrFileLocation = @"C:\temp";
-            StrFileName = $"WetLayerIni";
-
             WetLayerini.readinifile();
-
             IniDatLines = WetLayerini.IniDatLines;
-
         }
-
-
-
 
         private DelegateCommand _writeZipCommand;
         public DelegateCommand WriteZipCommand =>
         _writeZipCommand ?? (_writeZipCommand = new DelegateCommand(WriteZipExecute).ObservesCanExecute(() => BCSVCanwrite));
         private void WriteZipExecute()
         {
-            string path = @"c:\ForteDebug";
+            CreateFolder(Debugpath);
 
-            CreateFolder(path);
+            //Delete all files from the target directory first. 
+            System.IO.DirectoryInfo di = new DirectoryInfo(Debugpath);
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+
+
+            if (CopyLogFiles()) MessageBox.Show("Copy LogFiles Done.");
+            if (CopyBackUpfiles()) MessageBox.Show("Copy Backup Files Done.");
+
+            if(File.Exists(ZipFileLocation + @"\ForteDebug.zip"))
+            {
+                File.Delete(ZipFileLocation + @"\ForteDebug.zip");
+            }
+            ZipFile.CreateFromDirectory(@"c:\ForteDebug", ZipFileLocation +  @"\ForteDebug.zip");
 
         }
 
+        private bool CopyLogFiles()
+        {
+            bool bCopy = false;
 
-       
-       
+           // string LogWLfileToCopy = @"c:\ForteSystem\Realtime\ASCIILog\RealTimeWL_CurrentSystem.LOG";
+           // string WLFileLocation = Debugpath + @"\RealTimeWL_CurrentSystem.LOG";
+
+          //  string LogfileToCopy = @"c:\ForteSystem\Realtime\ASCIILog\RealTime_CurrentSystem.LOG";
+          //  string LogFileLocation = Debugpath + @"\RealTime_CurrentSystem.LOG";
+
+            string LogPath = @"c:\ForteSystem\Realtime\ASCIILog\";
+
+            try
+            {
+
+                System.IO.DirectoryInfo di = new DirectoryInfo(LogPath);
+                FileInfo[] files = di.GetFiles().OrderByDescending(p => p.LastWriteTime).ToArray();
+
+                List<FileInfo> logFiles = new List<FileInfo>();
+
+                for (int i =0 ; i < files.Length; i++)
+                {
+                        if (files[i].Name.Contains("RealTime"))
+                        {
+                            logFiles.Add(files[i]);
+
+                            if (logFiles.Count < 5) 
+                            {
+                                File.Copy(files[i].ToString(), Debugpath + Path.GetFileName(files[i].ToString()));
+                            }
+                        }      
+                }
+
+                bCopy = true;
+                
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show("Error in CopyLogFiles " + ex);
+            }
+            return bCopy;
+        }
+
+
+        private bool CopyBackUpfiles() 
+        {
+            bool bDone = false;
+
+            string basePath = @"c:\ForteSystem\";
+
+            string archivePath = basePath + @"\Archives\";
+            string calPath = basePath + @"\Calibrations\";
+            string gradePath = basePath + @"\Grades\";
+            string realtimePath = basePath + @"\Realtime\";
+            string reportsPath = basePath + @"\Reports\";
+            string SystemPath = basePath + @"\System\";
+            string SecurityPath = basePath + @"\Security\";
+
+
+            try
+            {
+
+                File.Copy(archivePath + @"\OutputSys.mdb", Debugpath + Path.GetFileName(archivePath + @"\OutputSys.mdb"));
+
+                File.Copy(calPath + @"\Calibrate.mdb", Debugpath + Path.GetFileName(calPath + @"\Calibrate.mdb"));
+
+                File.Copy(gradePath + @"\PulpGrade.mdb", Debugpath + Path.GetFileName(gradePath + @"\PulpGrade.mdb"));
+
+                File.Copy(realtimePath + @"\7760.mdb", Debugpath + Path.GetFileName(realtimePath + @"\7760.mdb"));
+                File.Copy(realtimePath + @"\Cfg7760.mdb", Debugpath + Path.GetFileName(realtimePath + @"\Cfg7760.mdb"));
+                File.Copy(realtimePath + @"\CustomConfig.mdb", Debugpath + Path.GetFileName(realtimePath + @"\CustomConfig.mdb"));
+
+                File.Copy(reportsPath + @"\LVFormats.mdb", Debugpath + Path.GetFileName(reportsPath + @"\LVFormats.mdb"));
+                File.Copy(reportsPath + @"\MarkerFormats.mdb", Debugpath + Path.GetFileName(reportsPath + @"\MarkerFormats.mdb"));
+                File.Copy(reportsPath + @"\PrinterFormats.mdb", Debugpath + Path.GetFileName(reportsPath + @"\PrinterFormats.mdb"));
+                File.Copy(reportsPath + @"\ReportsJ4.mdb", Debugpath + Path.GetFileName(reportsPath + @"\ReportsJ4.mdb"));
+
+                File.Copy(SystemPath + @"\FSys.ini", Debugpath + Path.GetFileName(SystemPath + @"\FSys.ini"));
+                File.Copy(SecurityPath + @"\UPG.DAT", Debugpath + Path.GetFileName(SecurityPath + @"\UPG.DAT"));
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in CopyBackUpfiles " + ex);                
+            }
+            return bDone;
+        }
+
+
+
+        private void GetAccessTable()
+        {
+          
+            StrPathFile = Debugpath + "\\BaleArchive.csv";
+
+            CreateFolder(Debugpath);
+
+            ClassAccessHandler accessHandler = ClassAccessHandler.Instance;
+
+            DataTable dt = accessHandler.GetAccessArchiveTable2();
+
+
+            if (dt.Rows.Count > 0)
+            {
+                StreamWriter outFile = new StreamWriter(StrPathFile);
+                List<string> headerValues = new List<string>();
+                foreach (DataColumn column in dt.Columns)
+                {
+                    headerValues.Add(QuoteValue("'" + column.ColumnName));
+                }
+                //Header
+                outFile.WriteLine(string.Join(",", headerValues.ToArray()));
+
+                foreach (DataRow row in dt.Rows)
+                {
+                    string[] fields = row.ItemArray.Select(field => field.ToString()).ToArray();
+                    outFile.WriteLine(String.Join(",", fields));
+                }
+                outFile.Close();
+            }
+        }
+
+        public string QuoteValue(string value)
+        {
+            return string.Concat("" + value + "");
+        }
+
 
         private void CreateFolder(string path)
         {
@@ -263,26 +413,30 @@ namespace SystemInfo.ViewModels
         }
 
 
-        private void RemoveFolder()
-        {
-            string path = @"c:\ForteDebug";
-
-        }
-
-
         private DelegateCommand _writeCommand;
         public DelegateCommand WriteCommand =>
         _writeCommand ?? (_writeCommand = new DelegateCommand(WriteExecute).ObservesCanExecute(() => BCSVCanwrite));
 
         private void WriteExecute()
         {
-            string timeNow = DateTime.Now.ToString("MM.dd.yy.H.m");
-            StrFileName = $"{StrFileName} {timeNow}.csv";
-            StrPathFile = StrFileLocation + @"\" + StrFileName;
+          //  WriteCSVWLiniFile();
+        }
 
-            SaveArrayAsCSV(IniDatLines, StrPathFile);
+        private bool WriteCSVWLiniFile()
+        {
+            bool bDone = false;
 
-            MessageBox.Show($"Writed CSV file to {StrPathFile} DONE!");
+            try
+            {
+                StrPathFile = StrFileLocation + @"\" + StrFileName;
+                SaveArrayAsCSV(IniDatLines, StrPathFile);
+                bDone = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in WriteCSVWLiniFile " + ex);
+            }
+            return  bDone;
         }
 
         public static void SaveArrayAsCSV<T>(T[] arrayToSave, string fileName)
@@ -307,10 +461,10 @@ namespace SystemInfo.ViewModels
                 {
                     if (dlg.ShowDialog() == WinForms.DialogResult.OK)
                     {
-                        dlg.InitialDirectory = StrFileLocation;
-                         StrFileLocation = dlg.SelectedPath;
+                        dlg.InitialDirectory = ZipFileLocation;
+                        ZipFileLocation = dlg.SelectedPath;
                     }
-                    FindCreateDir(StrFileLocation);
+                    FindCreateDir(ZipFileLocation);
                 }
             }
             catch (Exception ex)
