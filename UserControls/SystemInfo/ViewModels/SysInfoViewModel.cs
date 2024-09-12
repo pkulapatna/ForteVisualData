@@ -239,7 +239,10 @@ namespace SystemInfo.ViewModels
         _writeZipCommand ?? (_writeZipCommand = new DelegateCommand(WriteZipExecute).ObservesCanExecute(() => BCSVCanwrite));
         private void WriteZipExecute()
         {
+            bool bGood = false;
+
             CreateFolder(Debugpath);
+
 
             //Delete all files from the target directory first. 
             System.IO.DirectoryInfo di = new DirectoryInfo(Debugpath);
@@ -253,8 +256,8 @@ namespace SystemInfo.ViewModels
             }
 
 
-            if (CopyLogFiles()) MessageBox.Show("Copy LogFiles Done.");
-            if (CopyBackUpfiles()) MessageBox.Show("Copy Backup Files Done.");
+            if (CopyLogFiles()) bGood = true;
+            if (CopyBackUpfiles()) bGood = true;
 
             if(File.Exists(ZipFileLocation + @"\ForteDebug.zip"))
             {
@@ -262,18 +265,12 @@ namespace SystemInfo.ViewModels
             }
             ZipFile.CreateFromDirectory(@"c:\ForteDebug", ZipFileLocation +  @"\ForteDebug.zip");
 
+            if(bGood) MessageBox.Show("Create Zip file Done.");
         }
 
         private bool CopyLogFiles()
         {
             bool bCopy = false;
-
-           // string LogWLfileToCopy = @"c:\ForteSystem\Realtime\ASCIILog\RealTimeWL_CurrentSystem.LOG";
-           // string WLFileLocation = Debugpath + @"\RealTimeWL_CurrentSystem.LOG";
-
-          //  string LogfileToCopy = @"c:\ForteSystem\Realtime\ASCIILog\RealTime_CurrentSystem.LOG";
-          //  string LogFileLocation = Debugpath + @"\RealTime_CurrentSystem.LOG";
-
             string LogPath = @"c:\ForteSystem\Realtime\ASCIILog\";
 
             try
