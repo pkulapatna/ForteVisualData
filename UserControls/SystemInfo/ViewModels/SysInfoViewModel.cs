@@ -271,6 +271,12 @@ namespace SystemInfo.ViewModels
             if(bGood) MessageBox.Show("Create Zip file Done.");
         }
 
+        /// <summary>
+        /// Only select  logfile.Count < 5  from the ASCIILog folder.
+        /// In the ASCIILog folder here could be many files from the pass.
+        /// Only pick the latest numbers of files.
+        /// </summary>
+        /// <returns></returns>
         private bool CopyLogFiles()
         {
             bool bCopy = false;
@@ -278,7 +284,6 @@ namespace SystemInfo.ViewModels
 
             try
             {
-
                 System.IO.DirectoryInfo di = new DirectoryInfo(LogPath);
                 FileInfo[] files = di.GetFiles().OrderByDescending(p => p.LastWriteTime).ToArray();
                 List<FileInfo> logFiles = new List<FileInfo>();
