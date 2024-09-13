@@ -243,7 +243,6 @@ namespace SystemInfo.ViewModels
 
             CreateFolder(Debugpath);
 
-
             //Delete all files from the target directory first. 
             System.IO.DirectoryInfo di = new DirectoryInfo(Debugpath);
             foreach (FileInfo file in di.GetFiles())
@@ -254,7 +253,11 @@ namespace SystemInfo.ViewModels
             {
                 dir.Delete(true);
             }
-
+            //Check for Wet Layer System
+            if (ClassCommon.WetLayerCheck)
+            {
+                WriteCSVWLiniFile();
+            }
 
             if (CopyLogFiles()) bGood = true;
             if (CopyBackUpfiles()) bGood = true;
@@ -278,24 +281,21 @@ namespace SystemInfo.ViewModels
 
                 System.IO.DirectoryInfo di = new DirectoryInfo(LogPath);
                 FileInfo[] files = di.GetFiles().OrderByDescending(p => p.LastWriteTime).ToArray();
-
                 List<FileInfo> logFiles = new List<FileInfo>();
 
                 for (int i =0 ; i < files.Length; i++)
                 {
-                        if (files[i].Name.Contains("RealTime"))
+                    if (files[i].Name.Contains("RealTime"))
+                    {
+                        logFiles.Add(files[i]);
+
+                        if (logFiles.Count < 5) 
                         {
-                            logFiles.Add(files[i]);
-
-                            if (logFiles.Count < 5) 
-                            {
-                                File.Copy(files[i].ToString(), Debugpath + Path.GetFileName(files[i].ToString()));
-                            }
-                        }      
+                            File.Copy(files[i].ToString(), Debugpath + Path.GetFileName(files[i].ToString()));
+                        }
+                    }      
                 }
-
                 bCopy = true;
-                
             }
             catch (Exception ex )
             {
@@ -318,7 +318,6 @@ namespace SystemInfo.ViewModels
             string reportsPath = basePath + @"\Reports\";
             string SystemPath = basePath + @"\System\";
             string SecurityPath = basePath + @"\Security\";
-
 
             try
             {
@@ -358,9 +357,7 @@ namespace SystemInfo.ViewModels
             CreateFolder(Debugpath);
 
             ClassAccessHandler accessHandler = ClassAccessHandler.Instance;
-
             DataTable dt = accessHandler.GetAccessArchiveTable2();
-
 
             if (dt.Rows.Count > 0)
             {
@@ -425,7 +422,7 @@ namespace SystemInfo.ViewModels
 
             try
             {
-                StrPathFile = StrFileLocation + @"\" + StrFileName;
+                StrPathFile = Debugpath + @"\" + StrFileName;
                 SaveArrayAsCSV(IniDatLines, StrPathFile);
                 bDone = true;
             }
