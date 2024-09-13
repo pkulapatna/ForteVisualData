@@ -190,6 +190,17 @@ namespace ModCombine.ViewModels
                         Settings.Default.GraphTwoLimitHi = value;
                         Settings.Default.Save();
                     }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                    {
+                        Settings.Default.GraphThreeLimitHi = value;
+                        Settings.Default.Save();
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                    {
+                        Settings.Default.GraphFourLimitHi = value;
+                        Settings.Default.Save();
+
+                    }
                 }
             }
         }
@@ -213,6 +224,17 @@ namespace ModCombine.ViewModels
                     {
                         Settings.Default.GraphTwoLimitLo = value;
                         Settings.Default.Save();
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                    {
+                        Settings.Default.GraphThreeLimitLo = value;
+                        Settings.Default.Save();
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                    {
+                        Settings.Default.GraphFourLimitLo = value;
+                        Settings.Default.Save();
+
                     }
                 }
             }
@@ -405,6 +427,17 @@ namespace ModCombine.ViewModels
                 GraphLimitHi = Settings.Default.GraphTwoLimitHi;
                 GraphLimitLo = Settings.Default.GraphTwoLimitLo;
             }
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+            {
+                GraphLimitHi = Settings.Default.GraphThreeLimitHi;
+                GraphLimitLo = Settings.Default.GraphThreeLimitLo;
+            }
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+            {
+                GraphLimitHi = Settings.Default.GraphFourLimitHi;
+                GraphLimitLo = Settings.Default.GraphFourLimitLo;
+            }
+
         }
 
 
@@ -587,6 +620,7 @@ namespace ModCombine.ViewModels
                     ChartTitle = $"Graph of Weight (kg) from the newest {ClassCommon.ComBineSample} items ";
                     break;
                 case 2:
+                    ChartTitle = $"Graph of Bone Dry Weight from the newest {ClassCommon.ComBineSample} items ";
                     break;
                 case 3:
                     break;
@@ -669,15 +703,24 @@ namespace ModCombine.ViewModels
 
                             if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
                             {
-                                valueY[i] = rDt.Rows[i].Field<float>("Moisture");
+                                valueY[i] = ClassCommon.ConvertMoisture(rDt.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
                                 YTitle = ClassCommon.MoistureTypeLst[ClassCommon.MoistureType];
                             }
                             else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                             {
-                                valueY[i] = rDt.Rows[i].Field<float>("Weight");
+                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("Weight"), ClassCommon.WeightUnit);
                                 YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
                             }
-                                
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                            {
+                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit);
+                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                            {
+                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit)/0.9;
+                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                            }
                         }
 
                         CombineView._combineView?.PlotChart(timeX, valueY, ChartTitle, YTitle);
@@ -694,18 +737,17 @@ namespace ModCombine.ViewModels
                             GraphHigh = mMax.ToString("#0.00");
                             GraphLow = mMin.ToString("#0.00");
                         }
-                        if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                        {
-                            for (int i = 0; i < ClassCommon.ComBineSample; i++)
-                            {
-                                WData.Add(valueY[i]);
-                            }
-                            double wMax = WData.Max();
-                            double wMin = WData.Min();
 
-                            GraphHigh = wMax.ToString("#0.00");
-                            GraphLow = wMin.ToString("#0.00");
+                        for (int i = 0; i < ClassCommon.ComBineSample; i++)
+                        {
+                            WData.Add(valueY[i]);
                         }
+                        double wMax = WData.Max();
+                        double wMin = WData.Min();
+
+                        GraphHigh = wMax.ToString("#0.00");
+                        GraphLow = wMin.ToString("#0.00");
+                       
 
                         CurMoisture = ClassCommon.ConvertMoisture(RealTimeSumDataTable.Rows[0].Field<Single>("Moisture"), ClassCommon.MoistureType).ToString("#0.00");
                         CurWeight = ClassCommon.ConvertWeight(RealTimeSumDataTable.Rows[0].Field<Single>("Weight"), ClassCommon.WeightUnit).ToString("#0.00");

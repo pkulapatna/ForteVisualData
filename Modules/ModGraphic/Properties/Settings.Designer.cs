@@ -12,7 +12,7 @@ namespace ModGraphic.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.11.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -92,6 +92,54 @@ namespace ModGraphic.Properties {
             }
             set {
                 this["SelectedLineVal"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("200")]
+        public double GraphThreeLimitHi {
+            get {
+                return ((double)(this["GraphThreeLimitHi"]));
+            }
+            set {
+                this["GraphThreeLimitHi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double GraphThreeLimitLo {
+            get {
+                return ((double)(this["GraphThreeLimitLo"]));
+            }
+            set {
+                this["GraphThreeLimitLo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double GraphFourLimitHi {
+            get {
+                return ((double)(this["GraphFourLimitHi"]));
+            }
+            set {
+                this["GraphFourLimitHi"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public double GraphFourLimitLo {
+            get {
+                return ((double)(this["GraphFourLimitLo"]));
+            }
+            set {
+                this["GraphFourLimitLo"] = value;
             }
         }
     }

@@ -167,9 +167,16 @@ namespace GraphMenuBar.ViewModels
             _eventAggregator.GetEvent<SettingsChangedEvents>().Subscribe(UpdateSettings);
 
             if (ClassCommon.WeightUnit == 0)
+            {
                 MenuThreeHdr = "BDWeight(kg.)";
-            else if (ClassCommon.WeightUnit == 1)
+                MenuFourHdr = "ADWeight(kg.)";
+            }
+            else if (ClassCommon.WeightUnit == 1) 
+            {
                 MenuThreeHdr = "BDWeight(lb.)";
+                MenuFourHdr = "ADWeight(lb.)";
+            }
+                
 
             switch (ClassCommon.MenuChecked)
             {
@@ -185,7 +192,7 @@ namespace GraphMenuBar.ViewModels
                     MenuThreeChecked = true;    
                     break;
 
-                case 3:
+                case ClassCommon.MenuADWeight:
                     MenuFourChecked = true; 
                     break;
                 case 4:

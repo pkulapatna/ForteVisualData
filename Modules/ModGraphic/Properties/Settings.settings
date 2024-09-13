@@ -20,5 +20,17 @@
     <Setting Name="SelectedLineVal" Type="System.String" Scope="User">
       <Value Profile="(Default)">ALL</Value>
     </Setting>
+    <Setting Name="GraphThreeLimitHi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">200</Value>
+    </Setting>
+    <Setting Name="GraphThreeLimitLo" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="GraphFourLimitHi" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="GraphFourLimitLo" Type="System.Double" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

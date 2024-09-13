@@ -162,6 +162,16 @@ namespace ModGraphic.ViewModels
                         Settings.Default.GraphTwoLimitHi = value;
                         Settings.Default.Save();
                     }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                    {
+                        Settings.Default.GraphThreeLimitHi = value;
+                        Settings.Default.Save();
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                    {
+                        Settings.Default.GraphFourLimitHi = value;
+                        Settings.Default.Save();
+                    }
                 }
             }
         }
@@ -184,6 +194,16 @@ namespace ModGraphic.ViewModels
                     else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                     {
                         Settings.Default.GraphTwoLimitLo = value;
+                        Settings.Default.Save();
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                    {
+                        Settings.Default.GraphThreeLimitLo = value;
+                        Settings.Default.Save();
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                    {
+                        Settings.Default.GraphFourLimitLo = value;
                         Settings.Default.Save();
                     }
                 }
@@ -224,8 +244,6 @@ namespace ModGraphic.ViewModels
             BaleSample = ClassCommon.ComBineSample;
 
 
-
-
             if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
             {
                 GraphLimitHi = Settings.Default.GraphOneLimitHi;
@@ -236,6 +254,16 @@ namespace ModGraphic.ViewModels
             {
                 GraphLimitHi = Settings.Default.GraphTwoLimitHi;
                 GraphLimitLo = Settings.Default.GraphTwoLimitLo;
+            }
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+            {
+                GraphLimitHi = Settings.Default.GraphThreeLimitHi;
+                GraphLimitLo = Settings.Default.GraphThreeLimitLo;
+            }
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+            {
+                GraphLimitHi = Settings.Default.GraphFourLimitHi;
+                GraphLimitLo = Settings.Default.GraphFourLimitLo;
             }
         }
 
@@ -274,7 +302,16 @@ namespace ModGraphic.ViewModels
                 GraphLimitHi = Settings.Default.GraphTwoLimitHi;
                 GraphLimitLo = Settings.Default.GraphTwoLimitLo;
             }
-
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+            {
+                GraphLimitHi = Settings.Default.GraphThreeLimitHi;
+                GraphLimitLo = Settings.Default.GraphThreeLimitLo;
+            }
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+            {
+                GraphLimitHi = Settings.Default.GraphFourLimitHi;
+                GraphLimitLo = Settings.Default.GraphFourLimitLo;
+            }
         }
 
         private void UpdateSettings(int obj)
@@ -385,28 +422,37 @@ namespace ModGraphic.ViewModels
 
                     timeX = new double[rDt.Rows.Count];
                     valueY = new double[rDt.Rows.Count];
-                    for (int i = 0; i < rDt.Rows.Count; i++)
-                    {
-                        timeX[i] = i + 1;
-
-                        if(ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                        {
-                            //valueY[i] = rDt.Rows[i].Field<float>("Moisture");
-                            valueY[i] = ClassCommon.ConvertMoisture(rDt.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
-                            YTitle = ClassCommon.MoistureTypeLst[ClassCommon.MoistureType];
-                        }
-                        else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                        {
-                            valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("Weight"), ClassCommon.WeightUnit);
-                            YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
-                        }
-                            
-                    }
 
                     if (preIndex != newIndex)
                     {
-                        GraphicView._graphicView.PlotChart(timeX, valueY, ChartTitle, YTitle);
 
+                        for (int i = 0; i < rDt.Rows.Count; i++)
+                        {
+                            timeX[i] = i + 1;
+
+                            if(ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                            {
+                                valueY[i] = ClassCommon.ConvertMoisture(rDt.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
+                                YTitle = ClassCommon.MoistureTypeLst[ClassCommon.MoistureType];
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                            {
+                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("Weight"), ClassCommon.WeightUnit);
+                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                            {
+                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit);
+                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                            {
+                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit)/0.9;
+                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                            }
+                        }
+
+                        GraphicView._graphicView.PlotChart(timeX, valueY, ChartTitle, YTitle);
 
                         preIndex = newIndex;
                         _eventAggregator.GetEvent<UpdateRealTimeEvents>().Publish(DateTime.Now);
@@ -415,31 +461,16 @@ namespace ModGraphic.ViewModels
 
                         GraphicView._graphicView.MoveBaleOne(iPosition);
 
-                        if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                        for (int i = 0; i < ClassCommon.ComBineSample; i++)
                         {
-                            for (int i = 0; i < ClassCommon.ComBineSample; i++)
-                            {
-                                MData.Add(valueY[i]);
-                            }
-                            double mMax = MData.Max();
-                            double mMin = MData.Min();
-
-                            GraphHigh = mMax.ToString("#0.00");
-                            GraphLow = mMin.ToString("#0.00");
+                            MData.Add(valueY[i]);
                         }
+                        double mMax = MData.Max();
+                        double mMin = MData.Min();
 
-                        if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                        {
-                            for (int i = 0; i < ClassCommon.ComBineSample; i++)
-                            {
-                                WData.Add(valueY[i]);
-                            }
-                            double wMax = WData.Max();
-                            double wMin = WData.Min();
+                        GraphHigh = mMax.ToString("#0.00");
+                        GraphLow = mMin.ToString("#0.00");
 
-                            GraphHigh = wMax.ToString("#0.00");
-                            GraphLow = wMin.ToString("#0.00");
-                        }
                     }
                    
                 }

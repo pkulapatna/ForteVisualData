@@ -29,12 +29,17 @@
                     <RowDefinition Height="0"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="5"/>
-                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
-                <Border  Grid.Row="4" Grid.Column="1" CornerRadius="5" BorderThickness="1"
-                     BorderBrush="Gray" Background="Transparent">
-                    <Grid Margin="5,0,5,0">
+            <Border  Grid.Row="4" Grid.Column="1" CornerRadius="5" BorderThickness="1" VerticalAlignment="Center"> 
+                <Border.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="#FF939191" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Grid Margin="5,0,5,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="10*"/>
@@ -43,9 +48,9 @@
                             <ColumnDefinition Width="0"/>
                         </Grid.ColumnDefinitions>
                         <Label x:Name="MyTitle" Grid.Column="1" Content="{Binding AppStatus}" 
-                           FontWeight="Regular" HorizontalAlignment="Left"  Width="auto"
-                           FontSize="16" VerticalAlignment="Center" Margin="10,0,0,5"
-                           Background="Transparent" Foreground="AntiqueWhite" FontFamily="Yu Gothic UI">
+                               FontWeight="Regular" HorizontalAlignment="Left"  Width="auto"
+                               FontSize="16" VerticalAlignment="Center" Margin="10,0,0,5"
+                               Background="Transparent" Foreground="AntiqueWhite" FontFamily="Yu Gothic UI">
                             <Label.Effect>
                                 <DropShadowEffect/>
                             </Label.Effect>
@@ -60,7 +65,7 @@
                             </Label.Effect>
                         </Label>
 
-                        <StackPanel Grid.Column="3"  Orientation="Horizontal" HorizontalAlignment="Right" >
+                        <StackPanel Grid.Column="3"  Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center" >
 
                         <Label Content="{Binding ProgramVersion}" Foreground="YellowGreen" FontSize="16" Margin="0,0,10,0" >
                             <Label.Effect>

@@ -73,15 +73,27 @@ namespace ModGraphic.Views
                     WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitLo);
                     WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
                 }
-                else
+                else if(ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                 {
                     WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitHi);
                     WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitLo);
                     WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
                 }
+                else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                {
+                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitHi);
+                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitLo);
+                    WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                }
+                else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                {
+                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitHi);
+                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitLo);
+                    WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                }
 
 
-             
+
                 var sp = WpfPlot2.Plot.Add.Scatter(dataX, dataY);
 
                 sp.LineWidth = 2;

@@ -390,6 +390,7 @@ namespace AppServices
         public const int MenuMoisture = 0;
         public const int MenuWeight = 1;
         public const int MenuBDWeight = 2;
+        public const int MenuADWeight = 3;
 
 
         #endregion Menu options;

@@ -50,6 +50,19 @@ namespace ModCombine.Views
 
             WpfPlot2.Interaction.Disable();
 
+
+            if (ClassCommon.GraphDarkMode)
+            {
+                // change figure colors
+                WpfPlot2.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
+                WpfPlot2.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
+
+                // change axis and grid colors
+                WpfPlot2.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
+                WpfPlot2.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
+            }
+
+
             if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
             {
                 for (int i = 0;i< ClassCommon.ComBineSample; i++)
@@ -58,20 +71,6 @@ namespace ModCombine.Views
                 }
                 double mMax = MData.Max();
                 double mMin = MData.Min();
-
-
-                if (ClassCommon.GraphDarkMode)
-                {
-                    // change figure colors
-                    WpfPlot2.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
-                    WpfPlot2.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
-
-                    // change axis and grid colors
-                    WpfPlot2.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
-                    WpfPlot2.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
-                }
-
-
 
                 WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitHi);
                 WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitLo);
@@ -87,22 +86,42 @@ namespace ModCombine.Views
                 double wMax = WData.Max();
                 double wMin = WData.Min();
 
-                if (ClassCommon.GraphDarkMode)
-                {
-                    // change figure colors
-                    WpfPlot2.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
-                    WpfPlot2.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
-
-                    // change axis and grid colors
-                    WpfPlot2.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
-                    WpfPlot2.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
-                }
-
-
+               
                 WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitHi);
                 WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitLo);
                 WpfPlot2.Plot.Axes.SetLimitsY(wMin - 10, wMax + 10);
             }
+
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+            {
+                for (int i = 0; i < ClassCommon.ComBineSample; i++)
+                {
+                    WData.Add(dataY[i]);
+                }
+
+                double wMax = WData.Max();
+                double wMin = WData.Min();
+
+
+                WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitHi);
+                WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitLo);
+                WpfPlot2.Plot.Axes.SetLimitsY(wMin - 10, wMax + 10);
+            }
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+            {
+                for (int i = 0; i < ClassCommon.ComBineSample; i++)
+                {
+                    WData.Add(dataY[i]);
+                }
+
+                double wMax = WData.Max();
+                double wMin = WData.Min();
+
+                WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitHi);
+                WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitLo);
+                WpfPlot2.Plot.Axes.SetLimitsY(wMin - 10, wMax + 10);
+            }
+
 
             var sp = WpfPlot2.Plot.Add.Scatter(dataX, dataY);
 

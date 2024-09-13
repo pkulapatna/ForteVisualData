@@ -38,7 +38,7 @@
                          Margin="5,0,0,0" BorderThickness="5,0" Cursor="Hand" GroupName="Graphof"/>
 
                 <RadioButton  x:Name="rbThree" Content="{Binding MenuThreeHdr}"  Width="auto" 
-                            Style="{StaticResource RadioButtonX}"  Visibility="{Binding ShowMenuThree}"
+                            Style="{StaticResource RadioButtonX}" 
                             VerticalContentAlignment="Center" IsChecked="{Binding MenuThreeChecked}" 
                             IsEnabled="{Binding MenuEnable}"
                             Margin="5,0,0,0" BorderThickness="5,0" Cursor="Hand" GroupName="Graphof"/>
@@ -46,7 +46,7 @@
                 <RadioButton x:Name="rbFour" Content="{Binding MenuFourHdr}" Width="auto" 
                             VerticalContentAlignment="Center" IsChecked="{Binding MenuFourChecked}"
                             IsEnabled="{Binding MenuEnable, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                            Visibility="{Binding ShowMenuFour}" Style="{StaticResource RadioButtonX}"
+                            Style="{StaticResource RadioButtonX}"
                             Margin="5,0,0,0" BorderThickness="5,0" Cursor="Hand" GroupName="Graphof"/>
 
                 <RadioButton x:Name="rbFive" Content="{Binding MenuFiveHdr}" Width="auto" 
