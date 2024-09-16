@@ -29,8 +29,8 @@
             </Grid.Background>
             <Grid.RowDefinitions>
                 <RowDefinition Height="5"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="20*"/>
+                <RowDefinition Height="15*"/>
                 <RowDefinition Height="5"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -46,7 +46,7 @@
                 </Grid.Effect>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="0"/>
-                    <ColumnDefinition Width="12*"/>
+                    <ColumnDefinition Width="5*"/>
                     <ColumnDefinition Width="12*"/>
                     <ColumnDefinition Width="12*"/>
                     <ColumnDefinition Width="12*"/>
@@ -64,20 +64,20 @@
                 </Grid.RowDefinitions>
                 <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="5" Foreground="Yellow" FontSize="14"
                        HorizontalAlignment="Center"
-                       Margin="0,0,0,0"  Content="- Generate information to assist trouble shooting Realtime System. -" >
+                       Margin="0,0,0,0"  Content="- Capture information from Forte System to assist trouble shooting and compresses in to one file. -" >
                     <Label.Effect>
                         <DropShadowEffect/>
                     </Label.Effect>
                 </Label>
 
-                <Label Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Foreground="White" FontSize="14"
-                        Content="1. ReportJ4.mdb BaleArchive Table"/>
+                <Label Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" Foreground="White" FontSize="14"
+                        Content="1. ReportJ4.mdb BaleArchive Table. (Table BaleArchive containes current bale data) "/>
 
-                <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" Foreground="White" FontSize="14"
-                        Content="2. Realtime Current System log"/>
+                <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="4" Foreground="White" FontSize="14"
+                        Content="2. System's log files. (Contains errors information and time stamp when they happened)" />
 
-                <Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Foreground="White" FontSize="14"
-                        Content="3. Realtime Backup Database "/>
+                <Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="4" Foreground="White" FontSize="14"
+                        Content="3. System's configulation database and ini file. (simular to files generated from DUtil.exe program) "/>
 
                 
                 <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="5" HorizontalAlignment="Center" Margin="0,10,0,0">
@@ -91,11 +91,11 @@
 
                     <Button x:Name="btnBrowse2" Grid.Column="2"  Content="Browse"  HorizontalAlignment="Center" Command="{Binding BrowseCommand}"
                              ToolTip="Select File location" Style="{StaticResource MyButton}"  
-                             Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="100" Height="30" Cursor="Hand"/>
+                             Margin="10,0,0,0" Grid.Row="5" VerticalAlignment="Center" Width="80" Height="30" Cursor="Hand"/>
 
                     <TextBox x:Name="txtFileLocation2"  Grid.Column="3" HorizontalAlignment="Left" Background="White"
                               FontSize="12"  Height="27" Margin="20,0,0,0" Grid.Row="5" Grid.ColumnSpan="2" 
-                              Text="{Binding ZipFileLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"  Width="200"/>
+                              Text="{Binding ZipFileLocation, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center"  Width="150"/>
 
 
                     <Button Content="Write File" Grid.Column="5"  HorizontalAlignment="Center" Foreground="White"
@@ -139,7 +139,7 @@
                     <RowDefinition Height="16*"/>
                     <RowDefinition Height="16*"/>
                     <RowDefinition Height="16*"/>
-                    <RowDefinition Height="20*"/>
+                    <RowDefinition Height="5*"/>
                     <RowDefinition Height="5"/>
                 </Grid.RowDefinitions>
 

@@ -17,23 +17,23 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1"/>
-            <RowDefinition Height="30*"/>
+            <RowDefinition Height="25*"/>
             <RowDefinition Height="2"/>
-            <RowDefinition Height="1"/>
-            <RowDefinition Height="1"/>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="25*"/>
-            <RowDefinition Height="1"/>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="1"/>
-            <RowDefinition Height="25*"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="1"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="1"/>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="1"/>
-            <RowDefinition Height="25*"/>
-            <RowDefinition Height="2"/>
             <RowDefinition Height="20*"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="1"/>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="2"/>
+            <RowDefinition Height="25*"/>
             <RowDefinition Height="1"/>
             <RowDefinition Height="20*"/>
             <RowDefinition Height="2"/>
@@ -81,8 +81,7 @@
 
 
 
-        <StackPanel Grid.Row="5" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal">
-
+        <StackPanel Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="30,0,0,0" >
             <TextBlock  Text="1. Click Search " VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Foreground="White"/>
             <Button x:Name="btnServerX" Content="Search" HorizontalAlignment="Right" 
                       VerticalAlignment="Center" 
@@ -102,7 +101,7 @@
 
 
 
-        <StackPanel Grid.Row="7" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="7" Grid.Column="2" Margin="30,0,0,0" Grid.ColumnSpan="3" Orientation="Horizontal">
             <TextBlock Grid.Row="5" Grid.Column="2" Margin="0,0,0,0" Text="2. Select Sql Server from Combobox" 
                          VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Foreground="White"/>
             
@@ -110,31 +109,31 @@
       
         </StackPanel>
 
-        <StackPanel Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="9" Grid.Column="2" Margin="30,0,0,0" Grid.ColumnSpan="3" Orientation="Horizontal">
             <TextBlock Grid.Row="5" Grid.Column="2" Margin="12,0,0,0" Text="Sql Server Name appear in Host text box: " 
                         VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Foreground="White"/>
             <Image  Margin="10,0,0,0" Source="/Images/Host.PNG"   Visibility="Visible" Height="40" Width="150" Panel.ZIndex="95" />
         </StackPanel>
 
       
-        <StackPanel Grid.Row="13" Grid.Column="3" Grid.ColumnSpan="2" Orientation="Horizontal">
+        <StackPanel Grid.Row="13" Grid.Column="2" Margin="30,0,0,0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <TextBlock Grid.Row="5" Grid.Column="2" Margin="0,0,0,0" Text="3. Click Test Connection Button" 
                  VerticalAlignment="Center" HorizontalAlignment="Left" FontSize="12" Foreground="White"/>
             
         </StackPanel>
 
-        <Grid Grid.Row="13" Grid.Column="4" Grid.RowSpan="3" HorizontalAlignment="Left">
+        <Grid Grid.Row="13" Grid.Column="3" Margin="70,0,0,0" Grid.RowSpan="3" HorizontalAlignment="Left">
             
             <Image Height="70"  Width="100" Source="/Images/ConectOK.PNG" />
 
         </Grid>
 
 
-        <TextBlock Grid.Row="11" Grid.Column="3" Text="Host: name can also type in or using IP Address." 
-                   Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="12" Foreground="White" Margin="12,0,0,0"/>
+        <TextBlock Grid.Row="11" Grid.Column="2"   Text="Host: name can also type in or using IP Address." 
+                   Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="12" Foreground="White" Margin="40,0,0,0"/>
 
-        <TextBlock Grid.Row="15" Grid.Column="3" Text="Connection Status will return shortly"
-                   Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="12" Foreground="White"  Margin="12,0,0,0"/>
+        <TextBlock Grid.Row="15" Grid.Column="2" Text="Connection Status will return shortly"
+                   Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="12" Foreground="White"  Margin="40,0,0,0"/>
 
 
         <Rectangle Grid.Row="16" Grid.ColumnSpan="5" Fill="Gray" />
