@@ -24,6 +24,7 @@ namespace SystemInfo.ViewModels
 
         private string Debugpath = @"c:\ForteDebug\";
 
+        private string WetLayeriniFilePath = @"C:\Fortesystem\Realtime\WetLayer.ini";
 
         private bool _wetLayerExist =  ClassCommon.WetLayerCheck;
         public bool WetLayerExist
@@ -182,11 +183,13 @@ namespace SystemInfo.ViewModels
         public SysInfoViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
-            
+
+            string WLiniFilePath = @"C:\Fortesystem\Realtime\WetLayer.ini";
+
             if(WetLayerExist)
             {
                 ShowWLSetup = Visibility.Visible;
-                getLocalWetLayerSetUp();
+                if (File.Exists(WLiniFilePath)) getLocalWetLayerSetUp();
             }              
         }
 
@@ -236,7 +239,7 @@ namespace SystemInfo.ViewModels
 
         private DelegateCommand _writeZipCommand;
         public DelegateCommand WriteZipCommand =>
-        _writeZipCommand ?? (_writeZipCommand = new DelegateCommand(WriteZipExecute).ObservesCanExecute(() => BCSVCanwrite));
+        _writeZipCommand ?? (_writeZipCommand = new DelegateCommand(WriteZipExecute));
         private void WriteZipExecute()
         {
             bool bGood = false;
@@ -253,12 +256,16 @@ namespace SystemInfo.ViewModels
             {
                 dir.Delete(true);
             }
-            //Check for Wet Layer System
-            if (ClassCommon.WetLayerCheck)
-            {
-                WriteCSVWLiniFile();
-            }
 
+            //Check for Wet Layer System
+            if (File.Exists(WetLayeriniFilePath))
+            {
+                if (ClassCommon.WetLayerCheck)
+                {
+                    WriteCSVWLiniFile();
+                }
+            }
+ 
             if (CopyLogFiles()) bGood = true;
             if (CopyBackUpfiles()) bGood = true;
 
@@ -266,9 +273,19 @@ namespace SystemInfo.ViewModels
             {
                 File.Delete(ZipFileLocation + @"\ForteDebug.zip");
             }
-            ZipFile.CreateFromDirectory(@"c:\ForteDebug", ZipFileLocation +  @"\ForteDebug.zip");
 
-            if(bGood) MessageBox.Show("Create Zip file Done.");
+            if(IsDirectoryEmpty(@"c:\ForteDebug") != true)
+            {
+                ZipFile.CreateFromDirectory(@"c:\ForteDebug", ZipFileLocation + @"\ForteDebug.zip");
+                if (bGood) MessageBox.Show("Create Zip file Done.");
+            }
+            else MessageBox.Show("Zip file was not created, folder is empty.");
+        }
+
+
+        public bool IsDirectoryEmpty(string path)
+        {
+            return !Directory.EnumerateFileSystemEntries(path).Any();
         }
 
         /// <summary>
