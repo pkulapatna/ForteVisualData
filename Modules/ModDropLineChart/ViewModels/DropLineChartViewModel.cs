@@ -455,6 +455,15 @@ namespace ModDropLineChart.ViewModels
                                     ChartPtLst.Add(new Tuple<byte, Single>((byte)i, (Single)baledatatable.Rows[y]["Moisture"]));
                                 else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                                     ChartPtLst.Add(new Tuple<byte, Single>((byte)i, (Single)baledatatable.Rows[y]["Weight"]));
+                                else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                                    ChartPtLst.Add(new Tuple<byte, Single>((byte)i, (Single)baledatatable.Rows[y]["BDWeight"]));
+                                else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                                {
+                                    var AdWeight = (float)baledatatable.Rows[y]["BDWeight"]/0.9;
+
+                                    ChartPtLst.Add(new Tuple<byte, Single>((byte)i, (Single)AdWeight));
+                                }
+                                   
                             }
                         }
                     }

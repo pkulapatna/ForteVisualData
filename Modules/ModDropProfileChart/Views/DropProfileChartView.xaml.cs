@@ -134,6 +134,14 @@ namespace ModDropProfileChart.Views
                 {
                     WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW / 4));
                 }
+                else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                {
+                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW *.10));
+                }
+                else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                {
+                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW * .10));
+                }
 
                 if (ClassCommon.GraphDarkMode)
                 {
@@ -165,6 +173,15 @@ namespace ModDropProfileChart.Views
                         {
                             yValue[i] = baleTable.Rows[i].Field<float>("Weight");
                         }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                        {
+                            yValue[i] = baleTable.Rows[i].Field<float>("BDWeight");
+                        }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                        {
+                            yValue[i] = baleTable.Rows[i].Field<float>("BDWeight")/0.9;
+                        }
+
                     }
                     LastI = i + 1;
                 }
@@ -186,6 +203,14 @@ namespace ModDropProfileChart.Views
                         {
                             yValue[i] = baleTable.Rows[LastI + i].Field<float>("Weight");
                         }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                        {
+                            yValue[i] = baleTable.Rows[LastI + i].Field<float>("BDWeight");
+                        }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                        {
+                            yValue[i] = baleTable.Rows[LastI + i].Field<float>("BDWeight") / 0.9;
+                        }
                     }
                     LastII = LastI + i + 1;
                 }
@@ -205,6 +230,14 @@ namespace ModDropProfileChart.Views
                         else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                         {
                             yValue[i] = baleTable.Rows[LastII + i].Field<float>("Weight");
+                        }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                        {
+                            yValue[i] = baleTable.Rows[LastII + i].Field<float>("BDWeight");
+                        }
+                        else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                        {
+                            yValue[i] = baleTable.Rows[LastII + i].Field<float>("BDWeight") / 0.9;
                         }
                     }
                     LastIII = LastII + i + 1;
@@ -230,6 +263,14 @@ namespace ModDropProfileChart.Views
                             {
                                 yValue[i] = baleTable.Rows[LastIII + i].Field<float>("Weight");
                             }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                            {
+                                yValue[i] = baleTable.Rows[LastIII + i].Field<float>("BDWeight");
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                            {
+                                yValue[i] = baleTable.Rows[LastIII + i].Field<float>("BDWeight") / 0.9;
+                            }
                         }
                         LastIV = LastIII + i + 1;
                     }
@@ -254,6 +295,14 @@ namespace ModDropProfileChart.Views
                             else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                             {
                                 yValue[i] = baleTable.Rows[LastIV + i].Field<float>("Weight");
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                            {
+                                yValue[i] = baleTable.Rows[LastIV + i].Field<float>("BDWeight");
+                            }
+                            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                            {
+                                yValue[i] = baleTable.Rows[LastIV + i].Field<float>("BDWeight") / 0.9;
                             }
                         }
                         LastV = LastIV + i + 1;
