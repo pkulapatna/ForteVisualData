@@ -54,8 +54,15 @@
                             VerticalContentAlignment="Center" Visibility="{Binding ShowMenuFive}"
                             IsEnabled="{Binding MenuEnable}" Style="{StaticResource RadioButtonX}"
                             Margin="5,0,0,0" BorderThickness="5,0" Cursor="Hand" GroupName="Graphof" />
-            
             </Menu>
+
+            <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" FontSize="16" FontWeight="Medium" Foreground="#FF023A02"
+                   Content="Graph Display Options" VerticalContentAlignment="Top" Margin="0,0,10,5">
+                <Label.Effect>
+                    <DropShadowEffect/>
+                </Label.Effect>
+            </Label>
+            
         </Grid>
     </Grid>
 </UserControl>
