@@ -358,8 +358,6 @@ namespace ModDropProfileChart.ViewModels
             SourceList = _sqlhandler.GetUniquIntitemlist("SourceName", tablename);
 
 
-           // DropProfileChartView._dropProfileChartView.SetUpChart(ChartTitle, GraphHeightM, GraphHeightW);
-
             if (LineList.Count > 0)
                 for (int i = 0; i < LineList.Count; i++)
                 {
@@ -593,9 +591,6 @@ namespace ModDropProfileChart.ViewModels
         }
 
 
-
-
-
         private void UpdateBigNumbers(DataTable baledatatable, int iLine)
         {
             double MoistureAvg;
@@ -613,7 +608,9 @@ namespace ModDropProfileChart.ViewModels
                 {
                     for (int i = 0; i < ClassCommon.BaleInDrop; i++)
                     {
-                        MoistureAvgLst.Add(baledatatable.Rows[i].Field<float>("Moisture"));
+                        
+                        MoistureAvgLst.Add(baledatatable.Rows[i].Field<float>("Moisture"));  
+                        
                         WeightAvgLst.Add(Convert.ToDouble(baledatatable.Rows[i]["Weight"].ToString()));
 
                         DropNumber = baledatatable.Rows[i]["DropNumber"].ToString();
@@ -808,8 +805,6 @@ namespace ModDropProfileChart.ViewModels
                     System.Windows.MessageBox.Show($"Error in UpdateGraph (DropProfile) {ex.Message}");
                     ClsSerilog.LogMessage(ClsSerilog.ERROR, $"ERROR in UpdateGraph (DropProfile) < {ex.Message}");
                 }
-
-        
         }
 
 

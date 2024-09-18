@@ -71,19 +71,18 @@
                 </Label>
 
                 <Label Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="4" Foreground="White" FontSize="14"
-                        Content="1. ReportJ4.mdb BaleArchive Table. (Table BaleArchive containes current bale data) "/>
+                        Content="1. BaleArchive table in ReportJ4.mdb contains current bale data."/>
 
                 <Label Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="4" Foreground="White" FontSize="14"
-                        Content="2. System's log files. (Contains errors information and time stamp when they happened)" />
+                        Content="2. System's log files. (It contains errors information and time stamp when they happened)" />
 
                 <Label Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="4" Foreground="White" FontSize="14"
-                        Content="3. System's configulation database and ini file. (simular to files generated from DUtil.exe program) "/>
+                        Content="3. System's Configuration database and ini file. (Similar to files generated from DUtil.exe) "/>
 
-                
                 <StackPanel Grid.Column="1" Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan="5" HorizontalAlignment="Center" Margin="0,10,0,0">
 
                     <Label Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Foreground="Yellow" FontSize="14"
-                            Content=" Target For Zip File Location" VerticalAlignment="Center" >
+                            Content=" Zip File target Location" VerticalAlignment="Center" >
                         <Label.Effect>
                             <DropShadowEffect/>
                         </Label.Effect>

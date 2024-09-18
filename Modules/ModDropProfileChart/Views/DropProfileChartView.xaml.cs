@@ -346,43 +346,6 @@ namespace ModDropProfileChart.Views
         }
 
 
-
-
-        internal void SetUpChart(string chartTitle, int graphHeightM, int graphHeightW)
-        {
-            int GraphWidth = (ClassCommon.BaleInDrop * ClassCommon.DropInChart) + 6;// ClassCommon.BaleInDrop * Number of Drop + 1;
-
-            WpfPlot1.Plot.Clear();
-            WpfPlot1.Refresh();
-            WpfPlot1.Plot.Axes.AutoScale();
-           // WpfPlot1.Interaction.Disable();
-
-            WpfPlot1.Plot.Axes.SetLimitsY(graphHeightW, graphHeightM + (graphHeightM / 2));
-
-            WpfPlot1.Plot.Axes.SetLimitsX(0, GraphWidth);
-
-            if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-            {
-                WpfPlot1.Plot.Axes.SetLimitsY(0, graphHeightM + (graphHeightM * .5));
-            }
-            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-            {
-                WpfPlot1.Plot.Axes.SetLimitsY(0, graphHeightW + (graphHeightW * .5));
-            }
-
-            if (ClassCommon.GraphDarkMode)
-            {
-                // change figure colors
-                WpfPlot1.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
-                WpfPlot1.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
-
-                // change axis and grid colors
-                WpfPlot1.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
-                WpfPlot1.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
-            }    
-
-        }
-
         internal void PlotChartbyDrop(int dropNum,double[] XAxisTag, double[] yValue)
         {
            
