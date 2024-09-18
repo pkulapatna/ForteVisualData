@@ -301,9 +301,13 @@ namespace ModDropLineChart.ViewModels
         private void UpdateLabel()
         {
             if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                AverageHeader = $"Average  of each Bale position {ClassCommon.MoistureUnitLst[ClassCommon.MoistureType]} in {DropSamples} drops";
+                AverageHeader = $"Average of {ClassCommon.MoistureUnitLst[ClassCommon.MoistureType]} of each Bale position in {DropSamples} drops";
             else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                AverageHeader = $"Average  of each bale position {ClassCommon.WeightTypeLst[ClassCommon.WeightUnit]} in {DropSamples} drops";
+                AverageHeader = $"Average of {ClassCommon.WeightTypeLst[ClassCommon.WeightUnit]} of each bale position in {DropSamples} drops";
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                AverageHeader = $"Average of Bone Dry Weight of each bale position in {DropSamples} drops";
+            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                AverageHeader = $"Average of Air Dry Weight of each bale position in {DropSamples} drops";
         }
 
         private DelegateCommand _startCommand;
