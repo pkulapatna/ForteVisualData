@@ -21,6 +21,7 @@ using System.Collections.ObjectModel;
 using System.Runtime.Intrinsics.Arm;
 using System.Xml;
 using ScottPlot.ArrowShapes;
+using System.Diagnostics;
 
 namespace ModDropProfileChart.ViewModels
 {
@@ -37,6 +38,7 @@ namespace ModDropProfileChart.ViewModels
 
         private int xAxisTag = ClassCommon.BaleInDrop;
 
+        private string ChartTitle = string.Empty;
 
         private long preIndex = 0;
         private long newIndex = 0;
@@ -335,6 +337,7 @@ namespace ModDropProfileChart.ViewModels
         
             string ChartTitle = $"Bar Chart of {ClassCommon.DropInChart} Consecutive Drops, Newest Drop on the left";
 
+
             _timer = new PeriodicTimer(TimeSpan.FromSeconds(ClassCommon.ScanSec));
 
             AvgMoisture = new ObservableCollection<string>();
@@ -447,10 +450,9 @@ namespace ModDropProfileChart.ViewModels
                         Pos8Text = "1";
                         break;
                 }
-
-
             }
         }
+
 
         private DelegateCommand _startCommand;
         public DelegateCommand StartCommand =>
@@ -505,8 +507,6 @@ namespace ModDropProfileChart.ViewModels
             string curTable = CurrentBaleTable; 
             string strGetIndex = string.Empty;
             string strGetSingleNewData = string.Empty;
-
-            string ChartTitle = $"Bar Chart of {ClassCommon.DropInChart} Consecutive Drops, Newest Drop on the left";
 
             DropProfileChartView._dropProfileChartView.Clearbale();
 
@@ -568,15 +568,10 @@ namespace ModDropProfileChart.ViewModels
 
                                     ClassCommon.UpdataTableUnits(BaleDatatable);
 
-                                  
-                                    _ = UpdateListView(BaleDatatable);
-                       
+                                    _ = UpdateListView(BaleDatatable);                       
                                     UpdateBigNumbers(BaleDatatable, iLine1);
 
-                                    DropProfileChartView._dropProfileChartView.SetUpGraph(ChartTitle, GraphHeightM, GraphHeightW, GraphLowM, GraphLowW);
-                                    UpdateGraph(BaleDatatable);
-
-                                    //  DropProfileChartView._dropProfileChartView.PlotChart(BaleDatatable,ChartTitle,GraphHeightM,GraphHeightW, GraphLowM, GraphLowW);
+                                    DropProfileChartView._dropProfileChartView.PlotChart(BaleDatatable,GraphHeightM,GraphHeightW, GraphLowM, GraphLowW);
                                 }
                             }
                         }
@@ -635,180 +630,7 @@ namespace ModDropProfileChart.ViewModels
             }
         }
 
-        private void UpdateGraph(DataTable baleTable)
-        {
-
-    
-                var DropNumList = baleTable.AsEnumerable().Select(x => x.Field<int>("DropNumber")).Distinct().ToList();
-                double[] yValue = new double[ClassCommon.BaleInDrop];
-
-                try
-                {
-
-                    //Drop 1
-                    int LastI = 0;
-                    for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-                    {
-                        if (baleTable.Rows[i].Field<int>("DropNumber") == DropNumList[0])
-                        {
-                            if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("Moisture");
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("Weight");
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("BDWeight");
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("BDWeight") / 0.9;
-                            }
-                        }
-                        LastI = i + 1;
-                    }
-
-                    DropProfileChartView._dropProfileChartView.PlotChartbyDrop(1,SetXAxisTag(1), yValue);
-                    //Plot Graph here!
-
-                    //Drop 2
-                    int LastII = LastI;
-                    for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-                    {
-                        if (baleTable.Rows[LastI + i].Field<int>("DropNumber") == DropNumList[1])
-                        {
-                            if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("Moisture");
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("Weight");
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("BDWeight");
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
-                            {
-                                yValue[i] = baleTable.Rows[LastI + i].Field<float>("BDWeight") / 0.9;
-                            }
-                        }
-                        LastII = LastI + i + 1;
-                    }
-                    //Plot Graph here!
-                    DropProfileChartView._dropProfileChartView.PlotChartbyDrop(2,SetXAxisTag(2), yValue);
-
-                    //Drop 3
-                    int LastIII = LastII;
-                    if (ClassCommon.DropInChart >= 3)
-                    {
-                        for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-                        {
-                            if (baleTable.Rows[LastII + i].Field<int>("DropNumber") == DropNumList[2])
-                            {
-                                if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                                {
-                                    yValue[i] = baleTable.Rows[LastII + i].Field<float>("Moisture");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastII + i].Field<float>("Weight");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastII + i].Field<float>("BDWeight");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastII + i].Field<float>("BDWeight") / 0.9;
-                                }
-                            }
-                            LastIII = LastII + i + 1;
-                        }
-                        //Plot Graph here!
-                        DropProfileChartView._dropProfileChartView.PlotChartbyDrop(3, SetXAxisTag(3), yValue);
-                    }
-
-
-                    //Drop 4
-                    int LastIV = 0;
-                    if (ClassCommon.DropInChart >= 4)
-                    {
-                        LastIV = LastIII;
-                        for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-                        {
-                            if (baleTable.Rows[LastIII + i].Field<int>("DropNumber") == DropNumList[3])
-                            {
-                                if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIII + i].Field<float>("Moisture");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIII + i].Field<float>("Weight");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIII + i].Field<float>("BDWeight");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIII + i].Field<float>("BDWeight") / 0.9;
-                                }
-                            }
-                            LastIV = LastIII + i + 1;
-                        }
-                      //  //Plot Graph here
-                        DropProfileChartView._dropProfileChartView.PlotChartbyDrop(4, SetXAxisTag(4), yValue);
-                    }
-
-
-                    //Drop 5
-                    int LastV = 0;
-                    if (ClassCommon.DropInChart >= 5)
-                    {
-                        LastV = LastIV;
-                        for (int i = 0; i < ClassCommon.BaleInDrop; i++)
-                        {
-
-                            if (baleTable.Rows[LastIV + i].Field<int>("DropNumber") == DropNumList[4])
-                            {
-                                if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIV + i].Field<float>("Moisture");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIV + i].Field<float>("Weight");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIV + i].Field<float>("BDWeight");
-                                }
-                                else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
-                                {
-                                    yValue[i] = baleTable.Rows[LastIV + i].Field<float>("BDWeight") / 0.9;
-                                }
-                            }
-                            LastV = LastIV + i + 1;
-                        }
-                        DropProfileChartView._dropProfileChartView.PlotChartbyDrop(5, SetXAxisTag(5), yValue);
-                    }
-                
-                }
-                catch (Exception ex)
-                {
-                    System.Windows.MessageBox.Show($"Error in UpdateGraph (DropProfile) {ex.Message}");
-                    ClsSerilog.LogMessage(ClsSerilog.ERROR, $"ERROR in UpdateGraph (DropProfile) < {ex.Message}");
-                }
-        }
-
-
-
+     
         private double[] SetXAxisTag(int drop)
         {
             double[] Value = new double[ClassCommon.BaleInDrop];

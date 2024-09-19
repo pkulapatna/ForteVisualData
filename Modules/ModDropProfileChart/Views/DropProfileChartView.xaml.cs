@@ -1,4 +1,5 @@
 ﻿using AppServices;
+using ScottPlot;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -24,6 +25,8 @@ namespace ModDropProfileChart.Views
         private double wdCoef = 0.0;
 
         private int xAxisTag = ClassCommon.BaleInDrop;
+
+        private string ChartTitle = string.Empty;
 
         public DropProfileChartView()
         {
@@ -95,7 +98,6 @@ namespace ModDropProfileChart.Views
                 default:
                     rtb10.Fill = Brushes.Blue;
                     break;
-
             }
         }
 
@@ -104,7 +106,7 @@ namespace ModDropProfileChart.Views
             b1c0.Visibility = Visibility.Hidden;
         }
 
-        public void PlotChart_old(DataTable baleTable, string chartTitle, int graphHeightM, int graphHeightW, int graphLowM, int graphLowW)
+        public void PlotChart(DataTable baleTable, int graphHeightM, int graphHeightW, int graphLowM, int graphLowW)
         {
             ScottPlot.Plot myPlot = new();
 
@@ -117,33 +119,44 @@ namespace ModDropProfileChart.Views
             int GraphWidth = (ClassCommon.BaleInDrop * ClassCommon.DropInChart) + 6;// ClassCommon.BaleInDrop * Number of Drop + 1;
 
             double[] yValue = new double[ClassCommon.BaleInDrop];
+            
+            Tick[] ticks = new Tick[5];
 
-            WpfPlot1.Plot.Clear();
-            WpfPlot1.Refresh();
-            WpfPlot1.Plot.Axes.AutoScale();
-            WpfPlot1.Interaction.Disable();
-            WpfPlot1.Plot.Title(chartTitle);
-
-            WpfPlot1.Plot.Axes.SetLimitsX(0, GraphWidth);
-
+         
             try
             {
+                WpfPlot1.Plot.Clear();
+                WpfPlot1.Refresh();
+
                 if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
                 {
+                    ChartTitle = $"Bar Chart of Moisture % in {ClassCommon.DropInChart} Consecutive Drops, Newest Drop on the left";
                     WpfPlot1.Plot.Axes.SetLimitsY(MinLowM, graphHeightM + (graphHeightM / 2));
                 }
                 else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                 {
+                    ChartTitle = $"Bar Chart of Weight in {ClassCommon.DropInChart} Consecutive Drops, Newest Drop on the left";
                     WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW / 4));
                 }
                 else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
                 {
-                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW *.10));
+                    ChartTitle = $"Bar Chart of Bone Dry Weight in  {ClassCommon.DropInChart} Consecutive Drops, Newest Drop on the left";
+                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW *.05));
                 }
                 else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
                 {
-                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW * .10));
+                    ChartTitle = $"Bar Chart of Air Dry Weight in {ClassCommon.DropInChart} Consecutive Drops, Newest Drop on the left";
+                    WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW * .05));
                 }
+
+            
+
+                WpfPlot1.Plot.Axes.SetLimitsX(0, GraphWidth);
+                WpfPlot1.Plot.Axes.AutoScale();
+                WpfPlot1.Interaction.Disable();
+                WpfPlot1.Plot.Title(ChartTitle);
+               
+
 
                 if (ClassCommon.GraphDarkMode)
                 {
@@ -155,6 +168,7 @@ namespace ModDropProfileChart.Views
                     WpfPlot1.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
                     WpfPlot1.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
                 }
+
 
 
                 WpfPlot1.Plot.ShowGrid();
@@ -189,7 +203,16 @@ namespace ModDropProfileChart.Views
                 }
                 var bars1 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(1), yValue);
                 bars1.LegendText = "Drop 1";
-
+                ticks[0] = new Tick(3, "Drop No 1");
+                foreach (var bar in bars1.Bars)
+                {
+                    bar.Label = bar.Value.ToString("00.00");
+                    bar.BorderLineWidth = 1;
+                    if (ClassCommon.GraphDarkMode)
+                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
+                    else
+                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                }
 
                 //Drop 2
                 int LastII = LastI;
@@ -218,6 +241,16 @@ namespace ModDropProfileChart.Views
                 }
                 var bars2 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(2), yValue);
                 bars2.LegendText = "Drop 2";
+                ticks[1] = new Tick(LastI + 4, "Drop No 2");
+                foreach (var bar in bars2.Bars)
+                {
+                    bar.Label = bar.Value.ToString("00.00");
+                    bar.BorderLineWidth = 1;
+                    if (ClassCommon.GraphDarkMode)
+                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
+                    else
+                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                }
 
                 //Drop 3
                 int LastIII = LastII;
@@ -246,7 +279,16 @@ namespace ModDropProfileChart.Views
                 }
                 var bars3 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(3), yValue);
                 bars3.LegendText = "Drop 3";
-
+                ticks[2] = new Tick(LastII + 5, "Drop No 3");
+                foreach (var bar in bars3.Bars)
+                {
+                    bar.Label = bar.Value.ToString("00.00");
+                    bar.BorderLineWidth = 1;
+                    if (ClassCommon.GraphDarkMode)
+                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
+                    else
+                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                }
 
                 //Drop 4
                 int LastIV = 0;
@@ -278,6 +320,16 @@ namespace ModDropProfileChart.Views
                     }
                     var bars4 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(4), yValue);
                     bars4.LegendText = "Drop 4";
+                    ticks[3] = new Tick(LastIII + 6, "Drop No 4");
+                    foreach (var bar in bars4.Bars)
+                    {
+                        bar.Label = bar.Value.ToString("00.00");
+                        bar.BorderLineWidth = 1;
+                        if (ClassCommon.GraphDarkMode)
+                            bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
+                        else
+                            bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    }
                 }
 
                 //Drop 5
@@ -311,9 +363,22 @@ namespace ModDropProfileChart.Views
                     }
                     var bars5 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(5), yValue);
                     bars5.LegendText = "Drop 5";
+                    ticks[4] = new Tick(LastIV + 7, "Drop No 5");
+                    foreach (var bar in bars5.Bars)
+                    {
+                        bar.Label = bar.Value.ToString("00.00");
+                        bar.BorderLineWidth = 1;
+                        if (ClassCommon.GraphDarkMode)
+                            bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
+                        else
+                            bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    }
                 }
 
+                WpfPlot1.Plot.Axes.Bottom.TickGenerator = new ScottPlot.TickGenerators.NumericManual(ticks);
+                WpfPlot1.Plot.Axes.Bottom.MajorTickStyle.Length = 0;
                 WpfPlot1.Refresh();
+             
 
             }
             catch (Exception ex )
@@ -345,49 +410,12 @@ namespace ModDropProfileChart.Views
             return Value;
         }
 
+        Tick[] ticks = new Tick[5];
 
-        internal void PlotChartbyDrop(int dropNum,double[] XAxisTag, double[] yValue)
-        {
-           
-            switch (dropNum) 
-            {
-                case 1:
-
-                    var bars1 = WpfPlot1.Plot.Add.Bars(XAxisTag, yValue);
-                    bars1.LegendText = "Drop 1";
-
-                    break;
-                
-                case 2:
-                    var bars2 = WpfPlot1.Plot.Add.Bars(XAxisTag, yValue);
-                    bars2.LegendText = "Drop 2";
-                    break;
-
-                case 3:
-                    var bars3 = WpfPlot1.Plot.Add.Bars(XAxisTag, yValue);
-                    bars3.LegendText = "Drop 3";
-                    break;
-
-                case 4:
-                    var bars4 = WpfPlot1.Plot.Add.Bars(XAxisTag, yValue);
-                    bars4.LegendText = "Drop 4";
-                    break;
-
-                case 5:
-                    var bars5 = WpfPlot1.Plot.Add.Bars(XAxisTag, yValue);
-                    bars5.LegendText = "Drop 5";
-                    break;
-            }
-
-
-            WpfPlot1.Refresh();
-
-        }
-
+       
         internal void SetUpGraph(string chartTitlex, int graphHeightM, int graphHeightW, int graphLowM, int graphLowW)
         {
-            string ChartTitle = string.Empty;
-
+            
 
             WpfPlot1.Plot.Clear();
             WpfPlot1.Refresh();
