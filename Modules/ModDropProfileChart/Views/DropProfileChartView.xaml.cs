@@ -197,7 +197,7 @@ namespace ModDropProfileChart.Views
                         else
                             txt.Color = ScottPlot.Color.FromHex("000000");
                         txt.Alignment = Alignment.LowerCenter;
-                        txt.FontSize = 10;
+                        txt.FontSize = 11;
                         txt.Bold= true;
                     }
                     LastI = i + 1;
@@ -247,7 +247,7 @@ namespace ModDropProfileChart.Views
                         else
                             txt.Color = ScottPlot.Color.FromHex("000000");
                         txt.Alignment = Alignment.LowerCenter;
-                        txt.FontSize = 10;
+                        txt.FontSize = 11;
                         txt.Bold = true;
                     }
                     LastII = LastI + i + 1;
@@ -296,7 +296,7 @@ namespace ModDropProfileChart.Views
                         else
                             txt.Color = ScottPlot.Color.FromHex("000000");
                         txt.Alignment = Alignment.LowerCenter;
-                        txt.FontSize = 10;
+                        txt.FontSize = 11;
                         txt.Bold = true;
                     }
                     LastIII = LastII + i + 1;
@@ -350,7 +350,7 @@ namespace ModDropProfileChart.Views
                             else
                                 txt.Color = ScottPlot.Color.FromHex("000000");
                             txt.Alignment = Alignment.LowerCenter;
-                            txt.FontSize = 10;
+                            txt.FontSize = 11;
                             txt.Bold = true;
                         }
                         LastIV = LastIII + i + 1;
@@ -405,7 +405,7 @@ namespace ModDropProfileChart.Views
                             else
                                 txt.Color = ScottPlot.Color.FromHex("000000");
                             txt.Alignment = Alignment.LowerCenter;
-                            txt.FontSize = 10;
+                            txt.FontSize = 11;
                             txt.Bold = true;
                         }
                         LastV = LastIV + i + 1;
