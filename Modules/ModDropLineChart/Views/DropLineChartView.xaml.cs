@@ -27,6 +27,19 @@ namespace ModDropLineChart.Views
     {
         public static DropLineChartView _dropLineChartView;
 
+        private ScottPlot.Color colorSnowWhite = ScottPlot.Color.FromHex("FFFAFA");
+        private ScottPlot.Color colorWhite = ScottPlot.Color.FromHex("FFFFFF");
+        private ScottPlot.Color colorBlack = ScottPlot.Color.FromHex("000000");
+
+        private ScottPlot.Color colorBlue = ScottPlot.Color.FromHex("0088cc");
+        private ScottPlot.Color colorOrange = ScottPlot.Color.FromHex("ff884d");
+        private ScottPlot.Color colorGreen = ScottPlot.Color.FromHex("00b300");
+        private ScottPlot.Color colorRed = ScottPlot.Color.FromHex("e60000");
+        private ScottPlot.Color colorPurple = ScottPlot.Color.FromHex("b399ff");
+
+        private ScottPlot.Color colorBrown = ScottPlot.Color.FromHex("cb8034");
+
+
         public DropLineChartView()
         {
             InitializeComponent();
@@ -48,6 +61,7 @@ namespace ModDropLineChart.Views
             else btnStop.Opacity = .3;
         }
 
+        [Obsolete]
         public void PlotChart(List<float> avgOne, List<float> avgTwo, 
             List<float> avgThree, List<float> avgFour, List<float> avgFive, List<float> avgSix, 
             List<float> avgSeven, List<float> avgEight, List<float> avgNine, List<float> avgTen, double maxVal, double minVal)
@@ -140,6 +154,13 @@ namespace ModDropLineChart.Views
                     xs1[i] = i;
                     y1Value[i] = avgOne[i - 1];
                     LnOneLast = i;
+
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y1Value[i].ToString("00.00"), i, y1Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[0] = new Tick(2, "Bale Pos. 1");
 
@@ -148,12 +169,10 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars1.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth =1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    bar.FillColor = colorBlue;
+                    bar.BorderLineWidth =2;
+                    bar.FillColor = colorBlue;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }              
 
             }
@@ -167,6 +186,13 @@ namespace ModDropLineChart.Views
                     xs2[i] = i + LnOneLast + 1;
                     y2Value[i] = avgTwo[i - 1];
                     LnTwoLast = LnOneLast + i;
+
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y2Value[i].ToString("00.00"), xs2[i], y2Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[1] = new Tick(LnOneLast + 3, "Bale Pos. 2");
 
@@ -175,12 +201,10 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars2.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    
+                    bar.FillColor = colorOrange;
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
@@ -192,6 +216,13 @@ namespace ModDropLineChart.Views
                     xs3[i] = LnTwoLast + 2 + i;
                     y3Value[i] = avgThree[i - 1];
                     LnThreeLast = LnTwoLast + i;
+
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y3Value[i].ToString("00.00"), xs3[i], y3Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[2] = new Tick(LnTwoLast + 4, "Bale Pos. 3");
                 var bars3 = WpfPlot1.Plot.Add.Bars(xs3, y3Value);
@@ -199,12 +230,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars3.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    bar.FillColor = colorGreen;
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
           
@@ -216,6 +244,12 @@ namespace ModDropLineChart.Views
                     xs4[i] = LnThreeLast + 3 + i;
                     y4Value[i] = avgFour[i - 1];
                     LnFourLast = LnThreeLast + i;
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y4Value[i].ToString("00.00"), xs4[i], y4Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[3] = new Tick(LnThreeLast + 5, "Bale Pos. 4");
                 var bars4 = WpfPlot1.Plot.Add.Bars(xs4, y4Value);
@@ -223,12 +257,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars4.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    bar.FillColor = colorRed;
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
@@ -241,6 +272,12 @@ namespace ModDropLineChart.Views
                     xs5[i] = LnFourLast + 4 + i;
                     y5Value[i] = avgFive[i - 1];
                     LnFiveLast = LnFourLast + i;
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y5Value[i].ToString("00.00"), xs5[i], y5Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[4] = new Tick(LnFourLast + 6, "Bale Pos. 5");
                 var bars5 = WpfPlot1.Plot.Add.Bars(xs5, y5Value);
@@ -248,12 +285,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars5.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    bar.FillColor = colorPurple;
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
@@ -266,6 +300,12 @@ namespace ModDropLineChart.Views
                     xs6[i] = LnFiveLast + 5 + i;
                     y6Value[i] = avgSix[i - 1];
                     LnSixLast = LnFiveLast + i;
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y6Value[i].ToString("00.00"), xs6[i], y6Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[5] = new Tick(LnFiveLast + 7, "Bale Pos. 6");
                 var bars6 = WpfPlot1.Plot.Add.Bars(xs6, y6Value);
@@ -273,12 +313,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars6.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    bar.FillColor = colorBrown;
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
@@ -291,6 +328,12 @@ namespace ModDropLineChart.Views
                     xs7[i] = LnSixLast + 6 + i;
                     y7Value[i] = avgSeven[i - 1];
                     LnSevenLast = LnSixLast + i;
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y7Value[i].ToString("00.00"), xs7[i], y7Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[6] = new Tick(LnSixLast + 8, "Bale Pos. 7");
                 var bars7 = WpfPlot1.Plot.Add.Bars(xs7, y7Value);
@@ -298,12 +341,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars7.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                   // bar.FillColor = colorBrown;
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
@@ -316,6 +356,12 @@ namespace ModDropLineChart.Views
                     xs8[i] = LnSevenLast + 7 + i;
                     y8Value[i] = avgEight[i - 1];
                     LnEightLast = LnSevenLast + i;
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y8Value[i].ToString("00.00"), xs8[i], y8Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[7] = new Tick(LnSevenLast + 9, "Bale Pos. 8");
                 var bars8 = WpfPlot1.Plot.Add.Bars(xs8, y8Value);
@@ -323,12 +369,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars8.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                  //  bar.Label = bar.Value.ToString("00.00");
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
@@ -340,6 +383,12 @@ namespace ModDropLineChart.Views
                     xs9[i] = LnEightLast + 8 + i;
                     y9Value[i] = avgNine[i - 1];
                     LnNineLast = LnSevenLast + i;
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y9Value[i].ToString("00.00"), xs9[i], y9Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[8] = new Tick(LnEightLast + 10, "Bale Pos. 9");
                 var bars9 = WpfPlot1.Plot.Add.Bars(xs9, y9Value);
@@ -347,12 +396,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars9.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                  //  bar.Label = bar.Value.ToString("00.00");
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
@@ -364,6 +410,12 @@ namespace ModDropLineChart.Views
                 {
                     xs10[i] = LnNineLast + 9 + i;
                     y10Value[i] = avgTen[i - 1];
+                    // add a label and customize it as desired
+                    var txt = WpfPlot1.Plot.Add.Text(y10Value[i].ToString("00.00"), xs10[i], y10Value[i]);
+                    txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
+                    txt.Alignment = Alignment.LowerCenter;
+                    txt.FontSize = 11;
+                    txt.Bold = true;
                 }
                 ticks[9] = new Tick(LnNineLast + 11, "Bale Pos. 10");
                 var bars10 = WpfPlot1.Plot.Add.Bars(xs10, y10Value);
@@ -371,12 +423,9 @@ namespace ModDropLineChart.Views
 
                 foreach (var bar in bars10.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                   // bar.Label = bar.Value.ToString("00.00");
+                    bar.BorderLineWidth = 2;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
             }
 
