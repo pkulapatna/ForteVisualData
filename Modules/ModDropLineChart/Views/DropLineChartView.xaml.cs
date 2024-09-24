@@ -73,7 +73,7 @@ namespace ModDropLineChart.Views
             double[] xs9 = new double[30];
             double[] xs10 = new double[30];
 
-            double MaxWidth = Convert.ToDouble(Settings.Default.SelectedDropCt) * ClassCommon.BaleInDrop + ClassCommon.BaleInDrop;
+            double MaxWidth = Convert.ToDouble(Settings.Default.SelectedDropCt) * ClassCommon.BaleInDrop + ClassCommon.BaleInDrop + 2;
             double MaxHeight = maxVal+(maxVal/4);
             double MinHeight = 0;
             string chartTitle = string.Empty;

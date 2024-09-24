@@ -106,6 +106,7 @@ namespace ModDropProfileChart.Views
             b1c0.Visibility = Visibility.Hidden;
         }
 
+        [Obsolete]
         public void PlotChart(DataTable baleTable, int graphHeightM, int graphHeightW, int graphLowM, int graphLowW)
         {
             ScottPlot.Plot myPlot = new();
@@ -119,10 +120,8 @@ namespace ModDropProfileChart.Views
             int GraphWidth = (ClassCommon.BaleInDrop * ClassCommon.DropInChart) + 6;// ClassCommon.BaleInDrop * Number of Drop + 1;
 
             double[] yValue = new double[ClassCommon.BaleInDrop];
-            
             Tick[] ticks = new Tick[5];
 
-         
             try
             {
                 WpfPlot1.Plot.Clear();
@@ -149,27 +148,20 @@ namespace ModDropProfileChart.Views
                     WpfPlot1.Plot.Axes.SetLimitsY(MinLowW, graphHeightW + (graphHeightW * .05));
                 }
 
-            
-
                 WpfPlot1.Plot.Axes.SetLimitsX(0, GraphWidth);
                 WpfPlot1.Plot.Axes.AutoScale();
                 WpfPlot1.Interaction.Disable();
                 WpfPlot1.Plot.Title(ChartTitle);
-               
-
 
                 if (ClassCommon.GraphDarkMode)
                 {
                     // change figure colors
                     WpfPlot1.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
                     WpfPlot1.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
-
                     // change axis and grid colors
                     WpfPlot1.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
                     WpfPlot1.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
                 }
-
-
 
                 WpfPlot1.Plot.ShowGrid();
                 var DropNumList = baleTable.AsEnumerable().Select(x => x.Field<int>("DropNumber")).Distinct().ToList();
@@ -198,22 +190,32 @@ namespace ModDropProfileChart.Views
                             yValue[i] = baleTable.Rows[i].Field<float>("BDWeight")/0.9;
                         }
 
+                        // add a label and customize it as desired
+                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), i+1, yValue[i]);
+                        if (ClassCommon.GraphDarkMode)
+                            txt.Color = ScottPlot.Color.FromHex("FFFAFA");
+                        else
+                            txt.Color = ScottPlot.Color.FromHex("000000");
+                        txt.Alignment = Alignment.LowerCenter;
+                        txt.FontSize = 10;
+                        txt.Bold= true;
                     }
                     LastI = i + 1;
                 }
                 var bars1 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(1), yValue);
                 bars1.LegendText = "Drop 1";
                 ticks[0] = new Tick(3, "Drop No 1");
+               
                 foreach (var bar in bars1.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
+                    bar.BorderLineWidth = 2;
+                    bar.FillColor = ScottPlot.Color.FromHex("0088cc"); 
                     if (ClassCommon.GraphDarkMode)
                         bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
                     else
                         bar.BorderColor = ScottPlot.Color.FromHex("000000");
                 }
-
+               
                 //Drop 2
                 int LastII = LastI;
                 for (int i = 0; i < ClassCommon.BaleInDrop; i++)
@@ -236,6 +238,17 @@ namespace ModDropProfileChart.Views
                         {
                             yValue[i] = baleTable.Rows[LastI + i].Field<float>("BDWeight") / 0.9;
                         }
+
+                        // add a label and customize it as desired
+                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastI+i + 2, yValue[i]);
+
+                        if (ClassCommon.GraphDarkMode)
+                            txt.Color = ScottPlot.Color.FromHex("FFFAFA");
+                        else
+                            txt.Color = ScottPlot.Color.FromHex("000000");
+                        txt.Alignment = Alignment.LowerCenter;
+                        txt.FontSize = 10;
+                        txt.Bold = true;
                     }
                     LastII = LastI + i + 1;
                 }
@@ -244,12 +257,12 @@ namespace ModDropProfileChart.Views
                 ticks[1] = new Tick(LastI + 4, "Drop No 2");
                 foreach (var bar in bars2.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
+                    bar.FillColor = ScottPlot.Color.FromHex("ff884d");
+                    bar.BorderLineWidth = 2;
                     if (ClassCommon.GraphDarkMode)
                         bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
                     else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                        bar.BorderColor = ScottPlot.Color.FromHex("000000");   
                 }
 
                 //Drop 3
@@ -274,6 +287,17 @@ namespace ModDropProfileChart.Views
                         {
                             yValue[i] = baleTable.Rows[LastII + i].Field<float>("BDWeight") / 0.9;
                         }
+
+                        // add a label and customize it as desired
+                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastII + i + 3, yValue[i]);
+
+                        if (ClassCommon.GraphDarkMode)
+                            txt.Color = ScottPlot.Color.FromHex("FFFAFA");
+                        else
+                            txt.Color = ScottPlot.Color.FromHex("000000");
+                        txt.Alignment = Alignment.LowerCenter;
+                        txt.FontSize = 10;
+                        txt.Bold = true;
                     }
                     LastIII = LastII + i + 1;
                 }
@@ -282,8 +306,9 @@ namespace ModDropProfileChart.Views
                 ticks[2] = new Tick(LastII + 5, "Drop No 3");
                 foreach (var bar in bars3.Bars)
                 {
-                    bar.Label = bar.Value.ToString("00.00");
-                    bar.BorderLineWidth = 1;
+                    
+                    bar.FillColor = ScottPlot.Color.FromHex("00b300");
+                    bar.BorderLineWidth = 2;
                     if (ClassCommon.GraphDarkMode)
                         bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
                     else
@@ -315,6 +340,18 @@ namespace ModDropProfileChart.Views
                             {
                                 yValue[i] = baleTable.Rows[LastIII + i].Field<float>("BDWeight") / 0.9;
                             }
+
+
+                            // add a label and customize it as desired
+                            var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastIII + i + 4, yValue[i]);
+
+                            if (ClassCommon.GraphDarkMode)
+                                txt.Color = ScottPlot.Color.FromHex("FFFAFA");
+                            else
+                                txt.Color = ScottPlot.Color.FromHex("000000");
+                            txt.Alignment = Alignment.LowerCenter;
+                            txt.FontSize = 10;
+                            txt.Bold = true;
                         }
                         LastIV = LastIII + i + 1;
                     }
@@ -323,8 +360,8 @@ namespace ModDropProfileChart.Views
                     ticks[3] = new Tick(LastIII + 6, "Drop No 4");
                     foreach (var bar in bars4.Bars)
                     {
-                        bar.Label = bar.Value.ToString("00.00");
-                        bar.BorderLineWidth = 1;
+                        bar.FillColor = ScottPlot.Color.FromHex("e60000");
+                        bar.BorderLineWidth = 2;
                         if (ClassCommon.GraphDarkMode)
                             bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
                         else
@@ -358,6 +395,18 @@ namespace ModDropProfileChart.Views
                             {
                                 yValue[i] = baleTable.Rows[LastIV + i].Field<float>("BDWeight") / 0.9;
                             }
+
+
+                            // add a label and customize it as desired
+                            var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastIV+i + 5, yValue[i]);
+
+                            if (ClassCommon.GraphDarkMode)
+                                txt.Color = ScottPlot.Color.FromHex("FFFAFA");
+                            else
+                                txt.Color = ScottPlot.Color.FromHex("000000");
+                            txt.Alignment = Alignment.LowerCenter;
+                            txt.FontSize = 10;
+                            txt.Bold = true;
                         }
                         LastV = LastIV + i + 1;
                     }
@@ -366,8 +415,8 @@ namespace ModDropProfileChart.Views
                     ticks[4] = new Tick(LastIV + 7, "Drop No 5");
                     foreach (var bar in bars5.Bars)
                     {
-                        bar.Label = bar.Value.ToString("00.00");
-                        bar.BorderLineWidth = 1;
+                        bar.FillColor = ScottPlot.Color.FromHex("d24dff");
+                        bar.BorderLineWidth = 2;
                         if (ClassCommon.GraphDarkMode)
                             bar.BorderColor = ScottPlot.Color.FromHex("FFFFFF");
                         else
@@ -379,7 +428,6 @@ namespace ModDropProfileChart.Views
                 WpfPlot1.Plot.Axes.Bottom.MajorTickStyle.Length = 0;
                 WpfPlot1.Refresh();
              
-
             }
             catch (Exception ex )
             {
@@ -410,7 +458,7 @@ namespace ModDropProfileChart.Views
             return Value;
         }
 
-        Tick[] ticks = new Tick[5];
+       // Tick[] ticks = new Tick[5];
 
        
         internal void SetUpGraph(string chartTitlex, int graphHeightM, int graphHeightW, int graphLowM, int graphLowW)

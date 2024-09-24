@@ -43,7 +43,9 @@ namespace ModDropProfileChart.ViewModels
         private long preIndex = 0;
         private long newIndex = 0;
 
-        public static string ModuleName = "Profile of Bale Data in Each Drop";
+        public static string ModuleName = $"Profile of Bale Data for selected number of Drops";
+
+       // public static string ModuleName = "Bale Data Profile of Each Drop";
 
         private DataTable BaleDatatable;
         private DataTable DatatableLine2;
