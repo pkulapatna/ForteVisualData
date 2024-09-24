@@ -30,10 +30,13 @@ namespace ModDropProfileChart.Views
 
         private ScottPlot.Color colorSnowWhite = ScottPlot.Color.FromHex("FFFAFA");
         private ScottPlot.Color colorWhite = ScottPlot.Color.FromHex("FFFFFF");
-        private ScottPlot.Color colorBlue = ScottPlot.Color.FromHex("ff884d");
+        private ScottPlot.Color colorBlack = ScottPlot.Color.FromHex("000000");
+
+        private ScottPlot.Color colorBlue = ScottPlot.Color.FromHex("0088cc");
+        private ScottPlot.Color colorOrange = ScottPlot.Color.FromHex("ff884d");
         private ScottPlot.Color colorGreen = ScottPlot.Color.FromHex("00b300");
         private ScottPlot.Color colorRed = ScottPlot.Color.FromHex("e60000");
-        private ScottPlot.Color colorPurple = ScottPlot.Color.FromHex("660066");
+        private ScottPlot.Color colorPurple = ScottPlot.Color.FromHex("d24dff");
 
         public DropProfileChartView()
         {
@@ -199,10 +202,7 @@ namespace ModDropProfileChart.Views
 
                         // add a label and customize it as desired
                         var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), i+1, yValue[i]);
-                        if (ClassCommon.GraphDarkMode)
-                            txt.Color = colorSnowWhite;
-                        else
-                            txt.Color = ScottPlot.Color.FromHex("000000");
+                        txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                         txt.Alignment = Alignment.LowerCenter;
                         txt.FontSize = 11;
                         txt.Bold= true;
@@ -212,15 +212,12 @@ namespace ModDropProfileChart.Views
                 var bars1 = WpfPlot1.Plot.Add.Bars(SetXAxisTag(1), yValue);
                 bars1.LegendText = "Drop 1";
                 ticks[0] = new Tick(3, "Drop No 1");
-
+               
                 foreach (var bar in bars1.Bars)
                 {
                     bar.BorderLineWidth = 2;
-                    bar.FillColor = ScottPlot.Color.FromHex("0088cc"); 
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = colorWhite;
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    bar.FillColor = colorBlue;
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
                
                 //Drop 2
@@ -248,11 +245,7 @@ namespace ModDropProfileChart.Views
 
                         // add a label and customize it as desired
                         var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastI+i + 2, yValue[i]);
-
-                        if (ClassCommon.GraphDarkMode)
-                            txt.Color = colorSnowWhite;
-                        else
-                            txt.Color = ScottPlot.Color.FromHex("000000");
+                        txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                         txt.Alignment = Alignment.LowerCenter;
                         txt.FontSize = 11;
                         txt.Bold = true;
@@ -264,12 +257,9 @@ namespace ModDropProfileChart.Views
                 ticks[1] = new Tick(LastI + 4, "Drop No 2");
                 foreach (var bar in bars2.Bars)
                 {
-                    bar.FillColor = colorBlue;
+                    bar.FillColor = colorOrange;
                     bar.BorderLineWidth = 2;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = colorWhite;
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");   
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
 
                 //Drop 3
@@ -297,11 +287,7 @@ namespace ModDropProfileChart.Views
 
                         // add a label and customize it as desired
                         var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastII + i + 3, yValue[i]);
-
-                        if (ClassCommon.GraphDarkMode)
-                            txt.Color = colorSnowWhite;
-                        else
-                            txt.Color = ScottPlot.Color.FromHex("000000");
+                        txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                         txt.Alignment = Alignment.LowerCenter;
                         txt.FontSize = 11;
                         txt.Bold = true;
@@ -313,13 +299,9 @@ namespace ModDropProfileChart.Views
                 ticks[2] = new Tick(LastII + 5, "Drop No 3");
                 foreach (var bar in bars3.Bars)
                 {
-                    
                     bar.FillColor = colorGreen;
                     bar.BorderLineWidth = 2;
-                    if (ClassCommon.GraphDarkMode)
-                        bar.BorderColor = colorWhite;
-                    else
-                        bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                    bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                 }
 
                
@@ -350,14 +332,9 @@ namespace ModDropProfileChart.Views
                                 yValue[i] = baleTable.Rows[LastIII + i].Field<float>("BDWeight") / 0.9;
                             }
 
-
                             // add a label and customize it as desired
                             var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastIII + i + 4, yValue[i]);
-
-                            if (ClassCommon.GraphDarkMode)
-                                txt.Color = colorSnowWhite;
-                            else
-                                txt.Color = ScottPlot.Color.FromHex("000000");
+                            txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                             txt.Alignment = Alignment.LowerCenter;
                             txt.FontSize = 11;
                             txt.Bold = true;
@@ -371,10 +348,7 @@ namespace ModDropProfileChart.Views
                     {
                         bar.FillColor = colorRed;
                         bar.BorderLineWidth = 2;
-                        if (ClassCommon.GraphDarkMode)
-                            bar.BorderColor = colorWhite;
-                        else
-                            bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                        bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                     }
                 }
 
@@ -405,14 +379,9 @@ namespace ModDropProfileChart.Views
                                 yValue[i] = baleTable.Rows[LastIV + i].Field<float>("BDWeight") / 0.9;
                             }
 
-
                             // add a label and customize it as desired
                             var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastIV+i + 5, yValue[i]);
-
-                            if (ClassCommon.GraphDarkMode)
-                                txt.Color = colorSnowWhite;
-                            else
-                                txt.Color = ScottPlot.Color.FromHex("000000");
+                            txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                             txt.Alignment = Alignment.LowerCenter;
                             txt.FontSize = 11;
                             txt.Bold = true;
@@ -424,12 +393,9 @@ namespace ModDropProfileChart.Views
                     ticks[4] = new Tick(LastIV + 7, "Drop No 5");
                     foreach (var bar in bars5.Bars)
                     {
-                        bar.FillColor = colorPurple;
+                        bar.FillColor = colorPurple; 
                         bar.BorderLineWidth = 2;
-                        if (ClassCommon.GraphDarkMode)
-                            bar.BorderColor = colorWhite;
-                        else
-                            bar.BorderColor = ScottPlot.Color.FromHex("000000");
+                        bar.BorderColor = ClassCommon.GraphDarkMode ? colorWhite : colorBlack;
                     }
                 }
 
