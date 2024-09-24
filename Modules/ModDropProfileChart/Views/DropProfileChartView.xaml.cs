@@ -36,7 +36,7 @@ namespace ModDropProfileChart.Views
         private ScottPlot.Color colorOrange = ScottPlot.Color.FromHex("ff884d");
         private ScottPlot.Color colorGreen = ScottPlot.Color.FromHex("00b300");
         private ScottPlot.Color colorRed = ScottPlot.Color.FromHex("e60000");
-        private ScottPlot.Color colorPurple = ScottPlot.Color.FromHex("d24dff");
+        private ScottPlot.Color colorPurple = ScottPlot.Color.FromHex("b399ff");
 
         public DropProfileChartView()
         {
@@ -201,10 +201,10 @@ namespace ModDropProfileChart.Views
                         }
 
                         // add a label and customize it as desired
-                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), i+1, yValue[i]);
+                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.0"), i+1, yValue[i]);
                         txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                         txt.Alignment = Alignment.LowerCenter;
-                        txt.FontSize = 11;
+                        txt.FontSize = 12;
                         txt.Bold= true;
                     }
                     LastI = i + 1;
@@ -244,10 +244,10 @@ namespace ModDropProfileChart.Views
                         }
 
                         // add a label and customize it as desired
-                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastI+i + 2, yValue[i]);
+                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.0"), LastI+i + 2, yValue[i]);
                         txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                         txt.Alignment = Alignment.LowerCenter;
-                        txt.FontSize = 11;
+                        txt.FontSize = 12;
                         txt.Bold = true;
                     }
                     LastII = LastI + i + 1;
@@ -286,10 +286,10 @@ namespace ModDropProfileChart.Views
                         }
 
                         // add a label and customize it as desired
-                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastII + i + 3, yValue[i]);
+                        var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.0"), LastII + i + 3, yValue[i]);
                         txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                         txt.Alignment = Alignment.LowerCenter;
-                        txt.FontSize = 11;
+                        txt.FontSize = 12;
                         txt.Bold = true;
                     }
                     LastIII = LastII + i + 1;
@@ -333,10 +333,10 @@ namespace ModDropProfileChart.Views
                             }
 
                             // add a label and customize it as desired
-                            var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastIII + i + 4, yValue[i]);
+                            var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.0"), LastIII + i + 4, yValue[i]);
                             txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                             txt.Alignment = Alignment.LowerCenter;
-                            txt.FontSize = 11;
+                            txt.FontSize = 12;
                             txt.Bold = true;
                         }
                         LastIV = LastIII + i + 1;
@@ -380,10 +380,10 @@ namespace ModDropProfileChart.Views
                             }
 
                             // add a label and customize it as desired
-                            var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.00"), LastIV+i + 5, yValue[i]);
+                            var txt = WpfPlot1.Plot.Add.Text(yValue[i].ToString("00.0"), LastIV+i + 5, yValue[i]);
                             txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                             txt.Alignment = Alignment.LowerCenter;
-                            txt.FontSize = 11;
+                            txt.FontSize = 12;
                             txt.Bold = true;
                         }
                         LastV = LastIV + i + 1;

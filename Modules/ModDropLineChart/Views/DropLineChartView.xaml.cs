@@ -156,10 +156,10 @@ namespace ModDropLineChart.Views
                     LnOneLast = i;
 
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y1Value[i].ToString("00.00"), i, y1Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y1Value[i].ToString("00.0"), i, y1Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[0] = new Tick(2, "Bale Pos. 1");
@@ -188,10 +188,10 @@ namespace ModDropLineChart.Views
                     LnTwoLast = LnOneLast + i;
 
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y2Value[i].ToString("00.00"), xs2[i], y2Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y2Value[i].ToString("00.0"), xs2[i], y2Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[1] = new Tick(LnOneLast + 3, "Bale Pos. 2");
@@ -218,10 +218,10 @@ namespace ModDropLineChart.Views
                     LnThreeLast = LnTwoLast + i;
 
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y3Value[i].ToString("00.00"), xs3[i], y3Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y3Value[i].ToString("00.0"), xs3[i], y3Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[2] = new Tick(LnTwoLast + 4, "Bale Pos. 3");
@@ -245,10 +245,10 @@ namespace ModDropLineChart.Views
                     y4Value[i] = avgFour[i - 1];
                     LnFourLast = LnThreeLast + i;
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y4Value[i].ToString("00.00"), xs4[i], y4Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y4Value[i].ToString("00.0"), xs4[i], y4Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[3] = new Tick(LnThreeLast + 5, "Bale Pos. 4");
@@ -273,10 +273,10 @@ namespace ModDropLineChart.Views
                     y5Value[i] = avgFive[i - 1];
                     LnFiveLast = LnFourLast + i;
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y5Value[i].ToString("00.00"), xs5[i], y5Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y5Value[i].ToString("00.0"), xs5[i], y5Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[4] = new Tick(LnFourLast + 6, "Bale Pos. 5");
@@ -301,10 +301,10 @@ namespace ModDropLineChart.Views
                     y6Value[i] = avgSix[i - 1];
                     LnSixLast = LnFiveLast + i;
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y6Value[i].ToString("00.00"), xs6[i], y6Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y6Value[i].ToString("00.0"), xs6[i], y6Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[5] = new Tick(LnFiveLast + 7, "Bale Pos. 6");
@@ -329,10 +329,10 @@ namespace ModDropLineChart.Views
                     y7Value[i] = avgSeven[i - 1];
                     LnSevenLast = LnSixLast + i;
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y7Value[i].ToString("00.00"), xs7[i], y7Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y7Value[i].ToString("00.0"), xs7[i], y7Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[6] = new Tick(LnSixLast + 8, "Bale Pos. 7");
@@ -357,10 +357,10 @@ namespace ModDropLineChart.Views
                     y8Value[i] = avgEight[i - 1];
                     LnEightLast = LnSevenLast + i;
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y8Value[i].ToString("00.00"), xs8[i], y8Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y8Value[i].ToString("00.0"), xs8[i], y8Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[7] = new Tick(LnSevenLast + 9, "Bale Pos. 8");
@@ -384,10 +384,10 @@ namespace ModDropLineChart.Views
                     y9Value[i] = avgNine[i - 1];
                     LnNineLast = LnSevenLast + i;
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y9Value[i].ToString("00.00"), xs9[i], y9Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y9Value[i].ToString("00.0"), xs9[i], y9Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[8] = new Tick(LnEightLast + 10, "Bale Pos. 9");
@@ -411,10 +411,10 @@ namespace ModDropLineChart.Views
                     xs10[i] = LnNineLast + 9 + i;
                     y10Value[i] = avgTen[i - 1];
                     // add a label and customize it as desired
-                    var txt = WpfPlot1.Plot.Add.Text(y10Value[i].ToString("00.00"), xs10[i], y10Value[i]);
+                    var txt = WpfPlot1.Plot.Add.Text(y10Value[i].ToString("00.0"), xs10[i], y10Value[i]);
                     txt.Color = ClassCommon.GraphDarkMode ? colorSnowWhite : colorBlack;
                     txt.Alignment = Alignment.LowerCenter;
-                    txt.FontSize = 11;
+                    txt.FontSize = 12;
                     txt.Bold = true;
                 }
                 ticks[9] = new Tick(LnNineLast + 11, "Bale Pos. 10");
