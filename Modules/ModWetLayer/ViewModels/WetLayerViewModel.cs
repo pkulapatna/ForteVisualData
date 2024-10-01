@@ -1424,7 +1424,7 @@ namespace ModWetLayer.ViewModels
             double[] valueY = new double[16];
 
 
-            if(WetLayerDataTable.Rows.Count > 0) 
+            if(WetLayerDataTable?.Rows.Count > 0) 
             {
                 if (ClassCommon.MoistureType == 0)
                 {
