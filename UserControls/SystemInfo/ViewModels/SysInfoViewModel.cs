@@ -381,7 +381,7 @@ namespace SystemInfo.ViewModels
             ClassAccessHandler accessHandler = ClassAccessHandler.Instance;
             DataTable dt = accessHandler.GetAccessArchiveTable2();
 
-            if (dt.Rows.Count > 0)
+            if (dt?.Rows.Count > 0)
             {
                 StreamWriter outFile = new StreamWriter(StrPathFile);
                 List<string> headerValues = new List<string>();

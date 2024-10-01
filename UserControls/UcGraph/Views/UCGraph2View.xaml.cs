@@ -40,7 +40,7 @@ namespace UcGraph.Views
 
             double sumOfDerivation = 0;
 
-            if (myTable.Rows.Count > 0)
+            if (myTable?.Rows.Count > 0)
             {
                 CreateCVdatatable(myTable);
                     

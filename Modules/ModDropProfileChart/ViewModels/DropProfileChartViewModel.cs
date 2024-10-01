@@ -559,7 +559,7 @@ namespace ModDropProfileChart.ViewModels
                                 string newquery = BuildQueryString(1);
                                 BaleDatatable = await _sqlhandler.GetBaleArchiveDataTableAsyn(newquery);
 
-                                if (BaleDatatable.Rows.Count > 0)
+                                if (BaleDatatable?.Rows.Count > 0)
                                 {
                                     if (BaleDatatable.Columns.Contains("index"))
                                         BaleDatatable.Columns.Remove("index");
@@ -601,7 +601,7 @@ namespace ModDropProfileChart.ViewModels
 
             try
             {
-                if (baledatatable.Rows.Count > 0)
+                if (baledatatable?.Rows.Count > 0)
                 {
                     for (int i = 0; i < ClassCommon.BaleInDrop; i++)
                     {
@@ -927,7 +927,7 @@ namespace ModDropProfileChart.ViewModels
             {
 
                 Hdrtable = _sqlhandler.GetSqlScema();
-                if (Hdrtable.Rows.Count > 0)
+                if (Hdrtable?.Rows.Count > 0)
                 {
                     int i = 0;
                     foreach (var column in Hdrtable.Rows)

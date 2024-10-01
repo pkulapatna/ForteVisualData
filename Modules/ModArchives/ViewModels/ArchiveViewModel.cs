@@ -748,7 +748,7 @@ namespace ModArchives.ViewModels
                     {
                         if (AllFieldsChecked)
                         {
-                            if (TempTable.Rows.Count > 0)
+                            if (TempTable?.Rows.Count > 0)
                             {
                                 _sqlhandler.SetMoistureType(TempTable);
                             }
@@ -766,7 +766,7 @@ namespace ModArchives.ViewModels
                             }
                                
                         }
-                        if (TempTable.Rows.Count > 0)
+                        if (TempTable?.Rows.Count > 0)
                         {
                             _sqlhandler.SetWeightType(TempTable);
                         }
@@ -824,7 +824,7 @@ namespace ModArchives.ViewModels
             int iCloseHour = 0;
             char[] separators = { ':' };
 
-            if (ArchiveDataTable.Rows.Count > 0)
+            if (ArchiveDataTable?.Rows.Count > 0)
             {
                 if (SelectedBaleIndex == -1)
                     MessageBox.Show("Please Select lot Number to display graph !");
@@ -854,7 +854,7 @@ namespace ModArchives.ViewModels
                         {
                             _sqlhandler.SetWeightType(LotCsvTable);
 
-                            if (LotCsvTable.Rows.Count > 0)
+                            if (LotCsvTable?.Rows.Count > 0)
                             {
                                 UCGraphView ShowGrapgView = new UCGraphView(LotCsvTable, StrItem, SelectedLotMonth) //StrItem
                                 {
@@ -894,7 +894,7 @@ namespace ModArchives.ViewModels
                     switch (iTabSelected)
                     {
                         case 1:
-                            if (ArchiveDataTable.Rows.Count > 0)
+                            if (ArchiveDataTable?.Rows.Count > 0)
                             {
                                 using (CSVReport csvDlg = new CSVReport(_eventAggregator))
                                 {
@@ -932,23 +932,23 @@ namespace ModArchives.ViewModels
             DateTime Opendate = DateTime.Today;
             DateTime Closedate = DateTime.Today;
 
-            if (ArchiveDataTable.Rows[SelectedBaleIndex]["LotNum"] != null)
+            if (ArchiveDataTable?.Rows[SelectedBaleIndex]["LotNum"] != null)
                 StrItem = ArchiveDataTable.Rows[SelectedBaleIndex]["LotNum"].ToString();
 
-            if (ArchiveDataTable.Rows[SelectedBaleIndex]["OpenTD"] != null)
+            if (ArchiveDataTable?.Rows[SelectedBaleIndex]["OpenTD"] != null)
                 Opendate = ArchiveDataTable.Rows[SelectedBaleIndex].Field<DateTime>("OpenTD");
 
-            if (ArchiveDataTable.Rows[SelectedBaleIndex]["CloseTD"] != null)
+            if (ArchiveDataTable?.Rows[SelectedBaleIndex]["CloseTD"] != null)
                 Closedate = ArchiveDataTable.Rows[SelectedBaleIndex].Field<DateTime>("CloseTD");
 
-            if (ArchiveDataTable.Rows[SelectedBaleIndex]["FC_IdentString"] != null)
+            if (ArchiveDataTable?.Rows[SelectedBaleIndex]["FC_IdentString"] != null)
                 LotIdString = ArchiveDataTable.Rows[SelectedBaleIndex]["FC_IdentString"].ToString();
 
             try
             {
                 using (DataTable LotCsvTable = _sqlhandler.GetTableByLotNum(StrItem, SetupStrCSVitems(), Opendate, Closedate, LotIdString, SelectedMonth))
                 {
-                    if (LotCsvTable.Rows.Count > 0)
+                    if (LotCsvTable?.Rows.Count > 0)
                     {
                         using (CSVReport csvDlg = new CSVReport(_eventAggregator))
                         {

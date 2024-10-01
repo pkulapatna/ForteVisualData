@@ -443,7 +443,7 @@ namespace ModDropLineChart.ViewModels
 
             try
             {
-                if(baledatatable.Rows.Count >0)
+                if(baledatatable?.Rows.Count >0)
                 {
                    // var DropNumList = baledatatable.AsEnumerable().Select(x => x.Field<int>("DropNumber")).Distinct().ToList();
 
@@ -697,7 +697,7 @@ namespace ModDropLineChart.ViewModels
             {
 
                 Hdrtable = _sqlhandler.GetSqlScema();
-                if (Hdrtable.Rows.Count > 0)
+                if (Hdrtable?.Rows.Count > 0)
                 {
                     int i = 0;
                     foreach (var column in Hdrtable.Rows)

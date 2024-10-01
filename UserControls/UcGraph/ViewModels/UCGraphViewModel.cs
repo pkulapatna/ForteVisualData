@@ -250,7 +250,7 @@ namespace UcGraph.ViewModels
             ArchiveTable.AcceptChanges();
 
 
-            if (ArchiveTable.Rows.Count > 0)
+            if (ArchiveTable?.Rows.Count > 0)
             {
                 timeX = new double[ArchiveTable.Rows.Count];
                 MvalueY = new double[ArchiveTable.Rows.Count];
