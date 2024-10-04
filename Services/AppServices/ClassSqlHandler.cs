@@ -899,11 +899,16 @@ namespace AppServices
         }
 
 
-
+        /// <summary>
+        /// Need to check if the strTable excist
+        /// </summary>
+        /// <param name="strItem"></param>
+        /// <param name="strTable"></param>
+        /// <returns></returns>
         public List<string> GetUniquIntitemlist(string strItem, string strTable)
         {
             List<string> itemList = new List<string>();
-            string strQuery = "SELECT DISTINCT " + strItem + " From " + strTable + " ORDER BY " + strItem + ";";
+            string strQuery = "SELECT DISTINCT " + strItem + " From " + strTable + " WHERE " + strItem + " is not null ORDER BY "  + strItem +";";
 
             try
             {
@@ -918,7 +923,9 @@ namespace AppServices
                                 while (reader.Read())
                                 {
                                     if (reader != null)
-                                        itemList.Add(reader.GetString(0).ToString());
+                                    {
+                                       itemList.Add(reader.GetString(0).ToString());
+                                    }
                                 }
                         }
                     }
@@ -1076,7 +1083,7 @@ namespace AppServices
 
             string constr = ConString;
             List<string> TabList = new List<string>();
-            string strQuery = "SELECT DISTINCT " + strItem + " From " + strTable + " ORDER BY " + strItem + ";";
+            string strQuery =  "SELECT DISTINCT " + strItem + " From " + strTable + " WHERE " + strItem + " is not null ORDER BY " + strItem + ";";
             if (strItem == "BalerID") constr = WLConStr;
 
             try
@@ -1228,9 +1235,10 @@ namespace AppServices
             List<string> DropNumberList = new List<string>();
             List<string> PositionList = new List<string>();
 
-            string strQuery = $"SELECT DISTINCT DropNumber  From { GetCurrentRtTableName(ClassSqlHandler.BALE_ARCHIVE)};";
-            string strQuery2 = $"SELECT DISTINCT Position  From { GetCurrentRtTableName(ClassSqlHandler.BALE_ARCHIVE)};";
-        
+            string strQuery = $"SELECT DISTINCT DropNumber  From {GetCurrentRtTableName(ClassSqlHandler.BALE_ARCHIVE)} WHERE  DropNumber is not null;";
+            string strQuery2 = $"SELECT DISTINCT Position  From {GetCurrentRtTableName(ClassSqlHandler.BALE_ARCHIVE)} WHERE  Position is not null;";
+
+
             try
             {
                 

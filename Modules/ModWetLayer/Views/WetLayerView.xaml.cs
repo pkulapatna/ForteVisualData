@@ -18,6 +18,18 @@ namespace ModWetLayer.Views
     {
         public static WetLayerView _wetLayerView;
 
+        private ScottPlot.Color colorSnowWhite = ScottPlot.Color.FromHex("FFFAFA");
+        private ScottPlot.Color colorWhite = ScottPlot.Color.FromHex("FFFFFF");
+        private ScottPlot.Color colorBlack = ScottPlot.Color.FromHex("000000");
+
+        private ScottPlot.Color colorBlue = ScottPlot.Color.FromHex("0088cc");
+        private ScottPlot.Color colorOrange = ScottPlot.Color.FromHex("ff884d");
+        private ScottPlot.Color colorGreen = ScottPlot.Color.FromHex("00b300");
+        private ScottPlot.Color colorRed = ScottPlot.Color.FromHex("e60000");
+        private ScottPlot.Color colorPurple = ScottPlot.Color.FromHex("b399ff");
+
+        private ScottPlot.Color colorBrown = ScottPlot.Color.FromHex("cb8034");
+
         public WetLayerView()
         {
             InitializeComponent();
@@ -107,9 +119,12 @@ namespace ModWetLayer.Views
             ValMax = ValLst.Max();
             ValMin = ValLst.Min();
 
+
+
             for (int i = 0; i < dataX.Length; i++)
             {
                 var txt = dataY[i].ToString();
+
                
                 if (dataY[i] > LimitHiVal)
                 {
@@ -119,6 +134,7 @@ namespace ModWetLayer.Views
                         Value = dataY[i], 
                         FillColor = palette.GetColor(1), 
                         Label = txt, 
+ 
                         BorderLineWidth = 2, 
                         BorderColor = ScottPlot.Color.FromHex("#FFFFFF")
                     };
