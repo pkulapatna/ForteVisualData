@@ -430,25 +430,27 @@ namespace ModGraphic.ViewModels
                         {
                             timeX[i] = i + 1;
 
-                            if(ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                            switch(ClassCommon.MenuChecked)
                             {
-                                valueY[i] = ClassCommon.ConvertMoisture(rDt.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
-                                YTitle = ClassCommon.MoistureTypeLst[ClassCommon.MoistureType];
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                            {
-                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("Weight"), ClassCommon.WeightUnit);
-                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
-                            {
-                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit);
-                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
-                            }
-                            else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
-                            {
-                                valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit)/0.9;
-                                YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                                case ClassCommon.MenuMoisture:
+                                    valueY[i] = ClassCommon.ConvertMoisture(rDt.Rows[i].Field<float>("Moisture"), ClassCommon.MoistureType);
+                                    YTitle = ClassCommon.MoistureTypeLst[ClassCommon.MoistureType];
+                                    break;
+
+                                case ClassCommon.MenuWeight:
+                                    valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("Weight"), ClassCommon.WeightUnit);
+                                    YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                                    break;
+
+                                case ClassCommon.MenuBDWeight:
+                                    valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit);
+                                    YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                                    break;
+
+                                case ClassCommon.MenuADWeight:
+                                    valueY[i] = ClassCommon.ConvertWeight(rDt.Rows[i].Field<float>("BDWeight"), ClassCommon.WeightUnit) / 0.9;
+                                    YTitle = ClassCommon.WeightTypeLst[ClassCommon.WeightUnit];
+                                    break;
                             }
                         }
 

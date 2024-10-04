@@ -63,6 +63,8 @@ namespace ModCombine.Views
             }
 
 
+
+
             if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
             {
                 for (int i = 0;i< ClassCommon.ComBineSample; i++)

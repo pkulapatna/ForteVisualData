@@ -428,6 +428,39 @@ namespace AppServices
         }
 
 
+        public int GetCurrentTableRowcnt()
+        {
+            int rowcount = 0;
+
+            DataTable mytable = new DataTable();
+
+            string query = $"SELECT * from {GetCurrentBaleTableName()};";
+            try
+            {
+                using (var sqlConnection = new SqlConnection(ConString))
+                {
+                    sqlConnection?.Open();
+                    using (SqlCommand comm = new SqlCommand(query, sqlConnection))
+                    {
+                        using (SqlDataReader reader = comm.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                                mytable.Load(reader);
+
+                            rowcount = mytable.Rows.Count;
+                        }
+                    }
+                    sqlConnection?.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error in GetCurrentTableRowcnt -> " + ex.Message);
+                ClsSerilog.LogMessage(ClsSerilog.ERROR, $"EROR in GetCurrentTableRowcnt -> {ex.Message}");
+            }
+            return rowcount;
+        }
+
         public DataTable GetBaleArchiveDataTable(string strClause)
         {
             DataTable mytable = new DataTable();
@@ -1365,6 +1398,6 @@ namespace AppServices
             }
         }
 
-      
+       
     }
 }
