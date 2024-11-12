@@ -7,7 +7,7 @@
         prism:ViewModelLocator.AutoWireViewModel="True"
         Closing="Window_Closing" Closed="OnClosed" 
         xmlns:MaterialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        Title="{Binding MainWindowTitle}" Height="{Binding ScreenHeight}" Width="{Binding ScreenWidth}" >
+        Title="{Binding MainWindowTitle}" Height="{Binding ScreenHeight}" Width="{Binding ScreenWidth}"  MinWidth="1200" MinHeight="750">
     
     <Border CornerRadius="10" Margin="0" BorderThickness="0" BorderBrush="Transparent" 
             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
