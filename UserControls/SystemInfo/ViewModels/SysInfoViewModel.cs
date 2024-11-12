@@ -293,7 +293,7 @@ namespace SystemInfo.ViewModels
         /// In the ASCIILog folder here could be many files from the pass.
         /// Only pick the latest numbers of files.
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns>CopyLogFiles
         private bool CopyLogFiles()
         {
             bool bCopy = false;

@@ -59,6 +59,20 @@ namespace ForteVisualData.ViewModels
             get { return GetLastModTime(); }
         }
 
+        private int screenWidth = (int)((int)SystemParameters.PrimaryScreenWidth * .75); // reduced 25%;
+        public int ScreenWidth
+        {
+            get { return screenWidth; }
+            set { SetProperty(ref screenWidth, value); }
+        }
+
+        private int screenHeight = (int)((int)SystemParameters.PrimaryScreenHeight * .75); // reduced 25%;
+        public int ScreenHeight
+        {
+            get { return screenHeight; }
+            set { SetProperty(ref screenHeight, value); }
+        }
+
         private string GetLastModTime()
         {
 
