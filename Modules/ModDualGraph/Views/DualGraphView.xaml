@@ -232,7 +232,7 @@
             </Grid>
         </Grid>
 
-        <Grid Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"  Background="#FF152D42" Margin="5">
+        <Grid Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="1"  Background="#FF152D42" Margin="5">
             <Grid.Effect>
                 <DropShadowEffect/>
             </Grid.Effect>
@@ -309,21 +309,26 @@
 
             <Border Grid.Column="3" CornerRadius="5" BorderThickness="1" Margin="7" BorderBrush="LightGray">
 
-               
+
             </Border>
-
-            <StackPanel Grid.Column="4" Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button  x:Name="btnStop" Grid.Row="3" Grid.Column="1" Content="Stop" 
-                         Opacity=".3" Style="{StaticResource ButtonStop}"
-                         Margin="0,0,0,0" Command="{Binding StopCommand}"/>
-                <Button x:Name="btnStart" Grid.Row="3" Grid.Column="2" Content="Start" 
-                         Style="{StaticResource ButtonStart}" 
-                         Margin="20,0,0,0" Command="{Binding StartCommand}"/>
-            </StackPanel>
-
         </Grid>
 
 
+        <Grid  Grid.Column="2" Grid.Row="4">
+            <Grid.Effect>
+                <DropShadowEffect/>
+            </Grid.Effect>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button  x:Name="btnStop" Content="Stop" 
+                     Opacity=".3" Style="{StaticResource ButtonStop}"
+                     Margin="0,0,0,0" Command="{Binding StopCommand}"/>
+                <Button x:Name="btnStart" Content="Start" 
+                     Style="{StaticResource ButtonStart}" 
+                     Margin="20,0,0,0" Command="{Binding StartCommand}"/>
+            </StackPanel>
+        </Grid>
+        
+        
     </Grid>
     
     
