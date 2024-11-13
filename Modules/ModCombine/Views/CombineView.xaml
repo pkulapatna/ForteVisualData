@@ -245,11 +245,12 @@
                         <DropShadowEffect/>
                     </Grid.Effect>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="5"/>
+                        <ColumnDefinition Width="15"/>
                         <ColumnDefinition Width="10*"/>
                         <ColumnDefinition Width="40"/>
                         <ColumnDefinition Width="70"/>
                         <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="15"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0"/>
@@ -258,6 +259,7 @@
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="10*"/>
+                        <RowDefinition Height="5"/>
                         <RowDefinition Height="10*"/>
                         <RowDefinition Height="5"/>
                     </Grid.RowDefinitions>
@@ -274,9 +276,8 @@
                         </Label.Effect>
                     </Label>
 
-                    <Rectangle Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="2" Fill="#FF152D42"  Margin="0,0,0,0"/>
-
-
+                    <Rectangle Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="4"  Fill="#FF152D42"  Margin="0,0,0,0"/>
+                    
                     <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="4" Grid.RowSpan="2" >
                         <Grid.RowDefinitions>
                             <RowDefinition Height="0"/>
@@ -321,13 +322,16 @@
                         </Label.Effect>
                     </Label>
 
+                    <Rectangle Grid.Row="7" Grid.Column="1"   Grid.ColumnSpan="4"  Fill="#FF152D42"  Margin="0,0,0,0"/>
+
+
                     <Label Grid.Column="2" Grid.Row="5" Content="Hi:" Foreground="Yellow" FontSize="14"
                            VerticalAlignment="Center" HorizontalAlignment="Right">
                         <Label.Effect>
                             <DropShadowEffect/>
                         </Label.Effect>
                     </Label>
-                    <Label Grid.Column="2" Grid.Row="6" Content="Lo:" Foreground="Yellow" FontSize="14"
+                    <Label Grid.Column="2" Grid.Row="7" Content="Lo:" Foreground="Yellow" FontSize="14"
                            VerticalAlignment="Center" HorizontalAlignment="Right">
                         <Label.Effect>
                             <DropShadowEffect/>
@@ -341,7 +345,7 @@
                                  Background="Transparent" Height="30" Text="{Binding GraphLimitHi}" IsEnabled="{Binding RTIdle}">
                     </TextBox>
 
-                    <TextBox  x:Name="txtGrpLo"   Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="3" Style="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="55"
+                    <TextBox  x:Name="txtGrpLo"   Grid.Column="2" Grid.Row="7" Grid.ColumnSpan="3" Style="{x:Null}" HorizontalAlignment="Center" VerticalAlignment="Center" Width="55"
                                  MouseDoubleClick="GraphLo_dclick"   IsReadOnly="true"  PreviewTextInput="NumericOnly" Foreground="AntiqueWhite"
                                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="16"
                                  Background="Transparent" Height="30"  Text="{Binding GraphLimitLo}" IsEnabled="{Binding RTIdle}">
