@@ -84,8 +84,10 @@ namespace ModDualGraph.Views
                 // each line's styles can be individually accessed as well
                 cross.HorizontalLine.LinePattern = LinePattern.Dotted;
 
-                WpfPlot1.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
-
+                if(MData.Max() > 0)
+                {
+                    WpfPlot1.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                }
 
                 if (ClassCommon.GraphDarkMode)
                 {
@@ -159,7 +161,11 @@ namespace ModDualGraph.Views
 
                 //    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitHi);
                 //    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitLo);
-                WpfPlot2.Plot.Axes.SetLimitsY(mMin - mMin/10, mMax + mMax/10);
+
+                if(MData.Max()>0)
+                {
+                    WpfPlot2.Plot.Axes.SetLimitsY(mMin - mMin / 10, mMax + mMax / 10);
+                }
 
                 if (ClassCommon.GraphDarkMode)
                 {
