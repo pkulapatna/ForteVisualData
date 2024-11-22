@@ -45,55 +45,56 @@ namespace ModGraphic.Views
             WpfPlot2.Plot.Axes.AutoScale();
             WpfPlot2.Plot.Axes.SetLimitsX(1, ClassCommon.ComBineSample);
 
+
+            for (int i = 0; i < ClassCommon.ComBineSample; i++)
+            {
+                MData.Add(dataY[i]);
+            }
+            double mMax = MData.Max();
+            double mMin = MData.Min();
+
             try
             {
                 WpfPlot2.Interaction.Disable();
 
-                for (int i = 0; i < ClassCommon.ComBineSample; i++)
+                if (mMax > 0)
                 {
-                    MData.Add(dataY[i]);
-                }
-                double mMax = MData.Max();
-                double mMin = MData.Min();
+                    if (ClassCommon.GraphDarkMode)
+                    {
+                        // change figure colors
+                        WpfPlot2.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
+                        WpfPlot2.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
 
-                if (ClassCommon.GraphDarkMode)
-                {
-                    // change figure colors
-                    WpfPlot2.Plot.FigureBackground.Color = ScottPlot.Color.FromHex("#07263b");
-                    WpfPlot2.Plot.DataBackground.Color = ScottPlot.Color.FromHex("#1f1f1f");
+                        // change axis and grid colors
+                        WpfPlot2.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
+                        WpfPlot2.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
+                    }
 
-                    // change axis and grid colors
-                    WpfPlot2.Plot.Axes.Color(ScottPlot.Color.FromHex("#d7d7d7"));
-                    WpfPlot2.Plot.Grid.MajorLineColor = ScottPlot.Color.FromHex("#7A7E7D");
+                    if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
+                    {
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitHi);
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitLo);
+                        WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
+                    {
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitHi);
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitLo);
+                        WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
+                    {
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitHi);
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitLo);
+                        WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                    }
+                    else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
+                    {
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitHi);
+                        WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitLo);
+                        WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                    }
                 }
-
-                if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
-                {
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitHi);
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitLo);
-                    WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
-                }
-                else if(ClassCommon.MenuChecked == ClassCommon.MenuWeight)
-                {
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitHi);
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitLo);
-                    WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
-                }
-                else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
-                {
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitHi);
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitLo);
-                    WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
-                }
-                else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
-                {
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitHi);
-                    WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitLo);
-                    WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
-                }
-
-
-
                 var sp = WpfPlot2.Plot.Add.Scatter(dataX, dataY);
 
                 sp.LineWidth = 2;
