@@ -35,9 +35,8 @@ namespace ModCombine.Views
 
         public void PlotChart(double[] dataX, double[] dataY, string chartTitle, string yTitle)
         {
-            List<double> MData = new List<double>();
-            List<double> WData = new List<double>();
-
+            List<double> YDataLst = new List<double>();
+        
             WpfPlot2.Plot.Clear();
 
             WpfPlot2.Plot.Axes.Bottom.Label.Text = "Number of Bales";
@@ -64,88 +63,54 @@ namespace ModCombine.Views
 
             for (int i = 0; i < ClassCommon.ComBineSample; i++)
             {
-                MData.Add(dataY[i]);
+                YDataLst.Add(dataY[i]);
             }
+            double yMax = YDataLst.Max();
+            double yMin = YDataLst.Min();
 
             try
             {
-                if (MData.Max() > 0)
+                if (yMax > 0)
                 {
                     if (ClassCommon.MenuChecked == ClassCommon.MenuMoisture)
                     {
-                        //  for (int i = 0; i < ClassCommon.ComBineSample; i++)
-                        //  {
-                        //      MData.Add(dataY[i]);
-                        //   }
-                        double mMax = MData.Max();
-                        double mMin = MData.Min();
-
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitHi);
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphOneLimitLo);
-                        WpfPlot2.Plot.Axes.SetLimitsY(mMin - 2, mMax + 2);
+                        WpfPlot2.Plot.Axes.SetLimitsY(yMin - 2, yMax + 2);
                     }
                     else if (ClassCommon.MenuChecked == ClassCommon.MenuWeight)
                     {
-                        for (int i = 0; i < ClassCommon.ComBineSample; i++)
-                        {
-                            WData.Add(dataY[i]);
-                        }
-
-                        double wMax = WData.Max();
-                        double wMin = WData.Min();
-
-
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitHi);
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphTwoLimitLo);
-                        WpfPlot2.Plot.Axes.SetLimitsY(wMin - 10, wMax + 10);
+                        WpfPlot2.Plot.Axes.SetLimitsY(yMin - 10, yMax + 10);
                     }
 
                     else if (ClassCommon.MenuChecked == ClassCommon.MenuBDWeight)
                     {
-                        for (int i = 0; i < ClassCommon.ComBineSample; i++)
-                        {
-                            WData.Add(dataY[i]);
-                        }
-
-                        double wMax = WData.Max();
-                        double wMin = WData.Min();
-
-
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitHi);
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphThreeLimitLo);
-                        WpfPlot2.Plot.Axes.SetLimitsY(wMin - 10, wMax + 10);
+                        WpfPlot2.Plot.Axes.SetLimitsY(yMin - 10, yMax + 10);
                     }
                     else if (ClassCommon.MenuChecked == ClassCommon.MenuADWeight)
                     {
-                        for (int i = 0; i < ClassCommon.ComBineSample; i++)
-                        {
-                            WData.Add(dataY[i]);
-                        }
-
-                        double wMax = WData.Max();
-                        double wMin = WData.Min();
-
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitHi);
                         WpfPlot2.Plot.Add.Crosshair(ClassCommon.ComBineSample, Settings.Default.GraphFourLimitLo);
-                        WpfPlot2.Plot.Axes.SetLimitsY(wMin - 10, wMax + 10);
+                        WpfPlot2.Plot.Axes.SetLimitsY(yMin - 10, yMax + 10);
                     }
-                    var sp = WpfPlot2.Plot.Add.Scatter(dataX, dataY);
-
-                    sp.LineWidth = 2;
-                    sp.MarkerSize = 8;
-
-                    // WpfPlot2.Plot.Render();
-                    WpfPlot2.Refresh();
                 }
+                var sp = WpfPlot2.Plot.Add.Scatter(dataX, dataY);
+
+                sp.LineWidth = 2;
+                sp.MarkerSize = 8;
+
+                // WpfPlot2.Plot.Render();
+                WpfPlot2.Refresh();
             }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show($"Error in PlotChart {ex.Message}");
-                ClsSerilog.LogMessage(ClsSerilog.ERROR, $"ERROR in PlotChart < {ex.Message}");
-                
+                ClsSerilog.LogMessage(ClsSerilog.ERROR, $"ERROR in PlotChart < {ex.Message}");   
             }
-
-
         
         }
 
